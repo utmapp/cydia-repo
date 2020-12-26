@@ -1,7 +1,7 @@
 Architectures: iphoneos-arm
 Codename: ios
 Components: main
-Date: Sat, 26 Dec 2020 20:32:21 +0000
+Date: Sat, 26 Dec 2020 20:42:42 +0000
 Description: Virtual machines for iOS
 Label: UTM
 Origin: UTM
@@ -9,13 +9,17 @@ Suite: stable
 Version: 1.0
 MD5Sum:
  f494f51e27ea794e138690458c6574d9              554 Packages.bz2
+ 68002425a3612ed8371fd5d991662e33              494 Packages.gz
  7de8f9dea6b054e956c66b75a6564c44              568 Packages.xz
 SHA1:
  ca6d5b451c045a04f3d1c225042f371c86372f1e              554 Packages.bz2
+ d5664baac3372fcef59531d911f01bdbf70266cd              494 Packages.gz
  02239c01f959d54c5fef9a35843433e826ab5b24              568 Packages.xz
 SHA256:
  1a2f271f6671e460eeef392b5ef56741fb3aa62833cde5dac56e47f91f756d20              554 Packages.bz2
+ 013d99002464c8ac4ab67fd7191e62b7e77c0e8d243051ec5e41149d35588e4a              494 Packages.gz
  1446744a072d6c43f09c337a1a1590d1da02aabce3fe517c9ed49f43b30973ce              568 Packages.xz
 SHA512:
  2b39e14eb42171edc4333d32e8317e6e571719124b7f6231911ce52e2a7046c0d3a75293ccf327db151ed116b76ad2fc48da98ed5d7aca20530a71371f4abcbe              554 Packages.bz2
+ 585fdc5495082fa0b5b01cac49ad4e8cd28c0f3d83ddcc9b0b24d8295ad28196780862fdf18ece6149a84bef0d046e2dcb1166346881bfa8e715ea8c6fe2004b              494 Packages.gz
  6b816d6b2ccc9131e7c2468d05e1617b77e7abd672206ffed0c50dd1b9af6c72f6d633b79542c4babfc132fb80c268d167a0845702bf2e2f6a39598a089eacfe              568 Packages.xz
