@@ -1,0 +1,22 @@
+Package: com.utmapp.UTM
+Version: 2.0.15
+Architecture: iphoneos-arm
+Maintainer: osy <dev@getutm.app>
+Installed-Size: 788520960
+Depends: firmware (>=11.0), firmware-sbin
+Filename: https://github.com/utmapp/UTM/releases/download/v2.0.15/./UTM.deb
+Size: 188910486
+MD5sum: 83aefd5ca1babf11dd6012aa757c125c
+SHA1: 68c45cf26c40dcc9b923892e04ab41110c2f8a1e
+SHA256: 6f71e6b7c8193206aa7beb55fb70dfd925ca413b8cd09d33ebc1e8f6a06294f6
+Section: Productivity
+Homepage: https://getutm.app/
+Description: Virtual machines for iOS
+Author: osy
+Depiction: https://cydia.getutm.app/depiction/web/com.utmapp.UTM.html
+Icon: https://cydia.getutm.app/assets/com.utmapp.UTM/icon.png
+Moderndepiction: https://cydia.getutm.app/depiction/native/com.utmapp.UTM.json
+Name: UTM
+Sileodepiction: https://cydia.getutm.app/depiction/native/com.utmapp.UTM.json
+Tags: compatible_min::ios11.0
+
