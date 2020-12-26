@@ -1,0 +1,45 @@
+{
+  "package": {
+    "bundle_id": "com.utmapp.UTM",
+    "name": "UTM",
+    "tagline": "Virtual machines for iOS",
+    "homepage": "https://getutm.app/",
+    "developer": {
+      "name": "osy",
+      "email": "dev@getutm.app"
+    },
+    "maintainer": {
+      "name": "osy",
+      "email": "dev@getutm.app"
+    },
+    "social": [
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/UTMapp"
+      },
+      {
+        "name": "Website",
+        "url": "https://getutm.app/"
+      }
+    ],
+    "githubOwner": "utmapp",
+    "githubRepository": "UTM",
+    "section": "Productivity",
+    "pre_dependencies": "",
+    "dependencies": "firmware-sbin",
+    "conflicts": "",
+    "replaces": "",
+    "provides": "",
+    "other_control": [],
+    "tint": "#1a2cc2",
+    "works_min": "11.0",
+    "featured": "true",
+    "source": "https://github.com/utmapp/UTM",
+    "changelog": [
+        {
+          "version": "2.0.15",
+          "changes": "Test"
+        }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+name: Generate
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'LICENSE'
+      - '**.md'
+  repository_dispatch:
+
+jobs:
+  generate:
+    name: Generate Repository
+    runs-on: ubuntu-latest
+    steps:
+      - id: release
+        uses: pozetroninc/github-action-get-latest-release@v0.5.0
+        with:
+          repository: utmapp/UTM
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Checkout Silica
+        uses: actions/checkout@v2
+        with:
+          repository: osy/Silica
+      - name: Checkout Template
+        uses: actions/checkout@v2
+        with:
+          path: template
+      - name: Merge Template
+        run: rsync -a template/ .
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Generate index.json
+        run: npx silica-package-github --config Packages/UTM/silica_data/index.template.json > Packages/UTM/silica_data/index.json
+      - name: Generate website
+        run: python3 index.py
+      - name: Generate releases
+        run: |
+          wget ${DOWNLOAD_PATH}/UTM.deb
+          touch empty
+          apt-ftparchive packages . empty ${DOWNLOAD_PATH}/ > Packages
+          cat Packages | bzip2 -c > ./docs/Packages.bz2
+          cat Packages | xz -c > ./docs/Packages.xz
+          apt-ftparchive release ./docs > ./docs/Release
+          gpg --default-key ${KEYNAME} -abs -o ./docs/Release.gpg ./docs/Release
+          gpg --default-key ${KEYNAME} --clearsign -o ./docs/InRelease ./docs/Release
+        env:
+          DOWNLOAD_PATH: https://github.com/utmapp/UTM/releases/download/${{ steps.release.outputs.release }}
+          KEYNAME: cydia@getutm.app
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          commit_message: 'Update repository'
