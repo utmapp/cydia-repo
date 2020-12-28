@@ -5,7 +5,7 @@ Section: Productivity
 Maintainer: osy <dev@getutm.app>
 Installed-Size: 770040
 Depends: firmware (>=11.0), firmware-sbin
-Filename: ./UTM.deb
+Filename: pkg/UTM.deb
 Size: 188909824
 MD5sum: f4d32daf301e524e59a8f5cdcc6697a3
 SHA1: 9a6018ef270fc4ca659fcd3f3e618d4f7ce2f97a

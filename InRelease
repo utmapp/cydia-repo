@@ -4,42 +4,42 @@ Hash: SHA512
 Architectures: iphoneos-arm
 Codename: ios
 Components: main
-Date: Mon, 28 Dec 2020 21:20:10 +0000
+Date: Mon, 28 Dec 2020 22:42:57 +0000
 Description: Virtual machines for iOS
 Label: UTM
 Origin: UTM
 Suite: stable
 Version: 1.0
 MD5Sum:
- 6f2ed09d7fda32e9a8a047b7c58085d8              931 Packages
- ef6290bf752f16120a3714570486fcdc              616 Packages.bz2
- c3350e23263e3d54818feb6c38bf9489              624 Packages.xz
+ 5624bc14d1bc9478bf601493d36ca88e              933 Packages
+ 06c3ba6235bb7916d78e447ea3d6ac39              617 Packages.bz2
+ 8193a99900bdc001e8af9b8fb4984ec7              624 Packages.xz
 SHA1:
- ce58c34d44007f20a9f4cdf7a06384ad7f4ac929              931 Packages
- b4f6b161ef24bf36d51ff14f17d6d70dbd16581e              616 Packages.bz2
- fe96850298218cc18f159b6b27b3fe7d3e9eb10d              624 Packages.xz
+ 8162acf6a82606ab54d46c9a1d446d762423a555              933 Packages
+ 3eecffd80a7b3e1200d52b6cf5e4fef093a22d0e              617 Packages.bz2
+ 5768ae5e66d424141e6570555de3b9837fd93e36              624 Packages.xz
 SHA256:
- f50c4be389a1cf3272a98e79677573a7e2789bbc806cf48966853600859f796e              931 Packages
- 8b5aa66984eea19fea0e3072d6dee5510ef906b99aed5d2ab0fb158a7cdabbf2              616 Packages.bz2
- d8c5b8059fefe884fd390ab26f025151571ed26aaf8fad1b163819881588208f              624 Packages.xz
+ 254d8bcafbe4b7adee6d40b6a6a80d1ea6294e9b9f500862fada2ce1ed75c902              933 Packages
+ ae099c6e19e895fb518aa45ae0150a7f2218224d60e757199c6315ebcfd3b050              617 Packages.bz2
+ dda4aa732ca0c3d994c07330782a3a15097313b4e5ea1be2412adca6896c6a44              624 Packages.xz
 SHA512:
- b30264293e7eda58d4ffddae1139bc1d27ed26710f32640e8f039066dbd59834f3ec44c81c2081e0fa2b398a3826fd3691e4bc89bd86ae68fe8ae0036453a0a9              931 Packages
- b59771484d1a81a6dbefede6df519583c204e55b13b7c89e06e8ce936027d2cdaa47373a58851d56b75cf3e0dc291fb4213ef102b2709b5b856e6c45e78bc7fb              616 Packages.bz2
- 1d39c46926f9e559835dc870d3aba29a15355c132e795ee49a17b5c8f356393146f3f8a61ca362bf9be31776bc16d1238cca10d14a4eddd0b060fdef32e3a159              624 Packages.xz
+ cb7fc1df9249925c7b554647b7d93443d0463cbc6c3713d120cadc1a73a63d13f3cb9c566d24487f00755d0478c0b7cb583a6e428c4384b21e33ae52e1a14c0b              933 Packages
+ bb5a2587a72c5fc18af1cc5b43d76e76839297a82ae4afafb894a3aabeccbddc009137ca14a3605cfb449bcd44903a361139122a41847e5ce1944be7ff421c14              617 Packages.bz2
+ 0d77c76313c57c099e1390454067618438979e9c123e509a317352ff7052e3eae2730e0dc0d20c477efb20d314b0bce8e0574521681df4a8c4726aca85a5ada1              624 Packages.xz
 -----BEGIN PGP SIGNATURE-----
 
-iQJFBAEBCgAvFiEEYrTQum7xfJnFE+SAu66oPsD5HyYFAl/qTAwRHGN5ZGlhQGdl
-dHV0bS5hcHAACgkQu66oPsD5HyY49g/+LTCVNP4zK9e9LNN3QOHIn55hODG/k8hM
-ANNPk3RllrUBDwfnz3cycA9hPxWRjhAlp1sLeIedAXDOaERCCla8vjaPtVhtOr4l
-1ALuLGh6TR6MLWTU2JxswzyAEGwGw3GPciAd9wPGViJ39UhJuLhdPV39WcfVmwwU
-XVC+yDoQCslRQBqWH9py/IH/rS/OSbrGrq+igr8sH7wun6AQJBLVYmuVhgk6K980
-FPwMzVq62tyCbTFbzpEqC7vvC2BDZh865cCe51huHKnkSFDmlNNCBhSQR8tGAH2E
-R1JkDMWNCiC0WYrAYcXtF1NTtU+whN4PWHUT+HMpGwbAJlj3F+/9csBNdl25RH/r
-rPfQY5dBJXPyhok8z5HRwUtcN+OyL/I19UJPbILSMZu4HLuQYNHK7xfeXErNt+wK
-WWjEM6KJaHsT7tsxu+QfUkPHIT4w+UhNQI0u0DofBugmpR2v/rTMre3XMyL1TM+F
-gyyDSswXZheBv9DcRlYfEhkoOgH/FieSSklebpeYZkHBo+qvsJKQUtQEFRfN2CAY
-6mHW2QMjxFOsEmGDOWxTGOv6mtl8qIyLP9YOU6dkDpplFK2UpeftVgugPeSXHhZF
-Wz8XRXXL9N6/pu0tKIRt8TyD3bF43W+3wCv12ROOSxjyjlhcSpSANsRWi4B4ZJQp
-ye7x8B3Fdf8=
-=SGfS
+iQJFBAEBCgAvFiEEYrTQum7xfJnFE+SAu66oPsD5HyYFAl/qX3IRHGN5ZGlhQGdl
+dHV0bS5hcHAACgkQu66oPsD5HyZhpQ/8C9apCrv0chVWKCvwbW20kPurbYoSY50x
+xS6CA20ECdQw/rEGhdIjkh4mbyHVl0C8AwW34tmu29UkymktdhetHaL5GVqZUqL9
+WLkonnScx8jbu5ABddAHC2YZaIxRaqlTs47RJNL9Sge0peM+kf8Il+nr8ZJKM3QF
+GXtEExgYKWlzA/6gveL57AV1xNfIYIDihBuaUaWjTQ043QyzBUanpgZyCBIoBv1R
+MpYbChJlMZi6iYmA053wNDwNkMOkyFGJ7aHZVv8xkuBL09zUYGqN+EzvZyfyIAP1
+k/e95jrf9kqIqBiOHvfZG/UUtwexM/AFDhpqik1GPO/aLOLHJgsYY3pVQ05LXl2k
+gSGS0gMdtPIxmX6BuwdPhzOYITUfUdMMdtkwfxwVIsoMxCbL50g8EF6FGff1c55f
+DlGCNTJuUXo+DqZ2CkwnDwpTcNZlZJ1mfQ9vx2bCNaArJyncOqhr+eVTfIx2Imhs
+Ukeiloah9vy0+0b8Jz4yDqdqIAKHdJfLg0nq9If++rsDekBQSUSvg24adK+7CVfj
+aegPngb70vz1/gQzBapvVHMB7lLz6G2lJrNsGyjwxmNlzd5djmAfcBFIMEGUNiwR
+nziIWphBSFaeRe93xnoDGznWk/pWeK/DLr6KSg7Dv+xB0rjYW4VYgf2vs726/Li9
+1Hi+5hAsBcA=
+=SmSl
 -----END PGP SIGNATURE-----
