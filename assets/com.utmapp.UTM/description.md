@@ -12,3 +12,4 @@ UTM is a full featured virtual machine host for iOS. In short, it allows you to 
 
 * When uninstalling, VMs are not automatically deleted. Make sure to delete unused VMs before uninstalling.
 * Some poorly written jailbreak tweaks cause iOS to go into a reboot loop if you run out of storage (regardless if UTM is installed or not). To be safe, make sure you never allocate more storage to a VM than the amount of free space you have.
+* Settings do not currently work. This will be fixed in a future version.
