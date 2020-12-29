@@ -61,7 +61,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.15</div>
+                    <div class="text">2.0.16</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -81,6 +81,25 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.16</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>(iOS) Black screen when booting aarch64 VMs (#2080)</li>
+<li>(iOS) External mouse/touchpad right click and middle click broken (#523)</li>
+<li>(iOS) New setting option to disable screen dimming when VM is running (#1217)</li>
+<li>(iOS) <strong>New <a href="https://getutm.app/install/#jailbroken-devices">Cydia repo</a> for jailbroken users</strong>: <a href="https://cydia.getutm.app/">https://cydia.getutm.app/</a></li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
+</ul>
+<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.15</h4>
                 <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design. UTM 2.0 also updates the QEMU backend from 4.2.0 to 5.2.0 (for all supported iOS versions).</p>
 <p>Installation instructions differ depending on what version of iOS you are running:</p>
@@ -705,10 +724,6 @@ Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Git
 <li>Added a new exit button on the home screen and a welcome message explaining the need for it (#32 )</li>
 </ul>
 <p><a href="https://getutm.app/install">https://getutm.app/install</a> for installation instructions.</p>
-</div>
-            </div><div class="changelog_entry">
-                <h4>0.2-fakesign</h4>
-                <div class="md_view"><p>This is exactly the same as v0.2 release but the IPA is fakesigned so jailbroken users can install it directly. Non-jailbreak users still must re-sign the IPA.</p>
 </div>
             </div>
         </div>
