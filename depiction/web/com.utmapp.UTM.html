@@ -61,7 +61,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.16</div>
+                    <div class="text">2.0.17</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -81,6 +81,37 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.17</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>Fixed a memory leak in starting VM with a removable drive that could lead to a crash in rare circumstances</li>
+<li>Fixed a race condition in CocoaSpice that could lead to a crash or freeze on other running VMs if one VM is stopped</li>
+<li>(iOS) Jailbreak detection for iOS 14 improved so startup message will not show up when jailbroken</li>
+<li>(macOS) Improved icon at low resolutions</li>
+<li><strong>(macOS) BREAKING CHANGE: App Sandbox is re-enabled starting with this build. You need to move any existing VMs. Please read the section below for more details.</strong></li>
+</ul>
+<h2>macOS Sandbox Migration</h2>
+<p>When you open UTM you will not see any VMs you previously created! To fix this, move your .utm files from <code>~/Documents</code> to <code>~/Library/Containers/com.utmapp.UTM/Data/Documents</code>. You can do it in Terminal with the following command:</p>
+<pre><code>mv ~/Documents/*.utm ~/Library/Containers/com.utmapp.UTM/Data/Documents
+</code></pre>
+<p>or with Finder</p>
+<ol>
+<li>Open Finder and go to your home directory.</li>
+<li>Press Cmd+Shift+. (that's the period key) to show hidden files.</li>
+<li>Browse to Library -&gt; Containers -&gt; UTM -&gt; Data -&gt; Documents</li>
+<li>Copy or move your .utm files from your home's Documents directory to this directory.</li>
+</ol>
+<h2>Known Issues</h2>
+<ul>
+<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
+</ul>
+<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.16</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -705,29 +736,9 @@ Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Git
 <li>Prompt disk data to be deleted when a drive is removed</li>
 </ul>
 </div>
-            </div><div class="changelog_entry">
-                <h4>0.3</h4>
-                <div class="md_view"><ul>
-<li>Add zh-Hans language (thanks @Evsio0n )</li>
-<li>Fixed an issue where on some jailbroken device with conflicting libraries installed, UTM refuses to launch even with a correct signature</li>
-<li>Fixed an issue with toolbar icons overlapping and made size of toolbar icons more consistent (thanks @fredyshox )</li>
-<li>Fixed dark mode keyboard if transition happens while keyboard was open</li>
-<li>Redesigned the extra keys above the keyboard: larger keys on iPads, keys are visible above home screen bar, added a few extra keys</li>
-<li>Fixed an issue where smart keys get triggered in some circumstances</li>
-<li>Fixed an issue where predictive keyboard text does not get entered</li>
-<li>Implemented hardware keyboard without needing to be activated with the keyboard button. Also allows hardware keyboard to work without the extra key strip active.</li>
-<li>Implemented paste function in the keyboard</li>
-<li>Fixed an issue where import disk image does not work on directories outside the UTM documents. (thanks @humboldtjs )</li>
-<li>Implemented click-and-drag: long-press on the screen (0.5s) until you feel a click, then you can move the cursor to drag items.</li>
-<li>Show an alert when low on memory</li>
-<li>Show an alert when trying to launch a new VM</li>
-<li>Added a new exit button on the home screen and a welcome message explaining the need for it (#32 )</li>
-</ul>
-<p><a href="https://getutm.app/install">https://getutm.app/install</a> for installation instructions.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2020-12-29</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-01-10</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
