@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <h2>Features</h2>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.17</div>
+                    <div class="text">2.0.18</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -81,6 +81,39 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.18</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>Check out the new UTM Gallery: <a href="https://mac.getutm.app/gallery/">https://mac.getutm.app/gallery/</a></li>
+<li>QEMU 5.1.0 changed JIT cache allocation to default to be host RAM / 8 instead of guest RAM / 4 as before. We revert back to guest RAM / 4.</li>
+<li>Fixed "Allocate x bytes for jit buffer: invalid argument" (#2269)</li>
+<li>(macOS) Console mode broken due to CoreAudio API cannot be used after fork() (#2267)</li>
+<li>Skip USB device for "isapc" (#2272)</li>
+</ul>
+<h2>Notice for upcoming iOS update</h2>
+<p>iOS 14.4 beta 2 broke JIT again (for non-jailbroken A12+ devices), and likely for good this time. We do not recommend updating to iOS 14.4 when it is released to the public.</p>
+<h2>macOS Sandbox Migration</h2>
+<p>If you are updating from &lt; 2.0.17 on macOS, then when you open UTM you will not see any VMs you previously created! To fix this, move your .utm files from <code>~/Documents</code> to <code>~/Library/Containers/com.utmapp.UTM/Data/Documents</code>. You can do it in Terminal with the following command:</p>
+<pre><code>mv ~/Documents/*.utm ~/Library/Containers/com.utmapp.UTM/Data/Documents
+</code></pre>
+<p>or with Finder</p>
+<ol>
+<li>Open Finder and go to your home directory.</li>
+<li>Press Cmd+Shift+. (that's the period key) to show hidden files.</li>
+<li>Browse to Library -&gt; Containers -&gt; UTM -&gt; Data -&gt; Documents</li>
+<li>Copy or move your .utm files from your home's Documents directory to this directory.</li>
+</ol>
+<h2>Known Issues</h2>
+<ul>
+<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
+</ul>
+<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.17</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -723,22 +756,9 @@ Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Git
 <li>A warning message shows up now when attempting to change unimplemented configuration settings</li>
 </ul>
 </div>
-            </div><div class="changelog_entry">
-                <h4>0.4</h4>
-                <div class="md_view"><ul>
-<li>Reimplemented hardware keyboard support: includes arrow keys, modifier keys, etc</li>
-<li>Two finger swipe up or down maps to mouse wheel up and down</li>
-<li>Trigger network usage popup in Chinese region</li>
-<li>Implemented deleting and cloning VM: long press on the icon in the list view to see the context popup</li>
-<li>Show an error message when QEMU fails (instead of crashing)</li>
-<li>Mouse acceleration &amp; inertia: fast swipe moves mouse cursor farther</li>
-<li>Mouse cursor shows up when QXL drivers are installed (can now install SPICE drivers on Windows and fixes mouse cursor not appearing in many Linux distros)</li>
-<li>Prompt disk data to be deleted when a drive is removed</li>
-</ul>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-01-10</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-01-17</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
