@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <h2>Features</h2>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.19</div>
+                    <div class="text">2.0.20</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -81,6 +81,43 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.20</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>Fixed CPU and core settings not used (#2293)</li>
+<li>Fixed a bug where VM sometimes boots up in a black screen and requires resizing to see the graphics</li>
+<li>Fixed a crash when starting VM in console mode with sharing enabled (#2291)</li>
+<li>Moved default share from <code>/tmp/Public</code> to <code>Documents/Public</code>. This is the Documents folder in UTM's sandbox, <strong>not</strong> the user's documents directory.</li>
+<li>Disabled sharing options and show warning message when console mode is enabled</li>
+<li>No more white background behind the console (#1201)</li>
+<li>(macOS) Enhanced UI for setting CPU flags</li>
+<li>(macOS) Detect when SPICE agent is installed and allow resolution change by resizing the VM window</li>
+<li>(macOS) New settings option to right click with Control+click (#2287)</li>
+</ul>
+<h2>Notice for iOS 14.4</h2>
+<p>iOS 14.4 broke JIT again (for non-jailbroken A12+ devices), and likely for good this time. We do not recommend updating to iOS 14.4. Future support for iOS will be limited to jailbroken devices only.</p>
+<h2>macOS Sandbox Migration</h2>
+<p>If you are updating from &lt; 2.0.17 on macOS, then when you open UTM you will not see any VMs you previously created! To fix this, move your .utm files from <code>~/Documents</code> to <code>~/Library/Containers/com.utmapp.UTM/Data/Documents</code>. You can do it in Terminal with the following command:</p>
+<pre><code>mv ~/Documents/*.utm ~/Library/Containers/com.utmapp.UTM/Data/Documents
+</code></pre>
+<p>or with Finder</p>
+<ol>
+<li>Open Finder and go to your home directory.</li>
+<li>Press Cmd+Shift+. (that's the period key) to show hidden files.</li>
+<li>Browse to Library -&gt; Containers -&gt; UTM -&gt; Data -&gt; Documents</li>
+<li>Copy or move your .utm files from your home's Documents directory to this directory.</li>
+</ol>
+<h2>Known Issues</h2>
+<ul>
+<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
+</ul>
+<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.19</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -757,30 +794,9 @@ Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Git
 <h2>Other Information</h2>
 <p>We now have an <a href="https://altstore.io">AltStore</a> repo at <strong><a href="https://alt.getutm.app">https://alt.getutm.app</a></strong> which will allow you to get update notifications. This is also the new preferred way of installing UTM on non-jailbroken devices.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>0.6</h4>
-                <div class="md_view"><h2>New Features</h2>
-<ul>
-<li>Pause/resume VM</li>
-<li>Restart VM</li>
-<li>Auto-save state on background and/or low memory warning</li>
-<li>Preferences page for controlling auto-save and gestures</li>
-<li>Configure gestures (change two finger tap, long press, etc)</li>
-<li>Save display position/zoom automatically</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul>
-<li>Add delay in mouse up and key up events fixing broken cursor/keyboard in PPC/aarch64/others (#145)</li>
-<li>Fix pasting long text (#151)</li>
-<li>Rare crash due to texture buffer not being locked correctly (#23)</li>
-<li>Fix issue of PPC QEMU trying not supporting QXL</li>
-</ul>
-<h2>Other Information</h2>
-<p>iOS 13.4 fixes the signing bug that prevents free accounts from signing UTM. You can now sign UTM every 7 days with a free developer account again.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-01-25</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-02-01</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
