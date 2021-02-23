@@ -61,7 +61,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.21</div>
+                    <div class="text">2.0.22</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -81,6 +81,27 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.22</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>(iOS) Fixed crash when moving drives (#2322)</li>
+<li>Fix removable drives option (#2320)</li>
+<li>Limit network and sound card selection based on architecture support</li>
+<li>Use new QEMU option for selecting sound card</li>
+<li>New option to change display card (thanks @js-john)</li>
+</ul>
+<h2>Notice for iOS 14.4+</h2>
+<p>iOS 14.4 broke JIT again (for non-jailbroken A12+ devices), and likely for good this time. We do not recommend updating to iOS 14.4 or higher. Future support for iOS will be limited to tethered and jailbroken devices only.</p>
+<h2>Known Issues</h2>
+<ul>
+<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
+<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
+</ul>
+<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.21</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -760,36 +781,9 @@
 <h2>Other Information</h2>
 <p>UTM is almost feature complete! All the configuration pages are now working and all major features are implemented. At this point, bug fixing is the main priority. The next series of releases will be RC (release candidate) builds where no new features will be introduced. Please help us by reporting any bug you may find in <a href="https://github.com/utmapp/UTM/issues">Github</a>.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>0.8</h4>
-                <div class="md_view"><h2>New Features</h2>
-<ul>
-<li>Console mode: boot without GUI into a Terminal (thanks @fredyshox)</li>
-<li>iPadOS 13.4 touchpad support for VM (thanks @conath)</li>
-<li>Added ko-KR translation (thanks @obbcth)</li>
-<li>Implemented advanced network settings including port forwarding</li>
-<li>Share clipboard between guest and iOS. Requires <a href="https://www.spice-space.org/download.html">SPICE guest tools</a> to be installed. Image support on Windows is limited to PNGs only.</li>
-<li>Tweaked toolbar display on large screens (toolbar should be small)</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul>
-<li>DNS server requires manual setting on guests (#198)</li>
-<li>Microphone access crashes UTM (#202)</li>
-<li>Mouse not working in some Linux distributions (#203)</li>
-</ul>
-<h2>Known Issues</h2>
-<ul>
-<li>Microphone not working (although it no longer crashes) (#219)</li>
-<li>Gestures do not work with iPadOS touchpad (#214)</li>
-<li>Invalid settings (including advanced network settings) will cause VM to not launch
-Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</li>
-</ul>
-<h2>Other Information</h2>
-<p>Note that when you update UTM, any suspended VM will not be compatible and will crash on the next boot. It is advised that you shut down all VMs before updating UTM to avoid using any unsaved data.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-02-19</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-02-23</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
