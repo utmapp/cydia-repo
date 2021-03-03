@@ -14,7 +14,7 @@ This package **requires** AppSync Unified from Karen's Repo. Make sure to add [h
 
 ## Notes
 
-* When uninstalling, the app and data are not deleted automatically. You can use the built-in Files app to delete data (under UTM) and the UTM app from your home screen.
+* If you wish to keep your VMs, make sure to back them up before uninstalling.
 * Some poorly written jailbreak tweaks cause iOS to go into a reboot loop if you run out of storage (regardless if UTM is installed or not). To be safe, make sure you never allocate more storage to a VM than the amount of free space you have.
 
 [1]: cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/
