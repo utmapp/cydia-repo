@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.24</div>
+                    <div class="text">2.0.25</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,24 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.25</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>Fix not booting automatically from NVMe (#2385)</li>
+<li>Fix not booting automatically from USB (#2333)</li>
+</ul>
+<h2>Notice for iOS 14.4+</h2>
+<p>iOS 14.4 broke JIT again (for non-jailbroken A12+ devices), and likely for good this time. We do not recommend updating to iOS 14.4 or higher. Future support for iOS will be limited to tethered and jailbroken devices only.</p>
+<h2>Known Issues</h2>
+<ul>
+<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
+<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
+</ul>
+<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.24</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -762,25 +780,9 @@
 <h2>Other Information</h2>
 <p>iOS 13.5 is out. While UTM supports iOS 13.5 and currently does not use the "Psychic Paper" sandbox escape, we still encourage anyone who does not need iOS 13.5 features to stay on stock iOS 13.4.x because we may develop a fork in the future with features that require either sandbox escape or jailbreak.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>1.0-rc2</h4>
-                <div class="md_view"><p>For the next few months, expect only bug fixes and minor tweaks. PLEASE help us by submitting any issues you find on <a href="https://github.com/utmapp/UTM/issues">Github</a> (after searching).</p>
-<p>This release is only focused on bug fixes in console mode. There is no change to the GUI mode.</p>
-<h2>Bug Fixes</h2>
-<ul>
-<li>Fixed issues with pause/resume feature in console mode (#286)</li>
-<li>With external keyboard connected, press any key to open up keyboard (#284)</li>
-<li>Fixed modifier keys with external keyboard in console mode (#285)</li>
-<li>Fixed three finger gestures to show/hide toolbar in console mode (#259)</li>
-<li>White background text shows up with white foreground text (#287)</li>
-<li>Added sending <code>stty</code> command to resize the terminal (#282)</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-03-16</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-03-23</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
