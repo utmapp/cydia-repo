@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.26</div>
+                    <div class="text">2.0.27</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,23 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.27</h4>
+                <div class="md_view"><p>Note: this is a hotfix from v2.0.26. The following changelog is the same as v2.0.26 with the problematic patch removed (#2410).</p>
+<h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>(iOS) Use GCMouse APIs for improved mouse support (thanks @js-john), this also allows legacy (PS/2) mouse emulation to work properly</li>
+<li>(macOS) Fixed sound broken by last update (#2448)</li>
+<li>(macOS) When main window closes, opening the main window again loses state of started VMs (#2437)</li>
+<li>(macOS) Capture Cmd+W and Cmd+Q and pass them to the VM when mouse is captured. Warn user if mouse is not captured. (#2321)</li>
+<li>Removed legacy boot device order settings and added a note about how boot ordering is determined by order of drives added (which can be moved around). This should fix some boot issues (provided you move the devices in the right order).</li>
+<li>Fixed non-removable CD/DVD devices not being recognized/not being able to boot (#2419)</li>
+<li>Fixed notes cut off on iOS (#2460)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.26</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -746,24 +763,6 @@
 <h2>Bug Fixes</h2>
 <ul>
 <li>Fixed UTM not showing in Files app (#360) </li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
-            </div><div class="changelog_entry">
-                <h4>1.0-rc4</h4>
-                <div class="md_view"><p>For the next few months, expect only bug fixes and minor tweaks. PLEASE help us by submitting any issues you find on <a href="https://github.com/utmapp/UTM/issues">Github</a> (after searching).</p>
-<h2>Changes</h2>
-<ul>
-<li>Updated zh-Hans translation (thanks @js-john)</li>
-<li>Added SunGEM network card (#340)</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul>
-<li>Fixed importing a .utm file (#342)</li>
-<li>Fixed a crash when resizing display or restarting VM (#355)</li>
-<li>Fixed software keys not being depressed when scrolling (#354)</li>
-<li>Fixed software modifier keys not being depressed when using hardware keyboard</li>
 </ul>
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
