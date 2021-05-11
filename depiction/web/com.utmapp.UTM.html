@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.27</div>
+                    <div class="text">2.0.28</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,22 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.0.28</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>(iOS) When file selection for removable drive is closed by tapping outside the modal, trying to open the modal again fails (#2499)</li>
+<li>(macOS) When Cmd/Win key is held, keyUp event was not being handled (#2486)</li>
+<li>Updated welcome screen with links to user guide and support page (#2498)</li>
+<li>bootindex was not properly applied for floppy devices (note: this fix is only for Q35, floppy boot order is unsupported for other targets) (#2492)</li>
+<li>Some targets such as Raspberry Pi fail to start because of an error with "-device usb-ehci" argument (#2505)</li>
+<li>On Q35/PC targets, press Esc to get to boot menu in BIOS (#2504)</li>
+<li>When removable drives are re-ordered, the underlying images assigned to them were not being reordered (#2512)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.27</h4>
                 <div class="md_view"><p>Note: this is a hotfix from v2.0.26. The following changelog is the same as v2.0.26 with the problematic patch removed (#2410).</p>
 <h2>Installation</h2>
@@ -751,25 +767,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>1.0-rc5</h4>
-                <div class="md_view"><p>For the next few months, expect only bug fixes and minor tweaks. PLEASE help us by submitting any issues you find on <a href="https://github.com/utmapp/UTM/issues">Github</a> (after searching).</p>
-<h2>Changes</h2>
-<ul>
-<li>Added zh-Hant translation (thanks @hui2007)</li>
-<li>iPad Split View supported in auto-resolution (#357)</li>
-<li>Opening .utm from Files app inside UTM's directory will launch VM</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul>
-<li>Fixed UTM not showing in Files app (#360) </li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-04-26</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-05-11</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
