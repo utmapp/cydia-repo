@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.0.28</div>
+                    <div class="text">2.1.0</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,22 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.1.0</h4>
+                <div class="md_view"><p>This release brings two major features:</p>
+<p>USB support is here for macOS <em>and</em> jailbroken iOS. You can attach a device to your VM with the new USB icon in the toolbar. You can enable USB 3.0 in the Share settings for faster devices on supported targets. Note that older versions of Windows (e.g. Windows 7 and below) require installing additional drivers for USB 3.0.</p>
+<p>UTM SE is a new build for iOS that does not require JIT (and therefore is much slower). It can therefore be sideloaded on any iOS device that is not jailbroken. Jailbreak users are still recommended to install the standard UTM DEB package for faster JIT speeds and USB support.</p>
+<h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>QEMU updated from v5.2.0 to v6.0.0</li>
+<li>USB support: attach a USB device to the VM (macOS and jailbroken iOS 14.5 and below only)</li>
+<li>UTM SE (Slow Edition): JITless iOS build available to sideload on <em>any</em> non-jailbroken device (thanks @ktemkin)</li>
+<li>Screamer audio device for PPC mac99 machines (no setting changes needed)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.0.28</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -750,26 +766,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>1.0-rc6</h4>
-                <div class="md_view"><p>For the next few months, expect only bug fixes and minor tweaks. PLEASE help us by submitting any issues you find on <a href="https://github.com/utmapp/UTM/issues">Github</a> (after searching).</p>
-<h2>Changes</h2>
-<ul>
-<li>Added link to the <a href="https://getutm.app/guide/">User Guide</a> to the home screen</li>
-<li>Changed icons from SF Symbol Light to SF Symbol Regular</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul>
-<li>Fixed race condition whenever multiple alerts trigger at the same time in the home screen</li>
-<li>Fixed importing/copying .utm if the app has not started yet</li>
-<li>Fixed AirDrop .utm</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-05-11</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-05-17</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
