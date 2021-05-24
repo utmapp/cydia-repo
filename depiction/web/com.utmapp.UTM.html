@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.1.0</div>
+                    <div class="text">2.1.1</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,31 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.1.1</h4>
+                <div class="md_view"><p>This release brings two major features:</p>
+<p>USB support is here for macOS <em>and</em> jailbroken iOS. You can attach a device to your VM with the new USB icon in the toolbar. You can enable USB 3.0 in the Share settings for faster devices on supported targets. Note that older versions of Windows (e.g. Windows 7 and below) require installing additional drivers for USB 3.0.</p>
+<p>UTM SE is a new build for iOS that does not require JIT (and therefore is much slower). It can therefore be sideloaded on any iOS device that is not jailbroken. Jailbreak users are still recommended to install the standard UTM DEB package for faster JIT speeds and USB support.</p>
+<h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes (v2.1.1)</h2>
+<ul>
+<li>(iOS) Fix USB attach on (jailbroken) iOS 14.6</li>
+<li>Fixed slow UEFI boot due to accidentally including a debug build of EDK2</li>
+<li>(macOS) Fixed captured mouse not being released when VM is shut down or suspended</li>
+<li>(macOS) Trackpad scroll speed made more consistent (#2400)</li>
+<li>(macOS) Fixed Windows 10 not booting on M1 Macs (#2546)</li>
+<li>(macOS) Fixed Screamer audio (#2548) Note that you must now select the 'screamer' audio card for the 'mac99' system target for sound to work.</li>
+</ul>
+<h2>Changes (v2.1.0)</h2>
+<ul>
+<li>QEMU updated from v5.2.0 to v6.0.0</li>
+<li>USB support: attach a USB device to the VM (macOS and jailbroken iOS 14.5 and below only)</li>
+<li>UTM SE (Slow Edition): JITless iOS build available to sideload on <em>any</em> non-jailbroken device (thanks @ktemkin)</li>
+<li>Screamer audio device for PPC mac99 machines</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.1.0</h4>
                 <div class="md_view"><p>This release brings two major features:</p>
 <p>USB support is here for macOS <em>and</em> jailbroken iOS. You can attach a device to your VM with the new USB icon in the toolbar. You can enable USB 3.0 in the Share settings for faster devices on supported targets. Note that older versions of Windows (e.g. Windows 7 and below) require installing additional drivers for USB 3.0.</p>
@@ -754,21 +779,9 @@
 <li>Fail gracefully when creating a VM with an invalid name (#210)</li>
 </ul>
 </div>
-            </div><div class="changelog_entry">
-                <h4>1.0</h4>
-                <div class="md_view"><p>Happy WWDC! 🎉</p>
-<h2>Changes</h2>
-<ul>
-<li>Improved contrast of buttons and spinner</li>
-<li>Added pull-to-refresh on home screen</li>
-<li>Fix alignment and display issues with activity indicator popup</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-05-17</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-05-24</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
