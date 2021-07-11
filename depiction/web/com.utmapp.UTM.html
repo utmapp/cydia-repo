@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.1.1</div>
+                    <div class="text">2.1.2</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,28 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.1.2</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Changes</h2>
+<ul>
+<li>Fixed QEMU issue causing crash running x86 Windows on M1 (thanks @kwhr0) (#2630)</li>
+<li>Fixed crash due to bad drive id (#2614)</li>
+<li>Properly delete imported/created drives on a new VM when canceled out (#2576)</li>
+<li>Fixed bad CPU core configuration on SPARC (#2651)</li>
+<li>Improvement to zh-Hant translation (thanks @pan93412) (#2595)</li>
+<li>Fixed an unusable CD drive always showing up in Windows x86 (thanks @conath) (#2538)</li>
+<li>(macOS) Fixed an issue with auto resolution changing with SPICE installed (#2587)</li>
+<li>(macOS) Fixed a crash when starting a VM after shutting down (#2622)</li>
+<li>(macOS) New global setting to (try to) only use performance cores: when set, if a VM does not manually specify a core count, instead of using the maximum number of cores on the system, UTM will use only the number of performance cores. Note this does not guarantee only the performance cores are used but only that the number of cores seen by the guest is lower. (#2557)</li>
+<li>(macOS) Fixed screen tearing/glitches on Windows and improved framebuffer rendering performance (#2569)</li>
+<li>(macOS) When SPICE tools are not properly set up, attempting to resize the window will now "revert" the size if the resolution does not get changed by the guest.</li>
+<li>(iOS) Fixed crash when launching with <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or other imobiledevice tools</li>
+<li>(iOS) Fixed Cydia install on iOS 11 (#2618)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.1.1</h4>
                 <div class="md_view"><p>This release brings two major features:</p>
 <p>USB support is here for macOS <em>and</em> jailbroken iOS. You can attach a device to your VM with the new USB icon in the toolbar. You can enable USB 3.0 in the Share settings for faster devices on supported targets. Note that older versions of Windows (e.g. Windows 7 and below) require installing additional drivers for USB 3.0.</p>
@@ -754,34 +776,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0b1</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design.</p>
-<p>iOS 14 unfortunately patched the ptrace() exploit that allowed UTM to run side-loaded on non-jailbroken devices. UTM 2.0 running on iOS 14 <strong>requires</strong> either jailbreaking <em>or</em> tethering to the Xcode debugger (launch directly from Xcode). To better support future iOS releases, we are deprecating support for non-jailbroken devices. This means that future features may depend on jailbreak and "legacy" UTM will no longer get priority for new features.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes (All)</h2>
-<ul>
-<li>QEMU updated from 4.2.0 to 5.1.0</li>
-<li>Removable drives and changing discs while VM is running (#109)</li>
-<li>Tap to right click with Apple Pencil 2 (#297) thanks @conath </li>
-</ul>
-<h2>Changes (iOS 14 only)</h2>
-<ul>
-<li>Brand new UI for the home view and configuration views</li>
-<li>Advanced mode: bypass QEMU arguments generated by configuration and pass args directly (#381)</li>
-<li>Jailbroken devices can use more JIT memory (#67)</li>
-<li>Sort VMs on home view (#356)</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul>
-<li>Sound issues in older OS versions fixed by latest QEMU (#345)</li>
-<li>Race condition in UTMQemuManager (#178)</li>
-<li>Fail gracefully when creating a VM with an invalid name (#210)</li>
-</ul>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-05-31</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-07-11</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
