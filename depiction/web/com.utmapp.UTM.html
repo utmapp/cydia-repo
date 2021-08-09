@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.1.2</div>
+                    <div class="text">2.2.0</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,23 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.2.0</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features</h2>
+<ul>
+<li>(macOS Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
+<li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb</code> or <code>virtio-gpu-gl-pci</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration.</li>
+<li>QEMU is updated to v6.1.0-rc1</li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>On Intel Macs, <code>virtio-ramfb</code> and <code>virtio-gpu-pl-pci</code> does not work with BIOS boot. You need to boot from UEFI which currently requires you to manually add a PC Flash device with the UEFI image. In the future, there will be an option to boot from UEFI instead of BIOS.</li>
+<li>On macOS 12, some UI elements are laid out incorrectly due to changes in SwiftUI apis.</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.1.2</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -761,24 +778,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0b2</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design.</p>
-<p>iOS 14 unfortunately patched the ptrace() exploit that allowed UTM to run side-loaded on non-jailbroken devices. UTM 2.0 running on iOS 14 <strong>requires</strong> either jailbreaking <em>or</em> tethering to the Xcode debugger (launch directly from Xcode). To better support future iOS releases, we are deprecating support for non-jailbroken devices. This means that future features may depend on jailbreak and "legacy" UTM will no longer get priority for new features.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<p>Beta 2 fixes a couple of issues that prevented VMs from working.</p>
-<ul>
-<li>Fixed error popup when opening from AltStore (#449)</li>
-<li>Fixed creating VMs due to incorrect type (#449)</li>
-<li>Fixed issue identifying if running with jailbroken entitlement (#451)</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-07-11</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-08-09</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
