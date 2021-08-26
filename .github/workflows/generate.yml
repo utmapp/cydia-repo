@@ -33,6 +33,7 @@ jobs:
         run: npx silica-package-github --config Packages/UTM/silica_data/index.template.json > Packages/UTM/silica_data/index.json
       - name: Setup Silica
         run: |
+          sudo apt-get update
           sudo apt-get install python3-dev python3-pip python3-setuptools python3-venv python3-wheel rustc -y
           pip3 install setuptools-rust
           pip3 install wheel
