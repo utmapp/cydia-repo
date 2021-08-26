@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.2.0</div>
+                    <div class="text">2.2.1</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,12 +82,36 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.2.1</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features (v2.2.0)</h2>
+<ul>
+<li>(macOS 11.3+ Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
+<li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb</code> or <code>virtio-gpu-gl-pci</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration.</li>
+</ul>
+<h2>Changes (v2.2.1)</h2>
+<ul>
+<li>GPU acceleration is now using <strong>OpenGL</strong> instead of <strong>Metal</strong> due to compatibility issues. Please report anything that works on v2.2.0 (Metal) but fails on v2.2.1 (OpenGL). If there are many cases of these, then we will add an option to switch between the two backends. From experience though, it seems like the OpenGL backend is more stable and more compatible. However, compatibility is not perfect and you may experience crashes when trying to launch an unsupported app in the guest. As before, GPU acceleration only works on Linux with the correct Mesa drivers installed for virtio.</li>
+<li>QEMU is updated to v6.1.0 (release)</li>
+<li>Fix crash when setting custom VM icon (#2387) (thanks @ktprograms)</li>
+<li>Disable Port Forwarding feature for bridged networking (thanks @conath)</li>
+<li>Fixed memory leak (#2720)</li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>On Intel Macs, <code>virtio-ramfb</code> and <code>virtio-gpu-pl-pci</code> does not work with BIOS boot. You need to boot from UEFI which currently requires you to manually add a PC Flash device with the UEFI image. In the future, there will be an option to boot from UEFI instead of BIOS.</li>
+<li>On macOS 12, some UI elements are laid out incorrectly due to changes in SwiftUI apis.</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.2.0</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
 <h2>New Features</h2>
 <ul>
-<li>(macOS Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
+<li>(macOS 11.3+ Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
 <li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb</code> or <code>virtio-gpu-gl-pci</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration.</li>
 <li>QEMU is updated to v6.1.0-rc1</li>
 </ul>
@@ -765,22 +789,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0b3</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design.</p>
-<p>iOS 14 unfortunately patched the ptrace() exploit that allowed UTM to run side-loaded on non-jailbroken devices. UTM 2.0 running on iOS 14 <strong>requires</strong> either jailbreaking <em>or</em> tethering to the Xcode debugger (launch directly from Xcode). To better support future iOS releases, we are deprecating support for non-jailbroken devices. This means that future features may depend on jailbreak and "legacy" UTM will no longer get priority for new features.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>Fixed “Could not allocate dynamic translator buffer” on jailbroken devices (#459)</li>
-<li>Implemented APRR JIT for &lt; iOS 14. This means non-jailbroken devices on &lt; iOS 13.5 (thanks to Psychic Paper) and ALL jailbroken devices get improved JIT. These devices no longer have the 1/2 JIT cache penalty (and can allocate a bit more guest RAM). The kernel instability from improper exit should also no longer affect these devices and you can now terminate UTM by swiping up from the task switcher.</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-08-09</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-08-26</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
