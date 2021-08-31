@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.2.1</div>
+                    <div class="text">2.2.2</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,27 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.2.2</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features (v2.2.0)</h2>
+<ul>
+<li>(macOS 11.3+ Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
+<li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb</code> or <code>virtio-gpu-gl-pci</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration.</li>
+</ul>
+<h2>Changes (v2.2.2)</h2>
+<ul>
+<li>(iOS) Enable OpenGL acceleration for iOS 11-12</li>
+<li>(macOS) Fix layout issues in settings on macOS Monterey (#2644)</li>
+<li>(macOS) Fix capturing of hotkeys (such as Cmd+Tab) (#2677)</li>
+<li>Disable port forwarding options for shared &amp; bridged networking</li>
+<li>Fixed crash when PPC screamer is selected on iOS (currently this is still not supported)</li>
+<li>Intel Macs will use EFI boot if virtio-* graphics card is selected (fixes black screen on boot)</li>
+<li>Refactored non-OpenGL rendering code, fixing some random crashes seen in TestFlight reports.</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.2.1</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -774,24 +795,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0b4</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design.</p>
-<p>iOS 14 unfortunately patched the ptrace() exploit that allowed UTM to run side-loaded on non-jailbroken devices. UTM 2.0 running on iOS 14 <strong>requires</strong> either jailbreaking <em>or</em> tethering to the Xcode debugger (launch directly from Xcode). To better support future iOS releases, we are deprecating support for non-jailbroken devices. This means that future features may depend on jailbreak and "legacy" UTM will no longer get priority for new features.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>Fix black screen on startup (#453)</li>
-<li>Fix drive selection on legacy UI (#472)</li>
-<li>Fix duplicate VM entries (#455)</li>
-<li>Fix import drive button (#475)</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-08-26</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-08-31</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
