@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.2.2</div>
+                    <div class="text">2.2.4</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,81 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.2.4</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features (Summary)</h2>
+<ul>
+<li>(macOS 11.3+ Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
+<li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb-gl</code> or <code>virtio-vga-gl</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration. Note that newly created VMs will default to a "GPU Supported" display device on supported architectures but existing VMs must manually change the display device in Display settings. GPU acceleration is still an experimental feature, so it may not work in some situations (including many 3D use cases).</li>
+<li><strong>EFI Boot</strong>. By default new VMs created for pc, q35, and virt<em> machines will have EFI enabled. In previous versions, EFI is only enabled for virt</em> machines. Due to compatibility with boot, existing pc and q35 VMs will NOT have EFI enabled and must be manually turned on in Settings -&gt; System -&gt; Advanced Configuration -&gt; UEFI Boot. This may also require you to re-install the bootloader on your VM. As part of this change, EFI variables will also be properly handled (on both ARM and x86 VMs). Note that if you've configured a custom pflash device for your VM, the new UEFI Boot option will take no effect (same as before).</li>
+<li><strong>QEMU v6.1.0</strong> is now used for the backend.</li>
+</ul>
+<h2>Changes (v2.2.1)</h2>
+<ul>
+<li>Fix crash when setting custom VM icon (#2387) (thanks @ktprograms)</li>
+<li>Disable Port Forwarding feature for bridged networking (thanks @conath)</li>
+<li>Fixed memory leak (#2720)</li>
+</ul>
+<h2>Changes (v2.2.2)</h2>
+<ul>
+<li>(iOS) Enable OpenGL acceleration for iOS 11-12</li>
+<li>(iOS 15+) Increased memory limit for supported devices (M1 iPads currently)</li>
+<li>(macOS) Fix layout issues in settings on macOS Monterey (#2644)</li>
+<li>(macOS) Fix capturing of hotkeys (such as Cmd+Tab) (#2677)</li>
+<li>Disable port forwarding options for shared &amp; bridged networking</li>
+<li>Fixed crash when PPC screamer is selected on iOS (currently this is still not supported)</li>
+<li>Refactored non-OpenGL rendering code, fixing some random crashes seen in TestFlight reports.</li>
+</ul>
+<h2>Changes (v2.2.3)</h2>
+<ul>
+<li>(iOS) When a mouse/trackpad is already connected when UTM starts up, it will now be properly detected (#3013)</li>
+<li>(iOS) Handle touch and Apple Pencil input while the mouse is captured (#2669)</li>
+<li>Windows BSOD on boot/setup due to <code>PAGE_FAULT_IN_NONPAGED_AREA</code> (#2721)</li>
+</ul>
+<h2>Changes (v2.2.4)</h2>
+<ul>
+<li>(macOS) Settings no longer crash when an error occurs while saving a new VM</li>
+<li>(iOS) GL rendering now works on EFI startup (black screen during boot) (#3076)</li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>v2.2.4 is built with Xcode 12.5.1 instead of Xcode 13.0 beta due to Apple's strict requirements in submitting apps built on beta SDKs. As a result, the layout issues in settings on macOS Monterey are back in v2.2.4. This will be resolved when Xcode 13 is released.</li>
+<li>Networking can be broken in some instances, we are still investigating the cause. (#3051, #3094)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
+                <h4>2.2.3</h4>
+                <div class="md_view"><p><strong>Note: this beta build has breaking changes. Please read the notes below for more information.</strong></p>
+<h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features (v2.2.0)</h2>
+<ul>
+<li>(macOS 11.3+ Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
+<li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb</code> or <code>virtio-gpu-gl-pci</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration.</li>
+</ul>
+<h2>Changes (v2.2.2)</h2>
+<ul>
+<li>(iOS) Enable OpenGL acceleration for iOS 11-12</li>
+<li>(iOS 15+) Increased memory limit for supported devices (M1 iPads currently)</li>
+<li>(macOS) Fix layout issues in settings on macOS Monterey (#2644)</li>
+<li>(macOS) Fix capturing of hotkeys (such as Cmd+Tab) (#2677)</li>
+<li>Disable port forwarding options for shared &amp; bridged networking</li>
+<li>Fixed crash when PPC screamer is selected on iOS (currently this is still not supported)</li>
+<li>Refactored non-OpenGL rendering code, fixing some random crashes seen in TestFlight reports.</li>
+</ul>
+<h2>Changes (v2.2.3)</h2>
+<ul>
+<li>(iOS) When a mouse/trackpad is already connected when UTM starts up, it will now be properly detected (#3013)</li>
+<li>(iOS) Handle touch and Apple Pencil input while the mouse is captured (#2669)</li>
+<li>Windows BSOD on boot/setup due to <code>PAGE_FAULT_IN_NONPAGED_AREA</code> (#2721)</li>
+<li>EFI Boot is now a configurable option: by default new VMs created for pc, q35, and virt<em> machines will have EFI enabled. In previous versions, EFI is only enabled for virt</em> machines. Due to compatibility with boot, existing pc and q35 VMs will NOT have EFI enabled and must be manually turned on in Settings -&gt; System -&gt; Advanced Configuration -&gt; UEFI Boot. This may also require you to re-install the bootloader on your VM. As part of this change, EFI variables will also be properly handled (on both ARM and x86 VMs). Note that if you've configured a custom pflash device for your VM, the new UEFI Boot option will take no effect (same as before).</li>
+<li>Added <code>virtio-ramfb-gl</code> device to support GPU Acceleration. On previous beta builds, GL is enabled automatically for <code>virtio-ramfb</code>. Now, that display device will <strong>not</strong> get GPU acceleration. This is to be more consistent with the other <code>-gl</code> display devices. By default, new VMs created will have <code>virtio-ramfb-gl</code> selected for <code>virt</code> devices (ARM) and <code>virtio-vga-gl</code> selected for <code>q35</code> and <code>pc</code> devices (x86). If you wish to use GPU acceleration on an existing VM, you need to change your display device to one of these two recommended devices (or any device with <code>-gl</code> in the name).</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.2.2</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -93,6 +168,7 @@
 <h2>Changes (v2.2.2)</h2>
 <ul>
 <li>(iOS) Enable OpenGL acceleration for iOS 11-12</li>
+<li>(iOS 15+) Increased memory limit for supported devices (M1 iPads currently)</li>
 <li>(macOS) Fix layout issues in settings on macOS Monterey (#2644)</li>
 <li>(macOS) Fix capturing of hotkeys (such as Cmd+Tab) (#2677)</li>
 <li>Disable port forwarding options for shared &amp; bridged networking</li>
@@ -764,40 +840,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0b6</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design.</p>
-<p>iOS 14 unfortunately patched the ptrace() exploit that allowed UTM to run side-loaded on non-jailbroken devices. UTM 2.0 running on iOS 14 <strong>requires</strong> either jailbreaking <em>or</em> tethering to the Xcode debugger (launch directly from Xcode). To better support future iOS releases, we are deprecating support for non-jailbroken devices. This means that future features may depend on jailbreak and "legacy" UTM will no longer get priority for new features.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>(iOS 14) Really fix drive import error and UTM import error (thanks @kkk669)</li>
-<li>(iOS 14) Fixed crash on APRR devices (including iPhone 12)</li>
-<li>(iOS 11-14) Added new warning when trying to import a .utm as a drive image (#497)</li>
-<li>(iOS 14) Fixed number text field input and input validation in various settings pages </li>
-<li>Updated zh-Hans translation (thanks @ty-yqs)</li>
-<li>Updated ko translation (thanks @obbcth)</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
-            </div><div class="changelog_entry">
-                <h4>2.0b5</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design.</p>
-<p>iOS 14 unfortunately patched the ptrace() exploit that allowed UTM to run side-loaded on non-jailbroken devices. UTM 2.0 running on iOS 14 <strong>requires</strong> either jailbreaking <em>or</em> tethering to the Xcode debugger (launch directly from Xcode). To better support future iOS releases, we are deprecating support for non-jailbroken devices. This means that future features may depend on jailbreak and "legacy" UTM will no longer get priority for new features.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>(iOS 14) Fix import drive permission error</li>
-<li>(iOS 11-12) Fix launching on older versions without SwiftUI.framework</li>
-<li>Updated Zh-Hans translation (thanks @Ty-programmer)</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-08-31</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-09-09</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
