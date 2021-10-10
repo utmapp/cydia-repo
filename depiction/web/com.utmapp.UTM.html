@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.2.4</div>
+                    <div class="text">2.3.0</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,37 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.3.0</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features (Summary)</h2>
+<ul>
+<li><strong>URL automation and VM downloading</strong> (#2670) (thanks @conath) Allows for controlling and downloading VMs with <code>utm://</code> URL. Check out #2670 for more information.</li>
+<li>(macOS) Improved cursor/keyboard capturing and handling: permit macOS shortcuts (minimize, full-screen) when not captured, fix various cursor bugs, basic support for VoiceOver and capturing, and more.</li>
+<li>(macOS) Various UI enhancements: export log/args to file (#3056), title bar changes (#3125), exit confirmation works beyond Cmd+Q/W (#3154) (thanks @ktprograms and @conath)</li>
+</ul>
+<h2>Changes</h2>
+<ul>
+<li>Fixed DNS resolution on IPv6</li>
+<li>Updated zh-Hans localization (thanks @ty-yqs)</li>
+<li>Ensure temporary files are deleted when VM creation is canceled (#3012)</li>
+<li>Support re-generating and customizing MAC address (#2724)</li>
+<li>On PC/Q35 devices, USB mouse and keyboard will be disabled in order to prevent interference with the PS/2 keyboard and mouse that is always added to the machines. Some software such as Windows Installer will not work with the second mice.</li>
+<li>(macOS) Move VM name in main window from title to subtitle, reduces confusion when switching windows (#3099) (thanks @conath)</li>
+<li>(macOS) Show confirmation alert when closing/quitting with the menu or the button (#3103) (thanks @ktprograms)</li>
+<li>(macOS) Error alert (instead of crash) when trying to use unsupported features on &lt; macOS 11.3 (#3118)</li>
+<li>(macOS) Support starting input capture with Ctrl+Opt (#3119)</li>
+<li>(macOS) Reduced UI thread blocking in terminal mode with lots of output spewing (#2404, #2555)</li>
+<li>(macOS) Add alternative hotkey for capture (Cmd+Opt) (#2710)</li>
+<li>(macOS) Unhide cursor when popup alert shows (#3101)</li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>Networking can be broken in some instances, we are still investigating the cause. (#3051, #3094)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.2.4</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -825,24 +856,9 @@
 <h2>Known Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0b7</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design.</p>
-<p>iOS 14 unfortunately patched the ptrace() exploit that allowed UTM to run side-loaded on non-jailbroken devices. However, iOS 14.2 introduces a new method for running UTM's JIT engine (untethered). As of this release, the changes to AltStore required for the new method are not released yet, so for now the recommended way to install UTM for iOS 14.2 is <strong>not</strong> to use AltStore. You should use <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a> until the new AltStore is released.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>(iOS 14) Detect new iOS 14.2 JIT enable method (see above)</li>
-<li>(iOS 14) Disable modifying VM settings when suspended (#476)</li>
-<li>(iOS 14) When VM is suspended, add toolbar/menu option to delete save state. Also show suspended state in details view.</li>
-<li>Fix QEMU issue where on some occasion, "Could not remap code buffer mirror" error shows up on launch.</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-09-09</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-10-10</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
