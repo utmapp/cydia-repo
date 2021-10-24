@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.3.0</div>
+                    <div class="text">2.3.1</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,46 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.3.1</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features (Summary)</h2>
+<ul>
+<li><strong>URL automation and VM downloading</strong> (#2670) (thanks @conath) Allows for controlling and downloading VMs with <code>utm://</code> URL. Check out #2670 for more information.</li>
+<li>(macOS) Improved cursor/keyboard capturing and handling: permit macOS shortcuts (minimize, full-screen) when not captured, fix various cursor bugs, basic support for VoiceOver and capturing, and more.</li>
+<li>(macOS) Various UI enhancements: export log/args to file (#3056), title bar changes (#3125), exit confirmation works beyond Cmd+Q/W (#3154) (thanks @ktprograms and @conath)</li>
+</ul>
+<h2>Changes (v2.3.1)</h2>
+<ul>
+<li>Fixed crash when Fn key is pressed (thanks @ktprograms) (#3179)</li>
+<li>Fixed Unicode support in terminal mode (thanks @tie)</li>
+<li>Added additional Windows icons (thanks @conath)</li>
+<li>(macOS) Fixed numpad issues</li>
+<li>(macOS) Correct key mapping for ISO keyboards (#3175)</li>
+</ul>
+<h2>Changes (v2.3.0)</h2>
+<ul>
+<li>Fixed DNS resolution on IPv6</li>
+<li>Updated zh-Hans localization (thanks @ty-yqs)</li>
+<li>Ensure temporary files are deleted when VM creation is canceled (#3012)</li>
+<li>Support re-generating and customizing MAC address (#2724)</li>
+<li>On PC/Q35 devices, USB mouse and keyboard will be disabled in order to prevent interference with the PS/2 keyboard and mouse that is always added to the machines. Some software such as Windows Installer will not work with the second mice.</li>
+<li>(macOS) Move VM name in main window from title to subtitle, reduces confusion when switching windows (#3099) (thanks @conath)</li>
+<li>(macOS) Show confirmation alert when closing/quitting with the menu or the button (#3103) (thanks @ktprograms)</li>
+<li>(macOS) Error alert (instead of crash) when trying to use unsupported features on &lt; macOS 11.3 (#3118)</li>
+<li>(macOS) Support starting input capture with Ctrl+Opt (#3119)</li>
+<li>(macOS) Reduced UI thread blocking in terminal mode with lots of output spewing (#2404, #2555)</li>
+<li>(macOS) Add alternative hotkey for capture (Cmd+Opt) (#2710)</li>
+<li>(macOS) Unhide cursor when popup alert shows (#3101)</li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>Networking can be broken in some instances, we are still investigating the cause. (#3051, #3094)</li>
+<li>Windows 11 installation may randomly freeze and be corrupted (#3130)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.3.0</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -826,39 +866,9 @@
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0.8</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design. UTM 2.0 also updates the QEMU backend from 4.2.0 to 5.1.0 (for all supported iOS versions).</p>
-<p>Installation instructions differ depending on what version of iOS you are running:</p>
-<ul>
-<li>iOS 11-13: You can install and run UTM using any version of AltStore (recommended) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>.</li>
-<li>iOS 14: You must either be jailbroken or follow the <a href="https://github.com/utmapp/UTM/blob/master/Documentation/TetheredLaunch.md">tethered launch</a> instructions every time you launch UTM.</li>
-<li>iOS 14.2: You can use either the beta AltStore (1.4.2) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>. Note some people report issues with this, please <a href="https://github.com/utmapp/UTM/issues/516">post the device model you're running if it does not work</a>.</li>
-</ul>
-<p>Notice to users of previous versions: If you are running an older version of UTM (v1 or v2 beta), please note that because the bundle identifier has changed, it will install as a new app and AltStore will not show an update for your existing app. You should manually move your VMs to the new app. We are also retiring the distinction of beta vs release. Since we don't have dedicated testers or a QA team, it is misleading to label something as 'beta' or 'release' when every build incrementally improves upon the last one.</p>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<p>One more thing... macOS 11 universal builds will now be included in the releases. Be warned that currently the macOS builds are still very unstable.</p>
-<h2>Changes (from last update)</h2>
-<ul>
-<li>Fix port forwarding (broken in last update)</li>
-<li>(iOS 14) Add confirmation popup for delete/clone/stop operations</li>
-<li>(iOS 14) Fix issue on iPad where a delete VM still shows its details page</li>
-</ul>
-<h2>Changes (highlights since v1.0)</h2>
-<ul>
-<li>(iOS 14) Brand new UI for the home view and configuration views</li>
-<li>(iOS 14) Advanced mode: bypass QEMU arguments generated by configuration and pass args directly (#381)</li>
-<li>(iOS 14) Sort VMs on home view (#356)</li>
-<li>QEMU updated from 4.2.0 to 5.1.0</li>
-<li>Removable drives and changing discs while VM is running (#109)</li>
-<li>Jailbroken devices can use more JIT memory (#67)</li>
-</ul>
-<h2>Known Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-10-10</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-10-24</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
