@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.3.1</div>
+                    <div class="text">2.4.0</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,36 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.4.0</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>New Features (Summary)</h2>
+<ul>
+<li>Improved support for SPARC and S390x</li>
+<li>Updated macOS icon thanks to a real designer (@JackHinkle)</li>
+</ul>
+<h2>Changes</h2>
+<ul>
+<li>Fixed crash when trying to pause a GL accelerated VM (#3207)</li>
+<li>Configuration should reset more settings when changing architecture</li>
+<li>Fixed UTM exit when deleting a VM</li>
+<li>Fixed an incorrect mapping of removable drives causing an error "device not removable" when drives are moved around.</li>
+<li>On ARM64 virt systems, use the virtual USB 3.0 bus for the virtual DVD drive, should improve read times and fix some Windows installer issues (#3194) (thanks @conath)</li>
+<li>Fixed a crash booting OpenBSD (#3197) (thanks @agraf)</li>
+<li>Fixed a crash caused by a race condition when an error occurs during VM launch</li>
+<li>(macOS) Keyboard mapping accidentally swapped left/right Cmd and Option (#3175) (thanks @zeldin)</li>
+<li>(macOS) Removed "beep" when pressing Cmd+key while mouse is not captured (#3217)</li>
+<li>(macOS) Pass Ctrl+Tab to VM even when not captured because it is a common shortcut. VoiceOver users can use VO+Arrow to navigate.</li>
+<li>(macOS) Unhide cursor when alert prompt shows up</li>
+<li>(macOS) Fixed crash when trying to share a VM (#3208)</li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>VM sometimes randomly freezes (#3130, #301)</li>
+</ul>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.3.1</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -841,34 +871,9 @@
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0.9</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design. UTM 2.0 also updates the QEMU backend from 4.2.0 to 5.1.0 (for all supported iOS versions).</p>
-<p>Installation instructions differ depending on what version of iOS you are running:</p>
-<ul>
-<li>iOS 11-13: You can install and run UTM using any version of AltStore (recommended) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>.</li>
-<li>iOS 14: You must either be jailbroken or follow the <a href="https://github.com/utmapp/UTM/blob/master/Documentation/TetheredLaunch.md">tethered launch</a> instructions every time you launch UTM.</li>
-<li>iOS 14.2: You can use either the beta AltStore (1.4.2) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>. Note A11 and older devices are not supported by this method and must be jailbroken or use tethered launch.</li>
-</ul>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>Deleting a drive now actually deletes the data</li>
-<li>Booting Linux kernel works again (#515)</li>
-<li>Fixed default settings not being loaded including default cursor settings</li>
-<li>(macOS) Fixed internal error on startup</li>
-</ul>
-<h2>Known Issues</h2>
-<ul>
-<li>AltStore cannot install UTM on iOS 14: make sure you are running AltStore 1.4.2 or higher. At time of writing, 1.4.2 beta is only available to AltStore Patreon beta testers. For those without access, you can use <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>.</li>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a "development" certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a "development" certificate and in iOS App Signer, "No get-task-allow" is unchecked.</li>
-</ul>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-10-24</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-10-30</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
