@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.4.0</div>
+                    <div class="text">2.4.1</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,34 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>2.4.1</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Notes</h2>
+<p><strong>Note that some changes require updates to your VM configuration so please read this part carefully.</strong></p>
+<ul>
+<li>Cursor disappearing on Windows 10/11 has been fixed with an updated VirtIO GPU driver. Additionally, dynamic resolution (auto-change resolution when VM window is resized) and more fixed resolutions (matching all the screen resolutions of the latest Mac computers) were added to the driver. This requires you to download the latest SPICE tools ISO from <a href="https://mac.getutm.app/support/">https://mac.getutm.app/support/</a> and run the installer again (or manually updating your GPU driver from the ISO if you know how).</li>
+<li>In v2.4.0, newly created Q35 and PC machine (x86 and x86_64) defaulted to the <code>Skylake-Client</code> CPU model. Subsequently, it was discovered that the change caused performance regressions. v2.4.1 reverted the default CPU model to <code>Default</code> but if you created a new Q35/PC VM in v2.4.0, it is recommended that you manually change the CPU in System settings to <code>Default</code>.</li>
+<li>Since v1.0.0, UTM used the RTL8139 network card as the default for Q35 VMs (x86 and x86_64) and Virt VMs (ARM64). There is a bug in the device implementation that causes the Windows driver to freeze the system and many users reported Windows Installer freezing as well as random freezes through normal use. In v2.4.0, we changed the default network card for Virt machines to <code>virtio-net-pci</code> and in v2.4.1, we changed the default network card for Q35 machines to E1000. However, this change only applies to newly created VMs, and any existing VMs may still suffer from the random freeze issues. It is recommended that you change your network card to <code>e1000</code> for Q35 machines and <code>virtio-net-pci</code> for Virt machines. Windows 7 and above should have the Intel E1000 network card drivers already installed, but the VirtIO Network card requires drivers in the SPICE tools ISO from <a href="https://mac.getutm.app/support/">https://mac.getutm.app/support/</a> (if you previously installed this, you should have the drivers already on your system).</li>
+<li>(macOS) Since v2.1.2, UTM provided an option (Cmd+,) to "Use only performance cores by default" which defaulted to off. When on, any VM which does not have a manually configured CPU count (&gt; 0) will set the CPU count to the number of performance cores on the system. In v2.4.1, we have made this option on by default which means if you previously have not modified this option, then it will now be on. If you turned the option on, it should not change and if you turned the option on and later off again, it should still be off. The reason for this change was because users may not be aware of this option which can result in degraded performance when left off and we believe the default should reflect the best possible performance. Note that as before, if you manually set a VM's CPU count &gt; 0, then this option does not change anything.</li>
+</ul>
+<h2>Changes</h2>
+<ul>
+<li>(iOS) Integrated AltKit for automatically triggering AltJIT when installed with AltStore (1.5b2+) and AltServer (1.5b8+) (thanks @JoeMatt)</li>
+<li>(iOS) Fixed sandbox issues (cannot select file) on jailbroken devices (thanks @Halo-Michael)</li>
+<li>Improved zh-Hans translation (thanks @js-john)</li>
+<li>Fixed inverted mouse cursor colour in Windows</li>
+<li>New VMs will only use PCores by default (unless manually overridden with Preferences or per-VM config), this also fixes #3180</li>
+<li>Changed default Q35 audio card to intel-hda</li>
+<li>Changed default Q35 network card to E1000 and Virt network card to virtio-net (#3130)</li>
+<li>Removed default CPU for Q35 and PC configurations because the Skylake-Client CPU resulted in performance regression (#3249)</li>
+<li>Fixed downloadVM URL action when the ZIP name collides with the .utm name (thanks @conath)</li>
+<li>Fixed a race condition leading to crash when a VM is shut down suddenly</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.4.0</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -844,36 +872,9 @@
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0.10</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design. UTM 2.0 also updates the QEMU backend from 4.2.0 to 5.1.0 (for all supported iOS versions).</p>
-<p>Installation instructions differ depending on what version of iOS you are running:</p>
-<ul>
-<li>iOS 11-13: You can install and run UTM using any version of AltStore (recommended) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>.</li>
-<li>iOS 14: You must either be jailbroken or follow the <a href="https://github.com/utmapp/UTM/blob/master/Documentation/TetheredLaunch.md">tethered launch</a> instructions every time you launch UTM. Note that the jailbroken instructions are currently outdated. If you have a good guide, please let us <a href="https://github.com/utmapp/UTM/issues/537">know</a>.</li>
-<li>iOS 14.2: You can use either the beta AltStore (1.4.2) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>. Note A11 and older devices are not supported by this method and must be jailbroken or use tethered launch.</li>
-</ul>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>(iOS 14, macOS): Fixed an issue with the welcome screen not updated for dark mode</li>
-<li>(iOS 14, macOS): Add back the option to specify boot device order.</li>
-<li>(macOS): Fix context menu not showing on right click on the sidebar</li>
-<li>(macOS): Fix play button not working on the sidebar</li>
-<li>(macOS): Sign release to prevent "damaged and cannot be opened" error</li>
-<li>(macOS): Hardened runtime and notarization to prevent gatekeeper issues and "internal error" on startup</li>
-</ul>
-<h2>Known Issues</h2>
-<ul>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a "development" certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a "development" certificate and in iOS App Signer, "No get-task-allow" is unchecked.</li>
-<li>Removable drives (changing images, etc) not working completely yet. For now, use the import drive feature instead to copy the disk image to the .utm bundle.</li>
-</ul>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-10-30</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2021-11-06</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
