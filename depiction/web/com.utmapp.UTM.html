@@ -33,9 +33,9 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"></div>
             <div class="md_view">
-                <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at <a href="https://getutm.app/">https://getutm.app/</a></p>
+                <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at https://getutm.app/</p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
 <p><strong>Note upgrading from &lt; v2.0.22:</strong> The old version of this package installs UTM to /Applications (just like other jailbreak apps). This was an issue because UTM uses sandboxed features and was partially broken when installed that way. Since AppSync Unified was released for iOS 14, UTM now installs the sandboxed IPA directly and as a result your old VMs will not be visible. If you had an older version installed, you need to move your VMs from <code>/var/mobile/Documents</code> to a temporary location and then open it from the built-in Files app to import it into the UTM sandbox location. Then, you can delete the old files.</p>
 <h2>Features</h2>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">2.4.1</div>
+                    <div class="text">3.0.0</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,16 +82,52 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>3.0.0</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Highlights</h2>
+<ul>
+<li><strong>Wizard for VM creation</strong>: Easily create a new VM with the correct default settings with a guided step-by-step wizard. Preview: https://twitter.com/UTMapp/status/1475606159428046854</li>
+<li><strong>QEMU v6.2.0</strong>: Updated QEMU backend to the latest release. Full changelog: https://wiki.qemu.org/ChangeLog/6.2</li>
+<li>(iOS 13+) <strong>New toolbar</strong>: The new toolbar is much more compact and friendly for smaller displays. It is also now movable and does not interfere with the iOS 15 multitasking button on the top center of the screen. Preview: https://twitter.com/UTMapp/status/1407350167494443023</li>
+<li>(macOS 12+, ARM64) <strong>Virtualize macOS 12</strong>: New integration with Apple's Virtualization.framework backend allows native hardware accelerated virtualization of macOS 12 (supporting both CPU and GPU virtualization). UTM can also download the latest macOS IPSW directly from Apple. (This is only supported on macOS 12+ running on an ARM64 Mac.)</li>
+<li>(macOS 11+) <strong>Virtualize Linux with Apple backend</strong>: You now have the option to use Apple's Virtualization.framework to virtualize Linux. Note that while there are some performance benefits, it is still recommended to use the QEMU backend as it is more stable, has more device support (including graphical display), and is easier to configure.</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>The default CPU for ARM64 virtual machine has changed from <code>cortex-a72</code> to <code>default</code>. This is the recommended option and you should change your existing VMs to use it. When using virtualization on M1(X) macOS, the <code>cortex-a72</code> CPU is known to have compatibility issues which causes the VM to sometimes freeze (including during Windows install). <code>default</code> will use the <code>host</code> CPU model when virtualization is used and <code>cortex-a72</code> when emulation is used.</li>
+<li>The GL hardware acceleration support is now marked experimental to highlight that it is not stable. It is also no longer the default option. If you are experiencing lots of crashes, make sure that you chose a display hardware that is <strong>not</strong> marked as &quot;GPU Supported&quot;.</li>
+</ul>
+<h2>Changes (v3.0.0)</h2>
+<ul>
+<li>Added VM creation wizard</li>
+<li>Updated QEMU to v6.2.0</li>
+<li>Updated ANGLE to latest commit</li>
+<li>Updated virglrenderer to latest commit (this may fix #2743)</li>
+<li>Added <code>default</code> and <code>host</code> CPU option for ARM64 virtual machines. This will be the default for newly created VMs.</li>
+<li>The downloader will no longer perform CRC checks on the ZIP file and this will significantly speed up extraction.</li>
+<li>(iOS 13+) Redesigned toolbar (#496)</li>
+<li>(macOS) Redesigned VM settings</li>
+<li>(macOS) Fix crash moving drives (#3117)</li>
+<li>(macOS) Make HVF per-VM configurable (#2493)</li>
+<li>(macOS) Add Apple Virtualization.framework backend</li>
+<li>(macOS) New Terminal frontend with SwiftTerm, currently only used with Apple backend on macOS</li>
+<li>(macOS) Apple Virtualization supports virtual serial port through PTY device</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>2.4.1</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
 <h2>Notes</h2>
 <p><strong>Note that some changes require updates to your VM configuration so please read this part carefully.</strong></p>
 <ul>
-<li>Cursor disappearing on Windows 10/11 has been fixed with an updated VirtIO GPU driver. Additionally, dynamic resolution (auto-change resolution when VM window is resized) and more fixed resolutions (matching all the screen resolutions of the latest Mac computers) were added to the driver. This requires you to download the latest SPICE tools ISO from <a href="https://mac.getutm.app/support/">https://mac.getutm.app/support/</a> and run the installer again (or manually updating your GPU driver from the ISO if you know how).</li>
+<li>Cursor disappearing on Windows 10/11 has been fixed with an updated VirtIO GPU driver. Additionally, dynamic resolution (auto-change resolution when VM window is resized) and more fixed resolutions (matching all the screen resolutions of the latest Mac computers) were added to the driver. This requires you to download the latest SPICE tools ISO from https://mac.getutm.app/support/ and run the installer again (or manually updating your GPU driver from the ISO if you know how).</li>
 <li>In v2.4.0, newly created Q35 and PC machine (x86 and x86_64) defaulted to the <code>Skylake-Client</code> CPU model. Subsequently, it was discovered that the change caused performance regressions. v2.4.1 reverted the default CPU model to <code>Default</code> but if you created a new Q35/PC VM in v2.4.0, it is recommended that you manually change the CPU in System settings to <code>Default</code>.</li>
-<li>Since v1.0.0, UTM used the RTL8139 network card as the default for Q35 VMs (x86 and x86_64) and Virt VMs (ARM64). There is a bug in the device implementation that causes the Windows driver to freeze the system and many users reported Windows Installer freezing as well as random freezes through normal use. In v2.4.0, we changed the default network card for Virt machines to <code>virtio-net-pci</code> and in v2.4.1, we changed the default network card for Q35 machines to E1000. However, this change only applies to newly created VMs, and any existing VMs may still suffer from the random freeze issues. It is recommended that you change your network card to <code>e1000</code> for Q35 machines and <code>virtio-net-pci</code> for Virt machines. Windows 7 and above should have the Intel E1000 network card drivers already installed, but the VirtIO Network card requires drivers in the SPICE tools ISO from <a href="https://mac.getutm.app/support/">https://mac.getutm.app/support/</a> (if you previously installed this, you should have the drivers already on your system).</li>
-<li>(macOS) Since v2.1.2, UTM provided an option (Cmd+,) to "Use only performance cores by default" which defaulted to off. When on, any VM which does not have a manually configured CPU count (&gt; 0) will set the CPU count to the number of performance cores on the system. In v2.4.1, we have made this option on by default which means if you previously have not modified this option, then it will now be on. If you turned the option on, it should not change and if you turned the option on and later off again, it should still be off. The reason for this change was because users may not be aware of this option which can result in degraded performance when left off and we believe the default should reflect the best possible performance. Note that as before, if you manually set a VM's CPU count &gt; 0, then this option does not change anything.</li>
+<li>Since v1.0.0, UTM used the RTL8139 network card as the default for Q35 VMs (x86 and x86_64) and Virt VMs (ARM64). There is a bug in the device implementation that causes the Windows driver to freeze the system and many users reported Windows Installer freezing as well as random freezes through normal use. In v2.4.0, we changed the default network card for Virt machines to <code>virtio-net-pci</code> and in v2.4.1, we changed the default network card for Q35 machines to E1000. However, this change only applies to newly created VMs, and any existing VMs may still suffer from the random freeze issues. It is recommended that you change your network card to <code>e1000</code> for Q35 machines and <code>virtio-net-pci</code> for Virt machines. Windows 7 and above should have the Intel E1000 network card drivers already installed, but the VirtIO Network card requires drivers in the SPICE tools ISO from https://mac.getutm.app/support/ (if you previously installed this, you should have the drivers already on your system).</li>
+<li>(macOS) Since v2.1.2, UTM provided an option (Cmd+,) to &quot;Use only performance cores by default&quot; which defaulted to off. When on, any VM which does not have a manually configured CPU count (&gt; 0) will set the CPU count to the number of performance cores on the system. In v2.4.1, we have made this option on by default which means if you previously have not modified this option, then it will now be on. If you turned the option on, it should not change and if you turned the option on and later off again, it should still be off. The reason for this change was because users may not be aware of this option which can result in degraded performance when left off and we believe the default should reflect the best possible performance. Note that as before, if you manually set a VM's CPU count &gt; 0, then this option does not change anything.</li>
 </ul>
 <h2>Changes</h2>
 <ul>
@@ -123,12 +159,12 @@
 <li>Fixed crash when trying to pause a GL accelerated VM (#3207)</li>
 <li>Configuration should reset more settings when changing architecture</li>
 <li>Fixed UTM exit when deleting a VM</li>
-<li>Fixed an incorrect mapping of removable drives causing an error "device not removable" when drives are moved around.</li>
+<li>Fixed an incorrect mapping of removable drives causing an error &quot;device not removable&quot; when drives are moved around.</li>
 <li>On ARM64 virt systems, use the virtual USB 3.0 bus for the virtual DVD drive, should improve read times and fix some Windows installer issues (#3194) (thanks @conath)</li>
 <li>Fixed a crash booting OpenBSD (#3197) (thanks @agraf)</li>
 <li>Fixed a crash caused by a race condition when an error occurs during VM launch</li>
 <li>(macOS) Keyboard mapping accidentally swapped left/right Cmd and Option (#3175) (thanks @zeldin)</li>
-<li>(macOS) Removed "beep" when pressing Cmd+key while mouse is not captured (#3217)</li>
+<li>(macOS) Removed &quot;beep&quot; when pressing Cmd+key while mouse is not captured (#3217)</li>
 <li>(macOS) Pass Ctrl+Tab to VM even when not captured because it is a common shortcut. VoiceOver users can use VO+Arrow to navigate.</li>
 <li>(macOS) Unhide cursor when alert prompt shows up</li>
 <li>(macOS) Fixed crash when trying to share a VM (#3208)</li>
@@ -217,8 +253,8 @@
 <h2>New Features (Summary)</h2>
 <ul>
 <li>(macOS 11.3+ Only) <strong>Bridged networking and shared networking support</strong>. You can configure it in the Network settings for your VM.</li>
-<li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb-gl</code> or <code>virtio-vga-gl</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration. Note that newly created VMs will default to a "GPU Supported" display device on supported architectures but existing VMs must manually change the display device in Display settings. GPU acceleration is still an experimental feature, so it may not work in some situations (including many 3D use cases).</li>
-<li><strong>EFI Boot</strong>. By default new VMs created for pc, q35, and virt<em> machines will have EFI enabled. In previous versions, EFI is only enabled for virt</em> machines. Due to compatibility with boot, existing pc and q35 VMs will NOT have EFI enabled and must be manually turned on in Settings -&gt; System -&gt; Advanced Configuration -&gt; UEFI Boot. This may also require you to re-install the bootloader on your VM. As part of this change, EFI variables will also be properly handled (on both ARM and x86 VMs). Note that if you've configured a custom pflash device for your VM, the new UEFI Boot option will take no effect (same as before).</li>
+<li>(macOS 11+ and iOS 13+) <strong>GPU acceleration for OpenGL on Linux</strong>. Use <code>virtio-ramfb-gl</code> or <code>virtio-vga-gl</code> display device and compatible Linux drivers (most modern Linux distros will have it already installed). Windows is not supported because there is currently no virtio-gpu driver for Windows that supports 3D acceleration. Note that newly created VMs will default to a &quot;GPU Supported&quot; display device on supported architectures but existing VMs must manually change the display device in Display settings. GPU acceleration is still an experimental feature, so it may not work in some situations (including many 3D use cases).</li>
+<li><strong>EFI Boot</strong>. By default new VMs created for pc, q35, and virt* machines will have EFI enabled. In previous versions, EFI is only enabled for virt* machines. Due to compatibility with boot, existing pc and q35 VMs will NOT have EFI enabled and must be manually turned on in Settings -&gt; System -&gt; Advanced Configuration -&gt; UEFI Boot. This may also require you to re-install the bootloader on your VM. As part of this change, EFI variables will also be properly handled (on both ARM and x86 VMs). Note that if you've configured a custom pflash device for your VM, the new UEFI Boot option will take no effect (same as before).</li>
 <li><strong>QEMU v6.1.0</strong> is now used for the backend.</li>
 </ul>
 <h2>Changes (v2.2.1)</h2>
@@ -280,7 +316,7 @@
 <li>(iOS) When a mouse/trackpad is already connected when UTM starts up, it will now be properly detected (#3013)</li>
 <li>(iOS) Handle touch and Apple Pencil input while the mouse is captured (#2669)</li>
 <li>Windows BSOD on boot/setup due to <code>PAGE_FAULT_IN_NONPAGED_AREA</code> (#2721)</li>
-<li>EFI Boot is now a configurable option: by default new VMs created for pc, q35, and virt<em> machines will have EFI enabled. In previous versions, EFI is only enabled for virt</em> machines. Due to compatibility with boot, existing pc and q35 VMs will NOT have EFI enabled and must be manually turned on in Settings -&gt; System -&gt; Advanced Configuration -&gt; UEFI Boot. This may also require you to re-install the bootloader on your VM. As part of this change, EFI variables will also be properly handled (on both ARM and x86 VMs). Note that if you've configured a custom pflash device for your VM, the new UEFI Boot option will take no effect (same as before).</li>
+<li>EFI Boot is now a configurable option: by default new VMs created for pc, q35, and virt* machines will have EFI enabled. In previous versions, EFI is only enabled for virt* machines. Due to compatibility with boot, existing pc and q35 VMs will NOT have EFI enabled and must be manually turned on in Settings -&gt; System -&gt; Advanced Configuration -&gt; UEFI Boot. This may also require you to re-install the bootloader on your VM. As part of this change, EFI variables will also be properly handled (on both ARM and x86 VMs). Note that if you've configured a custom pflash device for your VM, the new UEFI Boot option will take no effect (same as before).</li>
 <li>Added <code>virtio-ramfb-gl</code> device to support GPU Acceleration. On previous beta builds, GL is enabled automatically for <code>virtio-ramfb</code>. Now, that display device will <strong>not</strong> get GPU acceleration. This is to be more consistent with the other <code>-gl</code> display devices. By default, new VMs created will have <code>virtio-ramfb-gl</code> selected for <code>virt</code> devices (ARM) and <code>virtio-vga-gl</code> selected for <code>q35</code> and <code>pc</code> devices (x86). If you wish to use GPU acceleration on an existing VM, you need to change your display device to one of these two recommended devices (or any device with <code>-gl</code> in the name).</li>
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
@@ -364,7 +400,7 @@
 <li>(macOS) Fixed a crash when starting a VM after shutting down (#2622)</li>
 <li>(macOS) New global setting to (try to) only use performance cores: when set, if a VM does not manually specify a core count, instead of using the maximum number of cores on the system, UTM will use only the number of performance cores. Note this does not guarantee only the performance cores are used but only that the number of cores seen by the guest is lower. (#2557)</li>
 <li>(macOS) Fixed screen tearing/glitches on Windows and improved framebuffer rendering performance (#2569)</li>
-<li>(macOS) When SPICE tools are not properly set up, attempting to resize the window will now "revert" the size if the resolution does not get changed by the guest.</li>
+<li>(macOS) When SPICE tools are not properly set up, attempting to resize the window will now &quot;revert&quot; the size if the resolution does not get changed by the guest.</li>
 <li>(iOS) Fixed crash when launching with <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or other imobiledevice tools</li>
 <li>(iOS) Fixed Cydia install on iOS 11 (#2618)</li>
 </ul>
@@ -421,7 +457,7 @@
 <li>(macOS) When Cmd/Win key is held, keyUp event was not being handled (#2486)</li>
 <li>Updated welcome screen with links to user guide and support page (#2498)</li>
 <li>bootindex was not properly applied for floppy devices (note: this fix is only for Q35, floppy boot order is unsupported for other targets) (#2492)</li>
-<li>Some targets such as Raspberry Pi fail to start because of an error with "-device usb-ehci" argument (#2505)</li>
+<li>Some targets such as Raspberry Pi fail to start because of an error with &quot;-device usb-ehci&quot; argument (#2505)</li>
 <li>On Q35/PC targets, press Esc to get to boot menu in BIOS (#2504)</li>
 <li>When removable drives are re-ordered, the underlying images assigned to them were not being reordered (#2512)</li>
 </ul>
@@ -601,7 +637,7 @@
 <h2>Known Issues</h2>
 <ul>
 <li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
 <li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
 </ul>
 <p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
@@ -618,8 +654,8 @@
 <li>(iOS) Disable autocorrect in text fields in settings (#2282)</li>
 <li>(iOS) Show animation to home screen when exiting (#2279)</li>
 <li>(Both) Toggle MB/GB when creating disk image (default to GB) (#2278)</li>
-<li>(macOS) "Show in Finder" command in VM card's right click context menu (#2277)</li>
-<li>(Both) Better handle orphaned disk images due to crash or discarding settings. Should prevent "file already exists" error when importing a disk image. (#2275)</li>
+<li>(macOS) &quot;Show in Finder&quot; command in VM card's right click context menu (#2277)</li>
+<li>(Both) Better handle orphaned disk images due to crash or discarding settings. Should prevent &quot;file already exists&quot; error when importing a disk image. (#2275)</li>
 <li>(Both) Default x86_64 and i386 target is now q35 (2009) (#2274)</li>
 <li>(Both) Export QEMU command line feature (#2283)</li>
 <li>(Both) New setting: change CPU model and CPU flags when supported by QEMU (#1197)</li>
@@ -640,7 +676,7 @@
 <h2>Known Issues</h2>
 <ul>
 <li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
 <li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
 </ul>
 <p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
@@ -651,11 +687,11 @@
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
 <h2>Changes</h2>
 <ul>
-<li>Check out the new UTM Gallery: <a href="https://mac.getutm.app/gallery/">https://mac.getutm.app/gallery/</a></li>
+<li>Check out the new UTM Gallery: https://mac.getutm.app/gallery/</li>
 <li>QEMU 5.1.0 changed JIT cache allocation to default to be host RAM / 8 instead of guest RAM / 4 as before. We revert back to guest RAM / 4.</li>
-<li>Fixed "Allocate x bytes for jit buffer: invalid argument" (#2269)</li>
+<li>Fixed &quot;Allocate x bytes for jit buffer: invalid argument&quot; (#2269)</li>
 <li>(macOS) Console mode broken due to CoreAudio API cannot be used after fork() (#2267)</li>
-<li>Skip USB device for "isapc" (#2272)</li>
+<li>Skip USB device for &quot;isapc&quot; (#2272)</li>
 </ul>
 <h2>Notice for upcoming iOS update</h2>
 <p>iOS 14.4 beta 2 broke JIT again (for non-jailbroken A12+ devices), and likely for good this time. We do not recommend updating to iOS 14.4 when it is released to the public.</p>
@@ -673,7 +709,7 @@
 <h2>Known Issues</h2>
 <ul>
 <li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
 <li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
 </ul>
 <p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
@@ -704,7 +740,7 @@
 <h2>Known Issues</h2>
 <ul>
 <li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
 <li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
 </ul>
 <p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
@@ -718,12 +754,12 @@
 <li>(iOS) Black screen when booting aarch64 VMs (#2080)</li>
 <li>(iOS) External mouse/touchpad right click and middle click broken (#523)</li>
 <li>(iOS) New setting option to disable screen dimming when VM is running (#1217)</li>
-<li>(iOS) <strong>New <a href="https://getutm.app/install/#jailbroken-devices">Cydia repo</a> for jailbroken users</strong>: <a href="https://cydia.getutm.app/">https://cydia.getutm.app/</a></li>
+<li>(iOS) <strong>New <a href="https://getutm.app/install/#jailbroken-devices">Cydia repo</a> for jailbroken users</strong>: https://cydia.getutm.app/</li>
 </ul>
 <h2>Known Issues</h2>
 <ul>
 <li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
 <li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
 </ul>
 <p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
@@ -746,7 +782,7 @@
 <li>Show an error message when shared directory or removable drive specified is invalid</li>
 <li>When no shared directory is specified, use a temporary directory</li>
 <li>(iOS) Clipboard sharing works when running UTM side by side with another app</li>
-<li>(macOS) Fix hypervisor on Intel Macs (#570) </li>
+<li>(macOS) Fix hypervisor on Intel Macs (#570)</li>
 <li>(macOS) Fix auto determine core count on Intel Macs</li>
 <li>(macOS) Implement clipboard sharing (SPICE tools needed) (#1204)</li>
 <li>(macOS) Fix cursor issues when using virtio-gpu</li>
@@ -754,8 +790,8 @@
 </ul>
 <h2>Known Issues</h2>
 <ul>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a "development" certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a "development" certificate and in iOS App Signer, "No get-task-allow" is unchecked.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a &quot;development&quot; certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a &quot;development&quot; certificate and in iOS App Signer, &quot;No get-task-allow&quot; is unchecked.</li>
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
@@ -782,8 +818,8 @@
 </ul>
 <h2>Known Issues</h2>
 <ul>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a "development" certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a "development" certificate and in iOS App Signer, "No get-task-allow" is unchecked.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a &quot;development&quot; certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a &quot;development&quot; certificate and in iOS App Signer, &quot;No get-task-allow&quot; is unchecked.</li>
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
@@ -802,17 +838,17 @@
 <li>(macOS) Starting a VM on Intel Macs shows dylib error (#721)</li>
 <li>Default BIOS for virt machines (no longer need to manually import a BIOS file to boot)</li>
 <li>Default USB 3.0 controller for virt machines (fixes <code>BUGCODE_USB_DRIVER</code> BSOD on Windows 10 ARM)</li>
-<li>(macOS) Sometimes settings modal is disabled after importing/add/removing a drive (#901) </li>
+<li>(macOS) Sometimes settings modal is disabled after importing/add/removing a drive (#901)</li>
 <li>After selecting an architecture and machine, sane default settings will be applied to other places</li>
 <li>(macOS) Fix port forwarding</li>
 <li>Add support for NVMe and USB drive interfaces (for Windows 10 ARM)</li>
 <li>Simplify disk creation popup (removed confusing options)</li>
-<li>(macOS) Improved mouse capture handling (#710) </li>
+<li>(macOS) Improved mouse capture handling (#710)</li>
 </ul>
 <h2>Known Issues</h2>
 <ul>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a "development" certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a "development" certificate and in iOS App Signer, "No get-task-allow" is unchecked.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a &quot;development&quot; certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a &quot;development&quot; certificate and in iOS App Signer, &quot;No get-task-allow&quot; is unchecked.</li>
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
@@ -831,50 +867,23 @@
 <li>Updated QEMU backend from 5.1.0 to 5.2.0-rc3 with <a href="https://github.com/utmapp/qemu/releases/tag/v5.2.0-rc3-asi">additional patches</a> for virtualization support on Apple M1 Macs</li>
 <li><em>Potentially VM breaking change</em>: For newly created VMs, <code>-device virtio-gpu-pci</code> is no longer added by default to <code>virt</code> machines (ARM64). This is due to newer versions of OVMF not supporting the option. On existing VMs, the option is moved to QEMU custom arguments.</li>
 <li>An issue prevented auto-detection of CPU cores on supported configurations (weak on weak)</li>
-<li>Correct missing names for some network cards (#706) </li>
+<li>Correct missing names for some network cards (#706)</li>
 <li>Some minor description changes in System settings</li>
 <li>(iOS 14) Removable drives and shared directory works outside of the sandbox</li>
-<li>(macOS) Bug where new VM button was not working (#704) </li>
+<li>(macOS) Bug where new VM button was not working (#704)</li>
 <li>(macOS) Fix mouse dragging in capture mode</li>
 <li>(macOS) Disabled App Sandbox since a macOS bug prevents Hypervisor.framework from working inside an inherited Sandbox (FB8921623)</li>
 </ul>
 <h2>Known Issues</h2>
 <ul>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a "development" certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a "development" certificate and in iOS App Signer, "No get-task-allow" is unchecked.</li>
-</ul>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
-            </div><div class="changelog_entry">
-                <h4>2.0.11</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design. UTM 2.0 also updates the QEMU backend from 4.2.0 to 5.1.0 (for all supported iOS versions).</p>
-<p>Installation instructions differ depending on what version of iOS you are running:</p>
-<ul>
-<li>iOS 11-13: You can install and run UTM using any version of AltStore (recommended) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>.</li>
-<li>iOS 14: You must either be jailbroken or follow the <a href="https://github.com/utmapp/UTM/blob/master/Documentation/TetheredLaunch.md">tethered launch</a> instructions every time you launch UTM. Note that the jailbroken instructions are currently outdated. If you have a good guide, please let us <a href="https://github.com/utmapp/UTM/issues/537">know</a>.</li>
-<li>iOS 14.2: You can use either the beta AltStore (1.4.2) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>. Note A11 and older devices are not supported by this method and must be jailbroken or use tethered launch.</li>
-</ul>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>(macOS) Fixed empty error message when creating a new drive (#565)</li>
-<li>(macOS) Implemented debug logging (#575)</li>
-<li>(macOS) Various UI/interface issues fixed</li>
-<li>(macOS) Implemented console display mode</li>
-<li>(macOS) Mouse capture mode stuck on corner of the screen (#576)</li>
-<li>(macOS) Removing a removable disk image on the home screen will now persist if VM is not started</li>
-<li>(iOS) On &lt; A12 devices running iOS 14.2, an error message will show up on startup to alert user that it is not compatible</li>
-</ul>
-<h2>Known Issues</h2>
-<ul>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid "application-identifier" entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a "development" certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a "development" certificate and in iOS App Signer, "No get-task-allow" is unchecked.</li>
+<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
+<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a &quot;development&quot; certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a &quot;development&quot; certificate and in iOS App Signer, &quot;No get-task-allow&quot; is unchecked.</li>
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2021-11-06</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-01-01</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
