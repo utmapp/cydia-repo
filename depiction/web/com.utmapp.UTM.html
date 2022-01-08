@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">3.0.0</div>
+                    <div class="text">3.0.1</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,61 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>3.0.1</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
+<h2>Highlights</h2>
+<ul>
+<li><strong>Wizard for VM creation</strong>: Easily create a new VM with the correct default settings with a guided step-by-step wizard. Preview: https://twitter.com/UTMapp/status/1475606159428046854</li>
+<li><strong>QEMU v6.2.0</strong>: Updated QEMU backend to the latest release. Full changelog: https://wiki.qemu.org/ChangeLog/6.2</li>
+<li>(iOS 13+) <strong>New toolbar</strong>: The new toolbar is much more compact and friendly for smaller displays. It is also now movable and does not interfere with the iOS 15 multitasking button on the top center of the screen. Preview: https://twitter.com/UTMapp/status/1407350167494443023</li>
+<li>(macOS 12+, ARM64) <strong>Virtualize macOS 12</strong>: New integration with Apple's Virtualization.framework backend allows native hardware accelerated virtualization of macOS 12 (supporting both CPU and GPU virtualization). UTM can also download the latest macOS IPSW directly from Apple. (This is only supported on macOS 12+ running on an ARM64 Mac.)</li>
+<li>(macOS 11+) <strong>Virtualize Linux with Apple backend</strong>: You now have the option to use Apple's Virtualization.framework to virtualize Linux. Note that while there are some performance benefits, it is still recommended to use the QEMU backend as it is more stable, has more device support (including graphical display), and is easier to configure.</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>The default CPU for ARM64 virtual machine has changed from <code>cortex-a72</code> to <code>default</code>. This is the recommended option and you should change your existing VMs to use it. When using virtualization on M1(X) macOS, the <code>cortex-a72</code> CPU is known to have compatibility issues which causes the VM to sometimes freeze (including during Windows install). <code>default</code> will use the <code>host</code> CPU model when virtualization is used and <code>cortex-a72</code> when emulation is used.</li>
+<li>The GL hardware acceleration support is now marked experimental to highlight that it is not stable. It is also no longer the default option. If you are experiencing lots of crashes, make sure that you chose a display hardware that is <strong>not</strong> marked as &quot;GPU Supported&quot;.</li>
+<li>The cursor and resolution change issues on ARM64 Windows has been fixed in <a href="https://mac.getutm.app/support/">SPICE tools 0.164.3</a>.</li>
+</ul>
+<h2>Changes (v3.0.1)</h2>
+<ul>
+<li>(macOS) Fixed launching on macOS 11 (#3433)</li>
+<li>(macOS) Fixed &quot;auxiliaryStorage is nil&quot; when creating macOS VM on M1 Mac (thanks @pointum) (#3429)</li>
+<li>(iOS) Proper enablement of extended RAM usage on M1 iPad 16GB (thanks @kkk669)</li>
+<li>(iOS) Fixed crash on VM launch on &lt; iOS 13 due to toolbar not being initialized</li>
+<li>(iOS) Version information will now be shown in the system Settings app for UTM (at the bottom)</li>
+<li>Fixed cursor and screen resolution issues on ARM64 Windows after installing SPICE tools. Requires updating SPICE tools to <a href="https://mac.getutm.app/support/">latest version</a>.</li>
+<li>Add virtio-rng-pci device to fix boot warning about randomness source (thanks @ktprograms)</li>
+<li>Default upscaling mode is now &quot;nearest neighbor&quot;</li>
+<li>Fixed floppy drives being read-only (thanks @conath) (#3333)</li>
+<li>Wizard: no longer use NVMe for Windows on x86_64 systems</li>
+<li>Fixed a regression where Windows boots into BSOD often on x86_64 virtualization</li>
+<li>Updated localization for Zh-Hant (thanks @pan93412)</li>
+<li>Updated localization for Zh-Hans (thanks @js-john)</li>
+<li>Fixed an issue where sometimes a VM will not boot due to invalid drive id (thanks @conath) (#3388)</li>
+<li>Changing target to PC (i440FX) will now turn off hypervisor on x86_64 by default because it is unstable (#2420)</li>
+</ul>
+<h2>Changes (v3.0.0)</h2>
+<ul>
+<li>Added VM creation wizard</li>
+<li>Updated QEMU to v6.2.0</li>
+<li>Updated ANGLE to latest commit</li>
+<li>Updated virglrenderer to latest commit (this may fix #2743)</li>
+<li>Added <code>default</code> and <code>host</code> CPU option for ARM64 virtual machines. This will be the default for newly created VMs.</li>
+<li>The downloader will no longer perform CRC checks on the ZIP file and this will significantly speed up extraction.</li>
+<li>(iOS 13+) Redesigned toolbar (#496)</li>
+<li>(macOS) Redesigned VM settings</li>
+<li>(macOS) Fix crash moving drives (#3117)</li>
+<li>(macOS) Make HVF per-VM configurable (#2493)</li>
+<li>(macOS) Add Apple Virtualization.framework backend</li>
+<li>(macOS) New Terminal frontend with SwiftTerm, currently only used with Apple backend on macOS</li>
+<li>(macOS) Apple Virtualization supports virtual serial port through PTY device</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+</div>
+            </div><div class="changelog_entry">
                 <h4>3.0.0</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
@@ -852,38 +907,9 @@
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0.12</h4>
-                <div class="md_view"><p>UTM 2.0 includes a redesign of the frontend for iOS 14 and introduces support for macOS 11. Due API limitations, the new design will <strong>not</strong> be available for iOS 13 and below. That means any feature that depends on the new design will also <strong>not</strong> be back-ported to iOS 13. Launching UTM 2.0 on iOS 14 will show the new design and launching UTM 2.0 on iOS 13 and below will show the old design. UTM 2.0 also updates the QEMU backend from 4.2.0 to 5.2.0 (for all supported iOS versions).</p>
-<p>Installation instructions differ depending on what version of iOS you are running:</p>
-<ul>
-<li>iOS 11-13: You can install and run UTM using any version of AltStore (recommended) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>.</li>
-<li>iOS 14: You must either be jailbroken or follow the <a href="https://github.com/utmapp/UTM/blob/master/Documentation/TetheredLaunch.md">tethered launch</a> instructions every time you launch UTM. Note that the jailbroken instructions are currently outdated. If you have a good guide, please let us <a href="https://github.com/utmapp/UTM/issues/537">know</a>.</li>
-<li>iOS 14.2: You can use either AltStore (&gt;= 1.4.2) or <a href="https://dantheman827.github.io/ios-app-signer/">iOS App Signer</a>. Note A11 and older devices are not supported by this method and must be jailbroken or use tethered launch.</li>
-</ul>
-<p>As always, please report all bugs to <a href="https://github.com/utmapp/UTM/issues">Github</a></p>
-<h2>Changes</h2>
-<ul>
-<li>Updated QEMU backend from 5.1.0 to 5.2.0-rc3 with <a href="https://github.com/utmapp/qemu/releases/tag/v5.2.0-rc3-asi">additional patches</a> for virtualization support on Apple M1 Macs</li>
-<li><em>Potentially VM breaking change</em>: For newly created VMs, <code>-device virtio-gpu-pci</code> is no longer added by default to <code>virt</code> machines (ARM64). This is due to newer versions of OVMF not supporting the option. On existing VMs, the option is moved to QEMU custom arguments.</li>
-<li>An issue prevented auto-detection of CPU cores on supported configurations (weak on weak)</li>
-<li>Correct missing names for some network cards (#706)</li>
-<li>Some minor description changes in System settings</li>
-<li>(iOS 14) Removable drives and shared directory works outside of the sandbox</li>
-<li>(macOS) Bug where new VM button was not working (#704)</li>
-<li>(macOS) Fix mouse dragging in capture mode</li>
-<li>(macOS) Disabled App Sandbox since a macOS bug prevents Hypervisor.framework from working inside an inherited Sandbox (FB8921623)</li>
-</ul>
-<h2>Known Issues</h2>
-<ul>
-<li>Cannot import any drives/ISO: there is a bug in iOS where an invalid &quot;application-identifier&quot; entitlement causes the file picker to not work. A fix for iOS App Signer is <a href="https://github.com/DanTheMan827/ios-app-signer/pull/163">submitted</a> and can be manually compiled. If you are using AltStore, you need use a free (not paid) developer account.</li>
-<li>Starting a VM goes to a black screen on iOS 14: you need to sign UTM with a &quot;development&quot; certificate. If you used a 3rd party signing service, it is probably signed with the wrong certificate. If you signed UTM yourself, make sure you chose a &quot;development&quot; certificate and in iOS App Signer, &quot;No get-task-allow&quot; is unchecked.</li>
-</ul>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-01-01</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-01-08</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
