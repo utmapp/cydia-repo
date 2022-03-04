@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">3.1.3</div>
+                    <div class="text">3.1.3-2</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,7 +82,7 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
-                <h4>3.1.3</h4>
+                <h4>3.1.3-2</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
 <h2>Highlights</h2>
@@ -100,6 +100,7 @@
 </ul>
 <h2>Changes (v3.1.3)</h2>
 <ul>
+<li><em>Hotfix</em>: An earlier release of v3.1.3 had a bug which prevented newly created VMs from booting, this has now been fixed</li>
 <li>Use QCOW2 format for EFI variables on newly created variables image. This enables suspend state to work on EFI enabled VMs again (unless suspend fails for other unsupported devices). Note: existing VMs should delete the EFI variables drive from VM Settings in order for UTM to recreate it as QCOW2.</li>
 <li>The busy spinner gets suck during startup or shutdown (#3702)</li>
 <li>Boots Windows ARM emulation with QEMU TCG by adding <code>virtualization=on</code> machine property (#3703)</li>
@@ -107,6 +108,7 @@
 <li>Various UI tweaks, fixes, and improvements (thanks @j-f1). Note that some settings have moved to different categories.</li>
 <li>Fixed &quot;Failed to create new bookmark&quot; when trying to launch a VM shortcut</li>
 <li>Automatically de-toggle UEFI boot tweak on unsupported targets</li>
+<li>Fixed a situation that caused UTM to crash randomly (#3515)</li>
 <li>(iOS 14) Toolbar had large overlapping icons on compact devices</li>
 </ul>
 <h2>Changes (v3.1.2)</h2>
