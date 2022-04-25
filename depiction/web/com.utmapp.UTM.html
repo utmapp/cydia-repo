@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at https://getutm.app/</p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">3.1.5</div>
+                    <div class="text">3.2.0</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,43 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>3.2.0</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p><strong>iOS</strong>: Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.
+<strong>macOS</strong>: Download &quot;UTM.dmg&quot; below and copy the contents to your <code>/Applications</code> directory.</p>
+<h2>Highlights</h2>
+<ul>
+<li><strong>QEMU 7.0.0</strong>*: The backend has been updated to the latest release. Check out https://www.qemu.org/2022/04/19/qemu-7-0-0/ for more details. Additionally, other backend components such as SPICE GTK, libusbredir, and more have also been updated.</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>(iOS) <strong>UTM v3.2.x will be the last update to support iOS 11-13.</strong> If you are still running those versions, please make sure you report any issues now so they can be fixed by the final release of v3.2.x. After that, iOS 14+ will be required to run future versions of UTM.</li>
+</ul>
+<h2>Changes (v3.2.0)</h2>
+<ul>
+<li>Checkbox for &quot;Import VHDX Image&quot; in the wizard now works correctly again (#3760)</li>
+<li>Fixed various crashes in SPICE webdavd share has been resolved thanks to updated backend (#3633)</li>
+<li>Removed &quot;cache=writethrough&quot; argument from block devices since it was added to workaround an issue with VHDX images which we now convert to QCOW2</li>
+<li>Added &quot;discard=unmap,detect-zeroes=unmap&quot; argument to block devices to reclaim unused space (#3460)</li>
+<li>When &quot;do not save screenshot to disk&quot; is enabled, any existing screenshot will be deleted the next time the VM is started (#3936)</li>
+<li>Fixed an issue in QEMU additional arguments where it sometimes would not appear after setting it (#3895)</li>
+<li>Fixed RNG device not appearing in console mode even when enabled in the settings (#3790)</li>
+<li>Added support for up to 5 additional mouse buttons (you may need to re-map them in the guest OS as they are automatically set to middle/up/down/side/extra) (#3906)</li>
+<li>(iOS) Fixed an issue in the legacy view where &quot;invalid identifier&quot; error may show up on a newly created VM (#3872)</li>
+<li>(macOS) Fixed crash when changing display settings while the VM window is open (but stopped) (#3925)</li>
+<li>(macOS) Fixed crash when trying to select &quot;Share...&quot; in context menu (#3915)</li>
+<li>(macOS) Prevent allowing rapid clicking of pause/resume which may lead to VM corruption (#3629)</li>
+<li>(macOS) Show progress indicator while VM is saving to prevent user from terminating the app early and cause corruption (#3752)</li>
+<li>(macOS) Block unsupported Apple USB devices from being captured (#3759)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h3>Known Issues</h3>
+<ul>
+<li>iOS 14 and below: There is a known issue crashing while running under taurine but not unc0ver. (#3628)</li>
+</ul>
+</div>
+            </div><div class="changelog_entry">
                 <h4>3.1.5</h4>
                 <div class="md_view"><p><em>Note: This is the same as v3.1.4 but with a fix for boot issues with the latest Linux kernel.</em></p>
 <h2>Installation</h2>
@@ -1321,30 +1358,9 @@
 </ul>
 <p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0.22</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>Changes</h2>
-<ul>
-<li>(iOS) Fixed crash when moving drives (#2322)</li>
-<li>Fix removable drives option (#2320)</li>
-<li>Limit network and sound card selection based on architecture support</li>
-<li>Use new QEMU option for selecting sound card</li>
-<li>New option to change display card (thanks @js-john)</li>
-</ul>
-<h2>Notice for iOS 14.4+</h2>
-<p>iOS 14.4 broke JIT again (for non-jailbroken A12+ devices), and likely for good this time. We do not recommend updating to iOS 14.4 or higher. Future support for iOS will be limited to tethered and jailbroken devices only.</p>
-<h2>Known Issues</h2>
-<ul>
-<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
-<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
-</ul>
-<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-03-12</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-04-25</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
