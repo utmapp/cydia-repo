@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">3.2.1</div>
+                    <div class="text">3.2.2</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,13 +82,78 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>3.2.2</h4>
+                <div class="md_view"><h2>Installation</h2>
+<p><strong>iOS</strong>: Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.
+<strong>macOS</strong>: Download &quot;UTM.dmg&quot; below and copy the contents to your <code>/Applications</code> directory.</p>
+<h2>Highlights</h2>
+<ul>
+<li><strong>QEMU 7.0.0</strong>: The backend has been updated to the latest release. Check out https://www.qemu.org/2022/04/19/qemu-7-0-0/ for more details. Additionally, other backend components such as SPICE GTK, libusbredir, and more have also been updated.</li>
+<li><strong>Reclaiming space</strong>: the host will attempt to TRIM any page of all zeros when committed to the QCOW2 disk image. Additionally, a new button in disk settings will allow you to re-convert a disk image to reclaim space (of all-zero pages) as well as compress an existing disk image (macOS 12+ only). Note compression is only done statically which means when the guest modifies a sector, it will be stored uncompressed just like before.</li>
+<li><strong>Disposable mode</strong>: right click/long press on a QEMU VM and select &quot;Run without saving changes&quot; to start VM in &quot;disposable mode.&quot; In this mode, changes will not be saved to disk and will be discarded once the VM is stopped. (thanks @ktprograms)</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li>(iOS) <strong>UTM v3.2.x will be the last update to support iOS 11-13.</strong> If you are still running those versions, please make sure you report any issues now so they can be fixed by the final release of v3.2.x. After that, iOS 14+ will be required to run future versions of UTM.</li>
+<li>In v3.2.0, if you added <code>highmem=on</code> to your QEMU Machine Properties as a workaround, please remove it after updating. If you did not use v3.2.0, you can ignore this.</li>
+</ul>
+<h2>Changes (v3.2.2)</h2>
+<ul>
+<li>Add &quot;disposable mode&quot; (see highlights for more information) (thanks @ktprograms)</li>
+<li>Do not enable UEFI for unsupported architectures (#3976)</li>
+<li>Fix broken play button in sidebar (#3980)</li>
+<li>Fix &quot;Error -1 while loading VM state&quot; on resume caused by usbredir (#3979)</li>
+<li>Various UI tweaks and typo fixes (#3984)</li>
+<li>Fixed pausing without saving state</li>
+<li>Fixed showing warning prompt when VM is paused but not saved</li>
+<li>(iOS) Detect if UTM is installed without AltStore and AltJIT will not attempt to be used.</li>
+<li>(iOS) Reduced build size by 10% (thanks @Halo-Michael) (#3934)</li>
+<li>(macOS) Add new preference option to revert Caps Lock behaviour to pre 3.2.0 (#3974)</li>
+</ul>
+<h2>Changes (v3.2.1)</h2>
+<ul>
+<li>Fixed boot of RISC-V virt platform (thanks @wegank)</li>
+<li>Remove <code>highmem=off</code> default property which is no longer needed on macOS 12.4+ and iOS 15.5+ (it will still be used on lower versions) (#3941, #3946)</li>
+<li>Caps lock state will now be synchronized when mouse is captured (note that if mouse is captured before the guest OS has booted up, the state will be out of sync) (#3415)</li>
+<li>Re-introduce option to disable auto-resolution when SPICE tools is installed (#3938)</li>
+<li>When discarding unsaved settings, do not delete any disk image not created by UTM (#3587)</li>
+<li>Fix downloading of UTM zip files when the URL does not end in &quot;.zip&quot; (#3953)</li>
+<li>(macOS) When importing a disk image, do not silently overwrite an existing image of the same name (#3866)</li>
+<li>(macOS) Added option to reclaim unused space from disk image and to compress a disk image (macOS 12+ only)</li>
+<li>(macOS) On the VM list, the start button will now change to a spinner when the VM is starting and will disappear when the VM has started. Also added the ability to start/show a VM by double-clicking on the list item (#3885)</li>
+</ul>
+<h2>Changes (v3.2.0)</h2>
+<ul>
+<li>Checkbox for &quot;Import VHDX Image&quot; in the wizard now works correctly again (#3760)</li>
+<li>Fixed various crashes in SPICE webdavd share has been resolved thanks to updated backend (#3633)</li>
+<li>Removed &quot;cache=writethrough&quot; argument from block devices since it was added to workaround an issue with VHDX images which we now convert to QCOW2</li>
+<li>Added &quot;discard=unmap,detect-zeroes=unmap&quot; argument to block devices to reclaim unused space (#3460)</li>
+<li>When &quot;do not save screenshot to disk&quot; is enabled, any existing screenshot will be deleted the next time the VM is started (#3936)</li>
+<li>Fixed an issue in QEMU additional arguments where it sometimes would not appear after setting it (#3895)</li>
+<li>Fixed RNG device not appearing in console mode even when enabled in the settings (#3790)</li>
+<li>Added support for up to 5 additional mouse buttons (you may need to re-map them in the guest OS as they are automatically set to middle/up/down/side/extra) (#3906)</li>
+<li>(iOS) Fixed an issue in the legacy view where &quot;invalid identifier&quot; error may show up on a newly created VM (#3872)</li>
+<li>(macOS) Fixed crash when changing display settings while the VM window is open (but stopped) (#3925)</li>
+<li>(macOS) Fixed crash when trying to select &quot;Share...&quot; in context menu (#3915)</li>
+<li>(macOS) Prevent allowing rapid clicking of pause/resume which may lead to VM corruption (#3629)</li>
+<li>(macOS) Show progress indicator while VM is saving to prevent user from terminating the app early and cause corruption (#3752)</li>
+<li>(macOS) Block unsupported Apple USB devices from being captured (#3759)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h3>Known Issues</h3>
+<ul>
+<li>iOS 14 and below: There is a known issue crashing while running under taurine but not unc0ver. (#3628)</li>
+</ul>
+</div>
+            </div><div class="changelog_entry">
                 <h4>3.2.1</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p><strong>iOS</strong>: Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.
 <strong>macOS</strong>: Download &quot;UTM.dmg&quot; below and copy the contents to your <code>/Applications</code> directory.</p>
 <h2>Highlights</h2>
 <ul>
-<li><strong>QEMU 7.0.0</strong>*: The backend has been updated to the latest release. Check out https://www.qemu.org/2022/04/19/qemu-7-0-0/ for more details. Additionally, other backend components such as SPICE GTK, libusbredir, and more have also been updated.</li>
+<li><strong>QEMU 7.0.0</strong>: The backend has been updated to the latest release. Check out https://www.qemu.org/2022/04/19/qemu-7-0-0/ for more details. Additionally, other backend components such as SPICE GTK, libusbredir, and more have also been updated.</li>
 <li><strong>Reclaiming space</strong>: the host will attempt to TRIM any page of all zeros when committed to the QCOW2 disk image. Additionally, a new button in disk settings will allow you to re-convert a disk image to reclaim space (of all-zero pages) as well as compress an existing disk image (macOS 12+ only). Note compression is only done statically which means when the guest modifies a sector, it will be stored uncompressed just like before.</li>
 </ul>
 <h2>Notes</h2>
@@ -1362,29 +1427,9 @@
 </ul>
 <p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0.24</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>Changes</h2>
-<ul>
-<li>Fix error booting with multiple IDE/SCSI drives (#2382)</li>
-<li>Fix error booting with NVMe (#2383)</li>
-<li>(iOS) Fix selecting interface for a new drive not working (#2384)</li>
-<li>(iOS) Fix DEB build script</li>
-</ul>
-<h2>Notice for iOS 14.4+</h2>
-<p>iOS 14.4 broke JIT again (for non-jailbroken A12+ devices), and likely for good this time. We do not recommend updating to iOS 14.4 or higher. Future support for iOS will be limited to tethered and jailbroken devices only.</p>
-<h2>Known Issues</h2>
-<ul>
-<li>Black screen or crash trying to start any VM? Make sure you read <strong>all</strong> the instructions in the <a href="https://getutm.app/install/">install page</a>.</li>
-<li>When installed via Cydia/Sileo, Settings and Files integration does not work and VMs are not deleted automatically when uninstalled.</li>
-</ul>
-<p>Please check the full list on <a href="https://getutm.app/install/">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-05-02</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-05-08</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
