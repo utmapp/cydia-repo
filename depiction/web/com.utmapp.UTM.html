@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at https://getutm.app/</p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">3.2.4</div>
+                    <div class="text">4.0.0</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,73 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>4.0.0</h4>
+                <div class="md_view"><p><strong>Remember to back up your VMs before running a beta release of UTM!</strong></p>
+<h2>Installation</h2>
+<p><strong>iOS</strong>: Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.
+<strong>macOS</strong>: Download &quot;UTM.dmg&quot; below and copy the contents to your <code>/Applications</code> directory.</p>
+<h2>Highlights</h2>
+<ul>
+<li><strong>Multiple display and headless display is now supported for QEMU machines.</strong> You can configure 0 or more displays as well as 0 or more builtin terminal consoles. On macOS, a new window will be created for each display and builtin terminal. On iOS, you can create multiple windows (iPad) as well as plug in an external display or AirPlay (iPad or iPhone) and assign outputs to each window.</li>
+<li><strong>Ventura updates to Virtualization.</strong> macOS Ventura introduces new features to Virtualization.framework that is now integrated into UTM. You can now create GUI Linux VMs with EFI boot. Clipboard sharing and directory sharing now works with macOS Ventura guests. Rosetta x86_64 emulation is supported for Linux VMs on Apple Silicon.</li>
+<li><strong>Virtiofs sharing for QEMU.</strong> This can be enabled in the VM settings under Sharing. You can mount the tag &quot;share&quot; in the VM. Note that macOS UID follow a different format than Linux so you may need to set up your guest to have permission to access the shared directory.</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li><strong>iOS 14 and macOS 11.3</strong> are the new minimum supported systems. Please use UTM v3.x for support down to iOS 11 and macOS 11</li>
+<li>The configuration backend has been massively rewritten and the new configuration format will not work on older versions of UTM. <strong>Please backup all VMs prior to updating as you will not be able to re-open them after using UTM v4.</strong></li>
+</ul>
+<h2>Changes (v4.0.0)</h2>
+<ul>
+<li>USB redirection support in terminal mode</li>
+<li>Configuration file format changed, newly saved VMs will not be compatible with older versions of UTM</li>
+<li>Newly imported disk images will be converted to QCOW2 automatically</li>
+<li>Settings: new layout with support for multiple {Display, Serial, Network, Sound} devices (#3585)</li>
+<li>Support multiple displays (#220)</li>
+<li>Added Japanese localization (thanks @MMP0)</li>
+<li>Support adding PTTY (macOS only), TCP client, and TCP server serial connections for QEMU machines (address should show up in the home screen) (#3546)</li>
+<li>Support headless display (remove all displays and built-in serial ports in the settings) (#2280)</li>
+<li>Support redirecting QEMU monitor and GDB stub to a serial port</li>
+<li>Support zstd compression for QCOW2 images and use zstd as default for image compression (#4211)</li>
+<li>Update ANGLE (GL backend) to latest git commit</li>
+<li>Added French localization (thanks @FRtranslator)</li>
+<li>Fixed microphone recording silence (#219)</li>
+<li>Fixed a crash when attempting to delete a QEMU additional argument</li>
+<li>Option in VM settings to use virtfs/9pfs for file sharing (#2184)</li>
+<li>Option in VM settings to change VGA RAM size (#4034)</li>
+<li>Option in VM settings to enable virtio-balloon driver (#4136)</li>
+<li>Invert mouse scrolling is now a global setting rather than a per-vm configuration option</li>
+<li>(iOS) Replaced hterm.js with SwiftTerm for terminal mode (#3473)</li>
+<li>(iOS) Attach to JitStreamer (set IP address in Settings app and UTM will try to connect automatically on launch) (thanks @ktprograms)</li>
+<li>(iOS) Automatically resize the display to fit the screen when the resolution changes if the resize toolbar option is used</li>
+<li>(iOS) Reimplemented the USB and Drives menu with a better UI</li>
+<li>(iOS) On iPadOS 16, show the menu bar when holding Cmd on the keyboard. On previous versions, an on-screen help will show supported commands</li>
+<li>(iOS) Improved audio handling including: output when on silence, mixing with other apps, working when both recording and outputting (including with another app) (#3996)</li>
+<li>(iOS) Added a global setting to always prefer the built-in microphone to a bluetooth microphone</li>
+<li>(macOS) Fixed running from shortcut in Apple VMs (no longer need to re-import after each launch)</li>
+<li>(macOS) Improved IPSW selection interface and support drag and drop (thanks @pointum)</li>
+<li>(macOS) Fixed running unsigned builds</li>
+<li>(macOS) Removed some deprecated global settings</li>
+<li>(macOS) Fixed an error when trying to download an IPSW and the Caches directory does not exist (thanks @LostInCompilation)</li>
+<li>(macOS) Fixed an issue where a VM could be started twice if the home screen's toolbar is used leading to data corruption (#4166)</li>
+<li>(macOS 13+) Boot into recoveryOS (to disable SIP, etc) by right clicking on the VM and selecting &quot;Run in recovery...&quot; (#3526)</li>
+<li>(macOS 13+) Option in VM settings to enable Rosetta for x86_64 emulation (#4100)</li>
+<li>(macOS 13+) Option in VM settings to enable clipboard sharing (SPICE support needed on the guest) (#4121)</li>
+<li>(macOS 13+) GUI display for Linux VMs (#4120)</li>
+<li>(macOS 13+) Add removable drives, will show up as USB mass storage</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h3>Known Issues</h3>
+<ul>
+<li>Automation URL commands currently do not work completely</li>
+<li>Removable drive saving and configuration are not completely working for Apple VMs</li>
+<li>(iOS) VM display state (zoom level, keyboard show/hide, etc) are not saved</li>
+<li>(macOS) GUI Linux boot may not be compatible with all distros. Ubuntu Server 22.04 does not install.</li>
+<li>(macOS) You cannot reopen a window for additional displays after you close them</li>
+</ul>
+</div>
+            </div><div class="changelog_entry">
                 <h4>3.2.4</h4>
                 <div class="md_view"><h2>Installation</h2>
 <p><strong>iOS</strong>: Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.
@@ -1534,26 +1601,9 @@
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.0.27</h4>
-                <div class="md_view"><p>Note: this is a hotfix from v2.0.26. The following changelog is the same as v2.0.26 with the problematic patch removed (#2410).</p>
-<h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>Changes</h2>
-<ul>
-<li>(iOS) Use GCMouse APIs for improved mouse support (thanks @js-john), this also allows legacy (PS/2) mouse emulation to work properly</li>
-<li>(macOS) Fixed sound broken by last update (#2448)</li>
-<li>(macOS) When main window closes, opening the main window again loses state of started VMs (#2437)</li>
-<li>(macOS) Capture Cmd+W and Cmd+Q and pass them to the VM when mouse is captured. Warn user if mouse is not captured. (#2321)</li>
-<li>Removed legacy boot device order settings and added a note about how boot ordering is determined by order of drives added (which can be moved around). This should fix some boot issues (provided you move the devices in the right order).</li>
-<li>Fixed non-removable CD/DVD devices not being recognized/not being able to boot (#2419)</li>
-<li>Fixed notes cut off on iOS (#2460)</li>
-</ul>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-05-21</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-08-05</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
