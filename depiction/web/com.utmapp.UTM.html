@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">4.0.3</div>
+                    <div class="text">4.0.4</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,174 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>4.0.4</h4>
+                <div class="md_view"><p><strong>Remember to back up your VMs before running a beta release of UTM!</strong></p>
+<h2>Highlights</h2>
+<ul>
+<li><strong>Multiple display and headless display is now supported for QEMU machines.</strong> You can configure 0 or more displays as well as 0 or more builtin terminal consoles. On macOS, a new window will be created for each display and builtin terminal. On iOS, you can create multiple windows (iPad) as well as plug in an external display or AirPlay (iPad or iPhone) and assign outputs to each window.</li>
+<li><strong>Ventura updates to Virtualization.</strong> macOS Ventura introduces new features to Virtualization.framework that is now integrated into UTM. You can now create GUI Linux VMs with EFI boot. Clipboard sharing and directory sharing now works with macOS Ventura guests. Rosetta x86_64 emulation is supported for Linux VMs on Apple Silicon.</li>
+<li><strong>VirtFS sharing for QEMU.</strong> This can be enabled in the VM settings under Sharing. You can mount the tag &quot;share&quot; in the VM. Note that macOS UID are numbered differently than Linux so you may need to set up your guest to have permission to access the shared directory.</li>
+<li><strong>Easier Windows 10/11 installation and Windows guest tools downloader.</strong> You can now download and mount the Windows drivers and guest tools ISO image with a single click (macOS: disk icon in VM window, iOS: 3D touch context menu on home screen). Additionally, the ISO now include an &quot;Autounattend.xml&quot; which is recognized by the Windows 10/11 installer. When mounted to a second CD drive, the installer will install the correct drivers, bypass secure boot/TPM requirements, and launch the SPICE tools installer on first login.</li>
+<li>(macOS) <strong>Resize QEMU disk images.</strong> In the drives settings page, you can now expand the size of the QCOW2 disk image.</li>
+<li>(iOS) <strong>QEMU Virtualization for M1 iPad.</strong> With the release of <a href="https://github.com/opa334/TrollStore">TrollStore</a>, you can now enable Hypervisor on iOS. Note that only M1 hardware and kernel have support for Hypervisor and it has only been tested on iOS 15.</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li><strong>iOS 14 and macOS 11.3</strong> are the new minimum supported systems. Please use UTM v3.x for support down to iOS 11 and macOS 11</li>
+<li>The configuration backend has been massively rewritten. <strong>Please backup all VMs prior to updating as you will not be able to re-open VMs saved by UTM v4 on older versions of UTM if you decide to downgrade.</strong></li>
+</ul>
+<h2>Changes (v4.0.4)</h2>
+<ul>
+<li>Fixed in issue generating configuration for IDE drives leading to PPC not booting and I/O errors on PC (#4372, #4376, others)</li>
+<li>Moved the SPICE tools download directory to &quot;GuestSupportTools&quot; under &quot;Application Support&quot; (previously it was just under &quot;Application Support&quot;)</li>
+<li>Fixed creating a VM with illegal path characters in the name (#4385)</li>
+<li>Translation: Updated Japanese (thanks @MMP0)</li>
+<li>Translation: Updated French (thanks @FRtranslator)</li>
+<li>Wizard: No longer tries to download the Windows guest tools when selecting a non-Windows OS</li>
+<li>(iOS) Enable build with Hypervisor.framework (support limited to M1 iPad)</li>
+<li>(iOS) Fixed a crash when switching display in a window</li>
+<li>(iOS) On jailbroken devices, the memory limit will automatically be increased to the maximum, preventing the Jetsam system from terminating UTM for memory usage</li>
+<li>(iOS) Fixed a regression which caused the home indicator to not be hidden (#4390)</li>
+<li>(iOS) Fixed a regression which caused the cursor to not be captured (#4390)</li>
+<li>(iOS) When switching display, notification handlers are properly cleaned up (example: cursor capture and console on screen keyboard events)</li>
+<li>(iOS) Show the device cursor when VM is paused</li>
+<li>(iOS) Fixed a regression where external keyboard events are not captured</li>
+<li>(iOS) Fixed an error where extraneous stale VM entries show up after the container name changes (#4392)</li>
+<li>(iOS) Fixed a crash on iOS 14 when opening a terminal view due to SwiftTerm handling the colour configuration</li>
+<li>(macOS) Fixed a layout issue of the compress/resize buttons</li>
+<li>(macOS) Forgot to actually enable compression for the drive setting button (#4377)</li>
+<li>(macOS) Fixed some settings layout issue on &lt; macOS 13 (#4374)</li>
+</ul>
+<h2>Changes (v4.0.3)</h2>
+<ul>
+<li>Fixed an issue where changing external drive/shared directory for a QEMU VM -&gt; exit UTM -&gt; reopen UTM and start the VM results in the drive/share not being restored</li>
+<li>Disable changing a VirtFS share from the home window (this is not an supported operation)</li>
+<li>Better detection of UUID collision which addresses an issue where VMs with the same UUID do not show up on the home screen and other VMs show up as duplicates and clicking on any of them results in a freeze</li>
+<li>Fixed floppy drive argument not being correctly generated (#4362)</li>
+<li>Fixed an issue where ejecting an external drive or shared directory does not persist</li>
+<li>Fixed a memory issue when stopping or closing VMs causing UTM to crash</li>
+<li>Fixed a regression where an access error occurs after moving a VM</li>
+<li>Added the ability to download the Windows SPICE tools and drivers automatically (#4364)</li>
+<li>Added support for more than 2 IDE drives in PC emulation</li>
+<li>Restored the setting to turn off blinking cursor (#4296)</li>
+<li>Translation: Updated Japanese (thanks @MMP0)</li>
+<li>Wizard: Reworked some of the UI, text, and file selection</li>
+<li>Wizard: Add option to auto download and mount the SPICE tools to a second CD drive</li>
+<li>Wizard: Fixed an issue where the selected boot image and shared directory was not saved on the new VM</li>
+<li>Wizard: Recommend UUP built ISO over the VHDX by default</li>
+<li>Wizard: New &quot;confused user&quot; check will catch trying to mount an &quot;amd64&quot; ISO on an &quot;arm64&quot; guest or vice versa</li>
+<li>(iOS 16) Use the new NavigationSplitView for a slightly polished look</li>
+<li>(iOS 16) Fixed an issue where the bottom toolbar does not show up (#4325)</li>
+<li>(iOS) Fixed an issue where the file importer was not opening (#4365)</li>
+<li>(iOS 14) Fixed an issue in the settings screen where multiple drives were occupying a single cell</li>
+<li>(iOS 14) Fixed an issue where UTM may crash when adding a drive or hardware</li>
+<li>(macOS) Added the ability to re-open closed windows for a given VM (#4351)</li>
+<li>(macOS) Fixed an issue where restarting a VM results in duplicate windows (#4367)</li>
+<li>(macOS) Save the size of terminal windows (#4296)</li>
+<li>(macOS) Add resize QCOW2 image feature (thanks @stewartsmith)</li>
+</ul>
+<h2>Changes (v4.0.2)</h2>
+<ul>
+<li>Removed &quot;view.plist&quot; for host-specific configuration settings (i.e. bookmarks to removable drives and window options) and replaced it with a new &quot;registry&quot; that is stored outside of the .utm bundle. Old &quot;view.plist&quot; settings and bookmarks will be migrated to the registry on first launch and the file will be deleted from the .utm bundle. For Apple VMs, the bookmarks will no longer be stored in config.plist and the settings will be migrated to the registry as well.</li>
+<li>VirtFS no longer requires SPICE to be enabled (thanks @tie)</li>
+<li>Fixed an issue with PPC VMs not showing 256 colours correctly (#4277)</li>
+<li>Fixed incorrect parsing of CPU flags (#4282)</li>
+<li>Do not save screenshots when running in disposable mode</li>
+<li>Translation: Added Spanish (Latin America) (thanks @JezerM)</li>
+<li>Translation: Added Finnish (thanks @marcusziade)</li>
+<li>Translation: Updated Japanese (thanks @MMP0)</li>
+<li>Translation: Updated Chinese (Simplified) (thanks @ty-yqs)</li>
+<li>Translation: Updated French (thanks @FRtranslator)</li>
+<li>(iOS) Per-display window settings (zoom, position, keyboard visibility, etc) will be stored in the new registry</li>
+<li>(iOS) Prefer JitStreamer over AltJit when both are available (thanks @ktprograms)</li>
+<li>(macOS) Fixed saving removable drives and shared directories for Apple VMs</li>
+<li>(macOS) Fixed missing audio entitlements (#4342)</li>
+<li>(macOS) Fixed QEMULauncher process not terminating when a VM is force quit</li>
+<li>(macOS) Fixed issue selecting text in SwiftTerm (#4297)</li>
+</ul>
+<h2>Changes (v4.0.1)</h2>
+<ul>
+<li>Fixed an issue where an UEFI BIOS error was reported when the target does not use UEFI (#4265)</li>
+<li>Added Elementary OS icon (thanks @Unbinilium)</li>
+<li>Updated ja localization (thanks @MMP0)</li>
+<li>Updated fr localization (thanks @FRtranslator)</li>
+<li>Changed the icon for &quot;Serial&quot; so it appears on iOS 14 and macOS 11 as well</li>
+<li>Fixed custom icon not showing up for &quot;legacy&quot; configurations</li>
+<li>Fixed an error trying to migrate &quot;legacy&quot; configuration when &quot;Images&quot; does not exist (#4266)</li>
+<li>Fixed USB redirection (#4263)</li>
+<li>(iOS) Fixed a toolbar issue where USB button overflowed on screen.</li>
+<li>(iOS) Fixed resume button not appearing on &lt; iOS 16</li>
+<li>(iOS) Attempt to close the download progress pop-up after download completes (#4261)</li>
+<li>(iOS) &quot;Open&quot; popover refuses to show up again after swiping down (#4260)</li>
+<li>(iOS) Hide &quot;Add&quot; text on iOS 14 settings</li>
+<li>(iOS) Fixed crash on iOS 14 settings when attempting to use the picker (#4270)</li>
+<li>(iOS) Fixed an issue on iOS 14 where picker selection was being reset</li>
+<li>(iOS) Fixed an issue where the USB icon is stuck on busy after a device disconnects</li>
+<li>(macOS) Fixed a crash trying to change shared directory for Apple VM (#4271)</li>
+<li>(macOS) Wizard created invalid target configuration for virtualized targets (#4274)</li>
+</ul>
+<h2>Changes (v4.0.0)</h2>
+<ul>
+<li>USB redirection support in terminal mode</li>
+<li>Configuration file format changed, newly saved VMs will not be compatible with older versions of UTM</li>
+<li>Newly imported disk images will be converted to QCOW2 automatically</li>
+<li>Settings: new layout with support for multiple {Display, Serial, Network, Sound} devices (#3585)</li>
+<li>Support multiple displays (#220)</li>
+<li>Added Japanese localization (thanks @MMP0)</li>
+<li>Support adding PTTY (macOS only), TCP client, and TCP server serial connections for QEMU machines (address should show up in the home screen) (#3546)</li>
+<li>Support headless display (remove all displays and built-in serial ports in the settings) (#2280)</li>
+<li>Support redirecting QEMU monitor and GDB stub to a serial port</li>
+<li>Support zstd compression for QCOW2 images and use zstd as default for image compression (#4211)</li>
+<li>Update ANGLE (GL backend) to latest git commit</li>
+<li>Added French localization (thanks @FRtranslator)</li>
+<li>Fixed microphone recording silence (#219)</li>
+<li>Fixed a crash when attempting to delete a QEMU additional argument</li>
+<li>Option in VM settings to use virtfs/9pfs for file sharing (#2184)</li>
+<li>Option in VM settings to change VGA RAM size (#4034)</li>
+<li>Option in VM settings to enable virtio-balloon driver (#4136)</li>
+<li>Invert mouse scrolling is now a global setting rather than a per-vm configuration option</li>
+<li>(iOS) Replaced hterm.js with SwiftTerm for terminal mode (#3473)</li>
+<li>(iOS) Attach to JitStreamer (set IP address in Settings app and UTM will try to connect automatically on launch) (thanks @ktprograms)</li>
+<li>(iOS) Automatically resize the display to fit the screen when the resolution changes if the resize toolbar option is used</li>
+<li>(iOS) Reimplemented the USB and Drives menu with a better UI</li>
+<li>(iOS) On iPadOS 16, show the menu bar when holding Cmd on the keyboard. On previous versions, an on-screen help will show supported commands</li>
+<li>(iOS) Improved audio handling including: output when on silence, mixing with other apps, working when both recording and outputting (including with another app) (#3996)</li>
+<li>(iOS) Added a global setting to always prefer the built-in microphone to a bluetooth microphone</li>
+<li>(macOS) Fixed running from shortcut in Apple VMs (no longer need to re-import after each launch)</li>
+<li>(macOS) Improved IPSW selection interface and support drag and drop (thanks @pointum)</li>
+<li>(macOS) Fixed running unsigned builds</li>
+<li>(macOS) Removed some deprecated global settings</li>
+<li>(macOS) Fixed an error when trying to download an IPSW and the Caches directory does not exist (thanks @LostInCompilation)</li>
+<li>(macOS) Fixed an issue where a VM could be started twice if the home screen's toolbar is used leading to data corruption (#4166)</li>
+<li>(macOS 13+) Boot into recoveryOS (to disable SIP, etc) by right clicking on the VM and selecting &quot;Run in recovery...&quot; (#3526)</li>
+<li>(macOS 13+) Option in VM settings to enable Rosetta for x86_64 emulation (#4100)</li>
+<li>(macOS 13+) Option in VM settings to enable clipboard sharing (SPICE support needed on the guest) (#4121)</li>
+<li>(macOS 13+) GUI display for Linux VMs (#4120)</li>
+<li>(macOS 13+) Add removable drives, will show up as USB mass storage</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h3>Known Issues</h3>
+<ul>
+<li>Automation URL commands currently do not work completely</li>
+<li>(macOS) GUI Linux boot may not be compatible with all distros. Ubuntu Server 22.04 does not install.</li>
+</ul>
+<h2>Installation</h2>
+<p><strong>iOS</strong>: Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.
+<strong>macOS</strong>: Download &quot;UTM.dmg&quot; below and copy the contents to your <code>/Applications</code> directory.</p>
+<p>| File | Description | Installation | JIT | Hypervisor | USB |
+|------|------------|--------------|-----|-----------|-----|
+| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
+| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
+| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
+| UTM.HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | No | Yes(1) | Yes |
+| UTM.SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |</p>
+<ol>
+<li>Hypervisor on iOS requires an M1 iPad.</li>
+<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
+</ol>
+</div>
+            </div><div class="changelog_entry">
                 <h4>4.0.3</h4>
                 <div class="md_view"><p><strong>Remember to back up your VMs before running a beta release of UTM!</strong></p>
 <h2>Installation</h2>
@@ -1849,31 +2017,9 @@
 </ul>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.1.2</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>Changes</h2>
-<ul>
-<li>Fixed QEMU issue causing crash running x86 Windows on M1 (thanks @kwhr0) (#2630)</li>
-<li>Fixed crash due to bad drive id (#2614)</li>
-<li>Properly delete imported/created drives on a new VM when canceled out (#2576)</li>
-<li>Fixed bad CPU core configuration on SPARC (#2651)</li>
-<li>Improvement to zh-Hant translation (thanks @pan93412) (#2595)</li>
-<li>Fixed an unusable CD drive always showing up in Windows x86 (thanks @conath) (#2538)</li>
-<li>(macOS) Fixed an issue with auto resolution changing with SPICE installed (#2587)</li>
-<li>(macOS) Fixed a crash when starting a VM after shutting down (#2622)</li>
-<li>(macOS) New global setting to (try to) only use performance cores: when set, if a VM does not manually specify a core count, instead of using the maximum number of cores on the system, UTM will use only the number of performance cores. Note this does not guarantee only the performance cores are used but only that the number of cores seen by the guest is lower. (#2557)</li>
-<li>(macOS) Fixed screen tearing/glitches on Windows and improved framebuffer rendering performance (#2569)</li>
-<li>(macOS) When SPICE tools are not properly set up, attempting to resize the window will now &quot;revert&quot; the size if the resolution does not get changed by the guest.</li>
-<li>(iOS) Fixed crash when launching with <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or other imobiledevice tools</li>
-<li>(iOS) Fixed Cydia install on iOS 11 (#2618)</li>
-</ul>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-09-05</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-09-10</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
