@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at https://getutm.app/</p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">4.1.1</div>
+                    <div class="text">4.1.2</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,82 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>4.1.2</h4>
+                <div class="md_view"><h2>Highlights</h2>
+<ul>
+<li><strong>QEMU backend updated to v7.1.0</strong></li>
+<li>(iOS) <strong>TrollStore build (UTM.HV.ipa) now supports JIT</strong>. Additionally, there is now in-app settings.</li>
+<li>(macOS) <strong>AppleScript (OSA) support and CLI interface</strong>. You can control parts of UTM through the OSA interface. Currently there is support for listing VMs as well as start/stop/suspend operations and the ability to print out the guest serial port connections. More functionality will be added in the future. A command line application is also provided in <code>UTM.app/Contents/MacOS/utmctl</code> (which you can symlink to <code>/usr/local/bin/utmctl</code> if desired) that can be used for automation tasks without needing to learn AppleScript.</li>
+<li>(macOS 13+) <strong>Menu bar extra</strong>. You can enable the menu bar extra icon in Preferences (Cmd+,) as well as disable the dock icon. The menu bar extra provides a minimal interface to start/stop/suspend VMs and is useful when paired with headless VMs (a VM that does not have any display or terminal console installed).</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li><strong>iOS 14 and macOS 11.3</strong> are the minimum supported systems for UTM v4.x. Please use UTM v3.x for support down to iOS 11 and macOS 11</li>
+<li>The configuration backend has been massively rewritten. <strong>Please backup all VMs prior to updating as you will not be able to re-open VMs saved by UTM v4 on older versions of UTM if you decide to downgrade.</strong></li>
+</ul>
+<h2>Changes (v4.1.2)</h2>
+<ul>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>Localization: updated Japanese (thanks @MMP0 and @skyarrow87)</li>
+<li>Localization: updated Chinese Simplified (thanks @changanmoon)</li>
+<li>(iOS) Fix new VM wizard not appearing on &lt; iOS 14.5 (#4776)</li>
+<li>(macOS) Implement OSA interface for AppleScript</li>
+<li>(macOS) Introduce a CLI application (<code>UTM.app/Contents/MacOS/utmctl</code>) that wraps around the OSA interface for automation</li>
+<li>(macOS 13+) New settings option to enable a menu bar extra icon for controlling VMs</li>
+<li>(macOS 13+) New settings option to disable the dock icon</li>
+<li>(macOS) Fix various alignment issues in settings (#4596) (thanks @JezerM)</li>
+<li>(macOS) Fix a crash when the pasteboard is updated (#4745)</li>
+<li>(macOS) Support custom resolutions for Apple Virtualization VMs</li>
+<li>(macOS) Fixed a UI freeze when canceling out of the settings for an Apple Virtualization VM</li>
+</ul>
+<h2>Changes (v4.1.1)</h2>
+<ul>
+<li>Fixed launching SPARC machines (#4575)</li>
+<li>Fixed an error when attempting to save a VM where one of its removable drives is linked to a file that has been deleted</li>
+<li>Fixed IPSW/.utm download failing when the device goes to sleep (the download should resume after wake up)</li>
+<li>Restored scroll bars when system is set to always show scroll bars. Added a new SwiftUI crash workaround thanks to @evelyneee.</li>
+<li>Display all sizes in binary (MiB/GiB) mode in order to be consistent (#4396)</li>
+<li>Localization: added Polish (thanks @mavethee)</li>
+<li>Localization: updated Japanese (thanks @MMP0)</li>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>Localization: updated French (thanks @FRtranslator)</li>
+<li>(macOS) Fixed the port forward UI on macOS 11 and introduce a new port forward UI for macOS 12+ (#4690)</li>
+<li>(macOS) Fixed &quot;This virtual machine cannot be run on this machine.&quot; error on a newly created Apple VM (#4595)</li>
+<li>(macOS) Added new 21:9 widescreen resolution for Apple VMs (thanks @Tandolf)</li>
+<li>(macOS) Added a clarifying message about shared directory support on older macOS guests (#4594)</li>
+<li>(macOS) Added new shutdown options (software request and force kill) which can be toggled by long pressing the power button in the VM window (#4001)</li>
+<li>(macOS) Added a confirmation dialog when deleting a drive (#4687)</li>
+</ul>
+<h2>Changes (v4.1.0)</h2>
+<ul>
+<li>Updated QEMU to v7.1.0</li>
+<li>Updated ANGLE and virglrenderer to latest commit</li>
+<li>Fixed an issue where user override of machine property settings was not applied properly</li>
+<li>Localization: updated Japanese (thanks @MMP0)</li>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>(iOS) Added in-app settings popover which synchronizes with the Settings app (useful for TrollStore installs where the Settings app page is inaccessible) (#4446)</li>
+<li>(iOS) TrollStore: support JIT without needing a separate JIT enabler (thanks @PojavLauncherTeam for the idea)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h2>Installation</h2>
+<ul>
+<li><a href="https://docs.getutm.app/installation/ios/">iOS</a></li>
+<li><a href="https://docs.getutm.app/installation/macos/">macOS</a></li>
+</ul>
+<p>| File | Description | Installation | JIT | Hypervisor | USB |
+|------|------------|--------------|-----|-----------|-----|
+| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
+| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
+| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
+| UTM.HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | Yes | Yes(1) | Yes |
+| UTM.SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |</p>
+<ol>
+<li>Hypervisor on iOS requires an M1 iPad.</li>
+<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
+</ol>
+</div>
+            </div><div class="changelog_entry">
                 <h4>4.1.1</h4>
                 <div class="md_view"><h2>Highlights</h2>
 <ul>
@@ -2922,39 +2998,9 @@
 <h2>Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.4.0</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>New Features (Summary)</h2>
-<ul>
-<li>Improved support for SPARC and S390x</li>
-<li>Updated macOS icon thanks to a real designer (@JackHinkle)</li>
-</ul>
-<h2>Changes</h2>
-<ul>
-<li>Fixed crash when trying to pause a GL accelerated VM (#3207)</li>
-<li>Configuration should reset more settings when changing architecture</li>
-<li>Fixed UTM exit when deleting a VM</li>
-<li>Fixed an incorrect mapping of removable drives causing an error &quot;device not removable&quot; when drives are moved around.</li>
-<li>On ARM64 virt systems, use the virtual USB 3.0 bus for the virtual DVD drive, should improve read times and fix some Windows installer issues (#3194) (thanks @conath)</li>
-<li>Fixed a crash booting OpenBSD (#3197) (thanks @agraf)</li>
-<li>Fixed a crash caused by a race condition when an error occurs during VM launch</li>
-<li>(macOS) Keyboard mapping accidentally swapped left/right Cmd and Option (#3175) (thanks @zeldin)</li>
-<li>(macOS) Removed &quot;beep&quot; when pressing Cmd+key while mouse is not captured (#3217)</li>
-<li>(macOS) Pass Ctrl+Tab to VM even when not captured because it is a common shortcut. VoiceOver users can use VO+Arrow to navigate.</li>
-<li>(macOS) Unhide cursor when alert prompt shows up</li>
-<li>(macOS) Fixed crash when trying to share a VM (#3208)</li>
-</ul>
-<h2>Known Issues</h2>
-<ul>
-<li>VM sometimes randomly freezes (#3130, #301)</li>
-</ul>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-12-04</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-12-16</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
