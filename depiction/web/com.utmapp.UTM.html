@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">4.1.2</div>
+                    <div class="text">4.1.3</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,109 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>4.1.3</h4>
+                <div class="md_view"><h2>Highlights</h2>
+<ul>
+<li><strong>QEMU backend updated to v7.2.0</strong>. Also updated usbredir (0.13.0), virglrenderer (latest commit), ANGLE (latest commit)</li>
+<li><strong>Improved renderer backend</strong>. Lots of bug fixes and stability improvements to GPU accelerated Linux VMs (most common crashes when GPU acceleration is enabled should be gone now). New option to change the renderer backend to ANGLE Metal (which is also the default for iOS now) and limit FPS.</li>
+<li>(iOS) <strong>TrollStore build (UTM.HV.ipa) now supports JIT</strong>. Additionally, there is now in-app settings.</li>
+<li>(macOS) <strong>AppleScript (OSA) support and CLI interface</strong>. You can control parts of UTM through the OSA interface. Currently there is support for listing VMs as well as start/stop/suspend operations and the ability to print out the guest serial port connections. More functionality will be added in the future. A command line application is also provided in <code>UTM.app/Contents/MacOS/utmctl</code> (which you can symlink to <code>/usr/local/bin/utmctl</code> if desired) that can be used for automation tasks without needing to learn AppleScript.</li>
+<li>(macOS 13+) <strong>Menu bar extra</strong>. You can enable the menu bar extra icon in Preferences (Cmd+,) as well as disable the dock icon. The menu bar extra provides a minimal interface to start/stop/suspend VMs and is useful when paired with headless VMs (a VM that does not have any display or terminal console installed).</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li><strong>iOS 14 and macOS 11.3</strong> are the minimum supported systems for UTM v4.x. Please use UTM v3.x for support down to iOS 11 and macOS 11</li>
+<li>The configuration backend has been massively rewritten. <strong>Please backup all VMs prior to updating as you will not be able to re-open VMs saved by UTM v4 on older versions of UTM if you decide to downgrade.</strong></li>
+</ul>
+<h2>Changes (v4.1.3)</h2>
+<ul>
+<li>Updated QEMU to v7.2.0</li>
+<li>Reworked CocoaSpice renderer to respond faster to GL updates from the guest, should improve frame pacing on GL supported Linux VMs</li>
+<li>Added global setting to change renderer backend, introduce ANGLE Metal as an option (and also the new default for iOS)</li>
+<li>Added global setting to limit FPS which can be used to improve frame pacing for a smoother rendering experience</li>
+<li>Settings: clearly show if the current display hardware supports GPU acceleration</li>
+<li>Wizard: GPU acceleration is now enabled by default when Linux is selected as the operating system</li>
+<li>Fixed crash due to an error with <code>GL_DRAW_COOKIE_INVALID</code> (#4722)</li>
+<li>Fixed deadlock on startup caused by gstosxaudio (#2364)</li>
+<li>Fixed memory leak when GPU acceleration is enabled (#4449)</li>
+<li>Fixed crash in <code>-[MTLResourceList releaseAllObjectsAndReset]</code> (#3519)</li>
+<li>Fixed Mesa issue causing some GNOME desktop to freeze when GPU acceleration is enabled</li>
+<li>Fixed incorrect logic when cloning a VM (#4815)</li>
+<li>Fixed some thread scheduling warning (#4352)</li>
+<li>Localization: updated French (thanks @FRtranslator)</li>
+<li>(iOS) TrollStore build: use <code>com.apple.private.security.no-sandbox</code> instead of <code>com.apple.private.security.no-container</code> on recommendation of other devs and to align with how other apps perform JIT.</li>
+<li>(iOS) Fixed blank screen when choosing &quot;Open&quot; in the wizard (#4842)</li>
+<li>(iOS) Fixed toolbar not auto-hiding before first interaction (#4844)</li>
+<li>(macOS) New design for global settings (Cmd+,) which better organizes the settings</li>
+<li>(macOS) utmctl: Fixed crash when <code>utmctl help attach</code> runs (#4817)</li>
+<li>(macOS) utmctl: Fixed <code>utmctl stop</code> with <code>--request</code> and <code>kill</code> (#4850)</li>
+</ul>
+<h2>Changes (v4.1.2)</h2>
+<ul>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>Localization: updated Japanese (thanks @MMP0 and @skyarrow87)</li>
+<li>Localization: updated Chinese Simplified (thanks @changanmoon)</li>
+<li>(iOS) Fix new VM wizard not appearing on &lt; iOS 14.5 (#4776)</li>
+<li>(macOS) Implement OSA interface for AppleScript</li>
+<li>(macOS) Introduce a CLI application (<code>UTM.app/Contents/MacOS/utmctl</code>) that wraps around the OSA interface for automation</li>
+<li>(macOS 13+) New settings option to enable a menu bar extra icon for controlling VMs</li>
+<li>(macOS 13+) New settings option to disable the dock icon</li>
+<li>(macOS) Fix various alignment issues in settings (#4596) (thanks @JezerM)</li>
+<li>(macOS) Fix a crash when the pasteboard is updated (#4745)</li>
+<li>(macOS) Support custom resolutions for Apple Virtualization VMs</li>
+<li>(macOS) Fixed a UI freeze when canceling out of the settings for an Apple Virtualization VM</li>
+</ul>
+<h2>Changes (v4.1.1)</h2>
+<ul>
+<li>Fixed launching SPARC machines (#4575)</li>
+<li>Fixed an error when attempting to save a VM where one of its removable drives is linked to a file that has been deleted</li>
+<li>Fixed IPSW/.utm download failing when the device goes to sleep (the download should resume after wake up)</li>
+<li>Restored scroll bars when system is set to always show scroll bars. Added a new SwiftUI crash workaround thanks to @evelyneee.</li>
+<li>Display all sizes in binary (MiB/GiB) mode in order to be consistent (#4396)</li>
+<li>Localization: added Polish (thanks @mavethee)</li>
+<li>Localization: updated Japanese (thanks @MMP0)</li>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>Localization: updated French (thanks @FRtranslator)</li>
+<li>(macOS) Fixed the port forward UI on macOS 11 and introduce a new port forward UI for macOS 12+ (#4690)</li>
+<li>(macOS) Fixed &quot;This virtual machine cannot be run on this machine.&quot; error on a newly created Apple VM (#4595)</li>
+<li>(macOS) Added new 21:9 widescreen resolution for Apple VMs (thanks @Tandolf)</li>
+<li>(macOS) Added a clarifying message about shared directory support on older macOS guests (#4594)</li>
+<li>(macOS) Added new shutdown options (software request and force kill) which can be toggled by long pressing the power button in the VM window (#4001)</li>
+<li>(macOS) Added a confirmation dialog when deleting a drive (#4687)</li>
+</ul>
+<h2>Changes (v4.1.0)</h2>
+<ul>
+<li>Updated QEMU to v7.1.0</li>
+<li>Updated ANGLE and virglrenderer to latest commit</li>
+<li>Fixed an issue where user override of machine property settings was not applied properly</li>
+<li>Localization: updated Japanese (thanks @MMP0)</li>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>(iOS) Added in-app settings popover which synchronizes with the Settings app (useful for TrollStore installs where the Settings app page is inaccessible) (#4446)</li>
+<li>(iOS) TrollStore: support JIT without needing a separate JIT enabler (thanks @PojavLauncherTeam for the idea)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<ul>
+<li><strong>UTM SE is currently not working!</strong> (#4848)</li>
+</ul>
+<h2>Installation</h2>
+<ul>
+<li><a href="https://docs.getutm.app/installation/ios/">iOS</a></li>
+<li><a href="https://docs.getutm.app/installation/macos/">macOS</a></li>
+</ul>
+<p>| File | Description | Installation | JIT | Hypervisor | USB |
+|------|------------|--------------|-----|-----------|-----|
+| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
+| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
+| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
+| UTM.HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | Yes | Yes(1) | Yes |
+| UTM.SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |</p>
+<ol>
+<li>Hypervisor on iOS requires an M1 iPad.</li>
+<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
+</ol>
+</div>
+            </div><div class="changelog_entry">
                 <h4>4.1.2</h4>
                 <div class="md_view"><h2>Highlights</h2>
 <ul>
@@ -2970,37 +3073,9 @@
 <h2>Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>2.4.1</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>Notes</h2>
-<p><strong>Note that some changes require updates to your VM configuration so please read this part carefully.</strong></p>
-<ul>
-<li>Cursor disappearing on Windows 10/11 has been fixed with an updated VirtIO GPU driver. Additionally, dynamic resolution (auto-change resolution when VM window is resized) and more fixed resolutions (matching all the screen resolutions of the latest Mac computers) were added to the driver. This requires you to download the latest SPICE tools ISO from https://mac.getutm.app/support/ and run the installer again (or manually updating your GPU driver from the ISO if you know how).</li>
-<li>In v2.4.0, newly created Q35 and PC machine (x86 and x86_64) defaulted to the <code>Skylake-Client</code> CPU model. Subsequently, it was discovered that the change caused performance regressions. v2.4.1 reverted the default CPU model to <code>Default</code> but if you created a new Q35/PC VM in v2.4.0, it is recommended that you manually change the CPU in System settings to <code>Default</code>.</li>
-<li>Since v1.0.0, UTM used the RTL8139 network card as the default for Q35 VMs (x86 and x86_64) and Virt VMs (ARM64). There is a bug in the device implementation that causes the Windows driver to freeze the system and many users reported Windows Installer freezing as well as random freezes through normal use. In v2.4.0, we changed the default network card for Virt machines to <code>virtio-net-pci</code> and in v2.4.1, we changed the default network card for Q35 machines to E1000. However, this change only applies to newly created VMs, and any existing VMs may still suffer from the random freeze issues. It is recommended that you change your network card to <code>e1000</code> for Q35 machines and <code>virtio-net-pci</code> for Virt machines. Windows 7 and above should have the Intel E1000 network card drivers already installed, but the VirtIO Network card requires drivers in the SPICE tools ISO from https://mac.getutm.app/support/ (if you previously installed this, you should have the drivers already on your system).</li>
-<li>(macOS) Since v2.1.2, UTM provided an option (Cmd+,) to &quot;Use only performance cores by default&quot; which defaulted to off. When on, any VM which does not have a manually configured CPU count (&gt; 0) will set the CPU count to the number of performance cores on the system. In v2.4.1, we have made this option on by default which means if you previously have not modified this option, then it will now be on. If you turned the option on, it should not change and if you turned the option on and later off again, it should still be off. The reason for this change was because users may not be aware of this option which can result in degraded performance when left off and we believe the default should reflect the best possible performance. Note that as before, if you manually set a VM's CPU count &gt; 0, then this option does not change anything.</li>
-</ul>
-<h2>Changes</h2>
-<ul>
-<li>(iOS) Integrated AltKit for automatically triggering AltJIT when installed with AltStore (1.5b2+) and AltServer (1.5b8+) (thanks @JoeMatt)</li>
-<li>(iOS) Fixed sandbox issues (cannot select file) on jailbroken devices (thanks @Halo-Michael)</li>
-<li>Improved zh-Hans translation (thanks @js-john)</li>
-<li>Fixed inverted mouse cursor colour in Windows</li>
-<li>New VMs will only use PCores by default (unless manually overridden with Preferences or per-VM config), this also fixes #3180</li>
-<li>Changed default Q35 audio card to intel-hda</li>
-<li>Changed default Q35 network card to E1000 and Virt network card to virtio-net (#3130)</li>
-<li>Removed default CPU for Q35 and PC configurations because the Skylake-Client CPU resulted in performance regression (#3249)</li>
-<li>Fixed downloadVM URL action when the ZIP name collides with the .utm name (thanks @conath)</li>
-<li>Fixed a race condition leading to crash when a VM is shut down suddenly</li>
-</ul>
-<h2>Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-12-16</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2022-12-28</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
