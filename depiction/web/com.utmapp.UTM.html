@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">4.1.3</div>
+                    <div class="text">4.1.4</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,121 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>4.1.4</h4>
+                <div class="md_view"><p>🎊Happy New Year!🎊</p>
+<h2>Highlights</h2>
+<ul>
+<li><strong>QEMU backend updated to v7.2.0</strong>. Also updated usbredir (0.13.0), virglrenderer (latest commit), ANGLE (latest commit)</li>
+<li><strong>Improved renderer backend</strong>. Lots of bug fixes and stability improvements to GPU accelerated Linux VMs (most common crashes when GPU acceleration is enabled should be gone now). New option to change the renderer backend to ANGLE Metal and limit FPS (in Preferences). Switching to Metal is highly recommended.</li>
+<li>(iOS) <strong>TrollStore build (UTM.HV.ipa) now supports JIT</strong>. Additionally, there is now in-app settings.</li>
+<li>(iOS) <strong>TrollStore build now supports TSO (Total Store Ordering)</strong>. TSO is used by Rosetta on the Mac to improve x86_64 emulation on ARM64. It can now be used on M1 iPads with QEMU to improve performance of FEX-Emu or a patched Rosetta. Note that it is recommended that TSO be disabled if you do not need to emulate x86_64 because it can reduce performance of other tasks.</li>
+<li>(macOS) <strong>AppleScript (OSA) support and CLI interface</strong>. You can control parts of UTM through the OSA interface. Currently there is support for listing VMs as well as start/stop/suspend operations and the ability to print out the guest serial port connections. More functionality will be added in the future. A command line application is also provided in <code>UTM.app/Contents/MacOS/utmctl</code> (which you can symlink to <code>/usr/local/bin/utmctl</code> if desired) that can be used for automation tasks without needing to learn AppleScript.</li>
+<li>(macOS 13+) <strong>Menu bar extra</strong>. You can enable the menu bar extra icon in Preferences (Cmd+,) as well as disable the dock icon. The menu bar extra provides a minimal interface to start/stop/suspend VMs and is useful when paired with headless VMs (a VM that does not have any display or terminal console installed).</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li><strong>iOS 14 and macOS 11.3</strong> are the minimum supported systems for UTM v4.x. Please use UTM v3.x for support down to iOS 11 and macOS 11</li>
+<li>The configuration backend has been massively rewritten. <strong>Please backup all VMs prior to updating as you will not be able to re-open VMs saved by UTM v4 on older versions of UTM if you decide to downgrade.</strong></li>
+</ul>
+<h2>Changes (v4.1.4)</h2>
+<ul>
+<li>Fixed slow rendering of GRUB and EFI menus</li>
+<li>Introduced new optimizations to renderer: bliting done on GPU instead of CPU now (for non-GL rendering), guest draw calls that are faster than the monitor refresh rate are now consolidated before drawing at vblank, rendering of multiple displays can happen concurrently now</li>
+<li>Fixed rendering to multiple displays on the new renderer backend</li>
+<li>Fixed an issue in QEMU where the vmnet backend uses 100% of CPU when the VM is suspended (#4803)</li>
+<li>(iOS) TrollStore: Fixed JIT enable in the HV builds</li>
+<li>(iOS) TrollStore: New option to enable TSO (Total Store Ordering) in QEMU settings (see Highlights for more details)</li>
+<li>(iOS) Restored the default renderer backend to GL. This was changed in v4.1.3 because Metal is faster but the new backend can introduce regressions such as <code>glxgears</code> not working (#4856). As a result, the new backend is now opt-in but is still highly recommended.</li>
+<li>(iOS) Fixed crash when changing VM settings on iOS 14 (#4864)</li>
+<li>(iOS) Fixed crash when starting a VM with UTM SE (#4848)</li>
+<li>(macOS) A tooltip will now reveal why suspend functionality is disabled</li>
+</ul>
+<h2>Changes (v4.1.3)</h2>
+<ul>
+<li>Updated QEMU to v7.2.0</li>
+<li>Reworked CocoaSpice renderer to respond faster to GL updates from the guest, should improve frame pacing on GL supported Linux VMs</li>
+<li>Added global setting to change renderer backend, introduce ANGLE Metal as an option (and also the new default for iOS)</li>
+<li>Added global setting to limit FPS which can be used to improve frame pacing for a smoother rendering experience</li>
+<li>Settings: clearly show if the current display hardware supports GPU acceleration</li>
+<li>Wizard: GPU acceleration is now enabled by default when Linux is selected as the operating system</li>
+<li>Fixed crash due to an error with <code>GL_DRAW_COOKIE_INVALID</code> (#4722)</li>
+<li>Fixed deadlock on startup caused by gstosxaudio (#2364)</li>
+<li>Fixed memory leak when GPU acceleration is enabled (#4449)</li>
+<li>Fixed crash in <code>-[MTLResourceList releaseAllObjectsAndReset]</code> (#3519)</li>
+<li>Fixed Mesa issue causing some GNOME desktop to freeze when GPU acceleration is enabled</li>
+<li>Fixed incorrect logic when cloning a VM (#4815)</li>
+<li>Fixed some thread scheduling warning (#4352)</li>
+<li>Localization: updated French (thanks @FRtranslator)</li>
+<li>(iOS) TrollStore build: use <code>com.apple.private.security.no-sandbox</code> instead of <code>com.apple.private.security.no-container</code> on recommendation of other devs and to align with how other apps perform JIT.</li>
+<li>(iOS) Fixed blank screen when choosing &quot;Open&quot; in the wizard (#4842)</li>
+<li>(iOS) Fixed toolbar not auto-hiding before first interaction (#4844)</li>
+<li>(macOS) New design for global settings (Cmd+,) which better organizes the settings</li>
+<li>(macOS) utmctl: Fixed crash when <code>utmctl help attach</code> runs (#4817)</li>
+<li>(macOS) utmctl: Fixed <code>utmctl stop</code> with <code>--request</code> and <code>kill</code> (#4850)</li>
+</ul>
+<h2>Changes (v4.1.2)</h2>
+<ul>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>Localization: updated Japanese (thanks @MMP0 and @skyarrow87)</li>
+<li>Localization: updated Chinese Simplified (thanks @changanmoon)</li>
+<li>(iOS) Fix new VM wizard not appearing on &lt; iOS 14.5 (#4776)</li>
+<li>(macOS) Implement OSA interface for AppleScript</li>
+<li>(macOS) Introduce a CLI application (<code>UTM.app/Contents/MacOS/utmctl</code>) that wraps around the OSA interface for automation</li>
+<li>(macOS 13+) New settings option to enable a menu bar extra icon for controlling VMs</li>
+<li>(macOS 13+) New settings option to disable the dock icon</li>
+<li>(macOS) Fix various alignment issues in settings (#4596) (thanks @JezerM)</li>
+<li>(macOS) Fix a crash when the pasteboard is updated (#4745)</li>
+<li>(macOS) Support custom resolutions for Apple Virtualization VMs</li>
+<li>(macOS) Fixed a UI freeze when canceling out of the settings for an Apple Virtualization VM</li>
+</ul>
+<h2>Changes (v4.1.1)</h2>
+<ul>
+<li>Fixed launching SPARC machines (#4575)</li>
+<li>Fixed an error when attempting to save a VM where one of its removable drives is linked to a file that has been deleted</li>
+<li>Fixed IPSW/.utm download failing when the device goes to sleep (the download should resume after wake up)</li>
+<li>Restored scroll bars when system is set to always show scroll bars. Added a new SwiftUI crash workaround thanks to @evelyneee.</li>
+<li>Display all sizes in binary (MiB/GiB) mode in order to be consistent (#4396)</li>
+<li>Localization: added Polish (thanks @mavethee)</li>
+<li>Localization: updated Japanese (thanks @MMP0)</li>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>Localization: updated French (thanks @FRtranslator)</li>
+<li>(macOS) Fixed the port forward UI on macOS 11 and introduce a new port forward UI for macOS 12+ (#4690)</li>
+<li>(macOS) Fixed &quot;This virtual machine cannot be run on this machine.&quot; error on a newly created Apple VM (#4595)</li>
+<li>(macOS) Added new 21:9 widescreen resolution for Apple VMs (thanks @Tandolf)</li>
+<li>(macOS) Added a clarifying message about shared directory support on older macOS guests (#4594)</li>
+<li>(macOS) Added new shutdown options (software request and force kill) which can be toggled by long pressing the power button in the VM window (#4001)</li>
+<li>(macOS) Added a confirmation dialog when deleting a drive (#4687)</li>
+</ul>
+<h2>Changes (v4.1.0)</h2>
+<ul>
+<li>Updated QEMU to v7.1.0</li>
+<li>Updated ANGLE and virglrenderer to latest commit</li>
+<li>Fixed an issue where user override of machine property settings was not applied properly</li>
+<li>Localization: updated Japanese (thanks @MMP0)</li>
+<li>Localization: updated Spanish (Latin America) (thanks @JezerM)</li>
+<li>(iOS) Added in-app settings popover which synchronizes with the Settings app (useful for TrollStore installs where the Settings app page is inaccessible) (#4446)</li>
+<li>(iOS) TrollStore: support JIT without needing a separate JIT enabler (thanks @PojavLauncherTeam for the idea)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h2>Installation</h2>
+<ul>
+<li><a href="https://docs.getutm.app/installation/ios/">iOS</a></li>
+<li><a href="https://docs.getutm.app/installation/macos/">macOS</a></li>
+</ul>
+<p>| File | Description | Installation | JIT | Hypervisor | USB |
+|------|------------|--------------|-----|-----------|-----|
+| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
+| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
+| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
+| UTM.HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | Yes | Yes(1) | Yes |
+| UTM.SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |</p>
+<ol>
+<li>Hypervisor on iOS requires an M1 iPad.</li>
+<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
+</ol>
+</div>
+            </div><div class="changelog_entry">
                 <h4>4.1.3</h4>
                 <div class="md_view"><h2>Highlights</h2>
 <ul>
@@ -3037,45 +3152,9 @@
 <h2>Issues</h2>
 <p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
 </div>
-            </div><div class="changelog_entry">
-                <h4>3.0.0</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>Highlights</h2>
-<ul>
-<li><strong>Wizard for VM creation</strong>: Easily create a new VM with the correct default settings with a guided step-by-step wizard. Preview: https://twitter.com/UTMapp/status/1475606159428046854</li>
-<li><strong>QEMU v6.2.0</strong>: Updated QEMU backend to the latest release. Full changelog: https://wiki.qemu.org/ChangeLog/6.2</li>
-<li>(iOS 13+) <strong>New toolbar</strong>: The new toolbar is much more compact and friendly for smaller displays. It is also now movable and does not interfere with the iOS 15 multitasking button on the top center of the screen. Preview: https://twitter.com/UTMapp/status/1407350167494443023</li>
-<li>(macOS 12+, ARM64) <strong>Virtualize macOS 12</strong>: New integration with Apple's Virtualization.framework backend allows native hardware accelerated virtualization of macOS 12 (supporting both CPU and GPU virtualization). UTM can also download the latest macOS IPSW directly from Apple. (This is only supported on macOS 12+ running on an ARM64 Mac.)</li>
-<li>(macOS 11+) <strong>Virtualize Linux with Apple backend</strong>: You now have the option to use Apple's Virtualization.framework to virtualize Linux. Note that while there are some performance benefits, it is still recommended to use the QEMU backend as it is more stable, has more device support (including graphical display), and is easier to configure.</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>The default CPU for ARM64 virtual machine has changed from <code>cortex-a72</code> to <code>default</code>. This is the recommended option and you should change your existing VMs to use it. When using virtualization on M1(X) macOS, the <code>cortex-a72</code> CPU is known to have compatibility issues which causes the VM to sometimes freeze (including during Windows install). <code>default</code> will use the <code>host</code> CPU model when virtualization is used and <code>cortex-a72</code> when emulation is used.</li>
-<li>The GL hardware acceleration support is now marked experimental to highlight that it is not stable. It is also no longer the default option. If you are experiencing lots of crashes, make sure that you chose a display hardware that is <strong>not</strong> marked as &quot;GPU Supported&quot;.</li>
-</ul>
-<h2>Changes (v3.0.0)</h2>
-<ul>
-<li>Added VM creation wizard</li>
-<li>Updated QEMU to v6.2.0</li>
-<li>Updated ANGLE to latest commit</li>
-<li>Updated virglrenderer to latest commit (this may fix #2743)</li>
-<li>Added <code>default</code> and <code>host</code> CPU option for ARM64 virtual machines. This will be the default for newly created VMs.</li>
-<li>The downloader will no longer perform CRC checks on the ZIP file and this will significantly speed up extraction.</li>
-<li>(iOS 13+) Redesigned toolbar (#496)</li>
-<li>(macOS) Redesigned VM settings</li>
-<li>(macOS) Fix crash moving drives (#3117)</li>
-<li>(macOS) Make HVF per-VM configurable (#2493)</li>
-<li>(macOS) Add Apple Virtualization.framework backend</li>
-<li>(macOS) New Terminal frontend with SwiftTerm, currently only used with Apple backend on macOS</li>
-<li>(macOS) Apple Virtualization supports virtual serial port through PTY device</li>
-</ul>
-<h2>Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2022-12-28</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2023-01-02</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
