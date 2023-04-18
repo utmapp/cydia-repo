@@ -33,7 +33,7 @@
         </div>
         <div class="tweak_info">
             <p class="compatibility"><b>Compatibility:</b> This package is compatible with iOS 11.0.</p>
-            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"></div>
+            <div class="scroll_view"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen3.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen5.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen2.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen6.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen4.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen0.png"><img class="img_card" src="../../assets/com.utmapp.UTM/screenshot/screen1.png"></div>
             <div class="md_view">
                 <p><p>UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad. More information at https://getutm.app/</p>
 <p>This package <strong>requires</strong> AppSync Unified from Karen's Repo. Make sure to add <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://cydia.akemi.ai/">https://cydia.akemi.ai/</a> to your repository list before installing!</p>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">4.2.2</div>
+                    <div class="text">4.2.3</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,99 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>4.2.3</h4>
+                <div class="md_view"><h2>Highlights</h2>
+<ul>
+<li>(iOS SE) <strong>TCTI backend updates</strong>. Vector instruction support can improve the performance of certain workloads.</li>
+<li>(macOS) <strong>Guest interface commands</strong>. New commands accessible from the scripting interface as well as the command line interface (utmctl) can be used to read/write files, execute commands, and list IP addresses. These commands require QEMU guest agent to be installed.</li>
+<li>(macOS) <strong>Scripting interface additions</strong>. The scripting interface now allows for creation of a new VM, configuration an existing VM, changing drive image, and more. See <a href="https://docs.getutm.app/scripting/reference/">this page</a> for more details and <a href="https://docs.getutm.app/scripting/cheat-sheet/">the cheat sheet</a> for example usage.</li>
+<li>(macOS) <strong>External read-write drive images</strong>. In QEMU, if a supported drive interface is selected (USB, Floppy, etc) along with an image type of Disk, the drive can now be marked as either read-only or read-write. This can be used as an alternative way of transferring data to and from the VM when the guest does not support SPICE or VirtFS. In AVF, support for read-write images has be fixed as well (when &quot;read only&quot; is unchecked in the settings).</li>
+</ul>
+<h2>Notes</h2>
+<ul>
+<li><strong>iOS 14 and macOS 11.3</strong> are the minimum supported systems for UTM v4.x. Please use UTM v3.x for support down to iOS 11 and macOS 11</li>
+</ul>
+<h2>Changes (v4.2.3)</h2>
+<ul>
+<li>Added support for read-write removable devices on supported interfaces (USB, Floppy, etc). To use this feature, set the image type to &quot;Disk&quot; and uncheck the &quot;Read Only?&quot; option in the drive settings. Note that you may have to eject and re-mount the drive image for effect to take place. (#5079)</li>
+<li>Removable USB devices will no longer show up as a CD drive if the image type is set to &quot;Disk&quot; (#5171)</li>
+<li>Reverted a change from v4.2.0 where virtio bus devices were removed (this broke some people's configurations) (#5137)</li>
+<li>Fixed an issue where when QEMU fails to start, subsequent attempts to start the VM will automatically fail</li>
+<li>Fixed an issue where due to a race, removable drives may not be mounted on start</li>
+<li>(iOS) Fixed an issue when the pointer is hovering over a toolbar button when the VM starts and subsequent clicks will toggle the button (#4843)</li>
+<li>(macOS) AVF: Fixed an issue where a removable drive that is not marked as read-only still gets marked as read-only after restarting UTM (when upgrading from a previous version, you must eject and re-mount the image for effect to take place) (#5170)</li>
+<li>(macOS) Fixed an issue where incorrect subnet parameters are generated for vmnet advanced settings (#5128)</li>
+<li>(macOS) CLI: Added a new <code>clone</code> command (#5004)</li>
+</ul>
+<h2>Changes (v4.2.2)</h2>
+<ul>
+<li>Fixed an issue where a VM that is moved manually (e.g. with Finder) cannot be started (#5121)</li>
+<li>Fixed an issue where the cursor disappears after resuming a suspended VM (#4665)</li>
+<li>(macOS) Scripting: Add support for <code>make</code>, <code>duplicate</code>, and <code>delete</code> verbs on virtual machines</li>
+<li>(macOS) Scripting: Add support for modifying certain configuration options</li>
+<li>(macOS) Scripting: Removed virtual machine properties: <code>notes</code>, <code>machine</code>, <code>architecture</code>, <code>memory</code>. You should now use similar properties in the <code>configuration</code> record</li>
+<li>(macOS) Support changing the audio backend to CoreAudio and make CoreAudio the default (due to better latency and as a workaround to some crashes) (#5125)</li>
+</ul>
+<h2>Changes (v4.2.1)</h2>
+<ul>
+<li>QEMU: Support more than 8 cores for ARM64 targets (#4847)</li>
+<li>Synchronize time on resume when QEMU guest agent is installed which should fix clock drift issues (#3218)</li>
+<li>(iOS SE) Updated TCTI to latest branch from @ktemkin which has support for vector instructions (#4865)</li>
+<li>(macOS) Switch to emulated trackpad when guest+host are macOS 13+ (second attempt for #4636 and #4645)</li>
+<li>(macOS) Fixed the &quot;raw image&quot; checkbox when creating a new drive (#5100)</li>
+<li>(macOS) Add PC speaker sound device as an option. You can now add a second sound device on supported targets (x86_64/i386 PC based targets) and set the hardware to PC Speaker to emulate older motherboard speakers.</li>
+<li>(macOS) Scripting: new verbs &quot;open file&quot;, &quot;execute&quot;, and &quot;query ip&quot; which uses the QEMU guest agent to send commands to the guest. Use the Apple Script Editor's Open Dictionary tool for more information.</li>
+<li>(macOS) CLI: new commands &quot;file push&quot;, &quot;file pull&quot;, &quot;exec&quot;, and &quot;ip-address&quot;. See <code>utmctl help</code> for more information.</li>
+</ul>
+<h2>Changes (v4.2.0)</h2>
+<ul>
+<li>Updated virglrenderer to latest (27/02/2023) commit</li>
+<li>Automatically revert CPU to &quot;default&quot; if model is missing due to updated QEMU (#4910)</li>
+<li>~~Remove virtio-bus devices (they didn't work) (#4893)~~</li>
+<li>Support drag and drop to import an .utm package (#3599)</li>
+<li>Support copying sparse images across different volumes (thanks @ktprograms)</li>
+<li>Fixed tearing/performance issue for non-GL accelerated displays when under graphics load (#5049)</li>
+<li>Fixed error when importing a new drive with the same name as an existing drive (#5052)</li>
+<li>~~Fixed a crash on startup when multiple audio devices are plugged in (#4629)~~</li>
+<li>Wizard: Generate a working configuration for isapc (#4961)</li>
+<li>Settings: Use pretty labels for CPU flags (#4940)</li>
+<li>Translation: updated French (thanks @FRtranslator)</li>
+<li>Translation: added Czech readme (thanks @stinovlasmp)</li>
+<li>Translation: updated German (thanks @LostInCompilation and @afh)</li>
+<li>(macOS) Capture Mouse has been renamed to Capture Input and now will show the current capture status as a toggle button</li>
+<li>(macOS) Apple VMs (macOS guests) now support Capture Input which will capture the system keys. This used to be always on as the default. It is now off by default and the toggle button will enable it. (#4667)</li>
+<li>(macOS) Ignore missing links (drives, shared directory, etc) when saving an Apple VM</li>
+<li>(macOS) Preference: added option to force Num Lock on (#4625)</li>
+<li>(macOS) Preference: added option to prevent idle sleep while VM is running (#4963)</li>
+<li>(macOS) Preference: added option to suppress exit confirmation (#4989)</li>
+<li>(macOS) Fixed delete drive confirmation not showing up on latest macOS</li>
+<li>(macOS) Fixed disposable mode stuck on when a VM is run once in disposable mode (#5025)</li>
+<li>(macOS) Fixed an issue where a moved or deleted VM with a stopped window open will attempt to use the old path (#4985)</li>
+<li>(macOS) Fixed cursor scrolling and double click issues (#4636, #4645)</li>
+<li>(macOS) Support following a change in system default input or output audio device (#3488)</li>
+<li>(macOS) Support retry of macOS installation when it fails (the IPSW will not automatically be unlinked)</li>
+<li>(macOS) Support retaining of installer IPSW bookmark across VM moves and UTM restarts (#4938)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h2>Installation</h2>
+<ul>
+<li><a href="https://docs.getutm.app/installation/ios/">iOS</a></li>
+<li><a href="https://docs.getutm.app/installation/macos/">macOS</a></li>
+</ul>
+<p>| File | Description | Installation | JIT | Hypervisor | USB |
+|------|------------|--------------|-----|-----------|-----|
+| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
+| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
+| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
+| UTM.HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | Yes | Yes(1) | Yes |
+| UTM.SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |</p>
+<ol>
+<li>Hypervisor on iOS requires an M1 iPad.</li>
+<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
+</ol>
+</div>
+            </div><div class="changelog_entry">
                 <h4>4.2.2</h4>
                 <div class="md_view"><h2>Highlights</h2>
 <ul>
@@ -3229,65 +3322,9 @@
 <li>iOS 14 and below: There is a known issue crashing while running under taurine but not unc0ver. (#3628)</li>
 </ul>
 </div>
-            </div><div class="changelog_entry">
-                <h4>3.1.1</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p>Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.</p>
-<h2>Highlights</h2>
-<ul>
-<li>Wizard redesign (thanks @js-john)</li>
-<li>Store .utm bundles anywhere on disk (including on external drives) and import them as a shortcut. See notes below for some limitations.</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>(iOS) <strong>UTM v3.1.x will be the last update to support iOS 11 and iOS 12.</strong> If you are still running those versions, please make sure you report any issues now so they can be fixed by the final release of v3.1.x. After that, iOS 13+ will be required to run future versions of UTM.</li>
-<li>This update makes significant changes to the backend of UTM which may have introduced more issues than usual. As a precaution, please make sure you back up your VMs before running this beta in case there are bugs that cause data loss.</li>
-<li>You can now run .utm files stored anywhere. There are a few caveats: First, all newly created VMs will still be created in the default storage (app sandbox). You can move the VM after creation with the new button on the toolbar or by right clicking (or force touch) on the VM entry and selecting &quot;Move...&quot; Second, when VM shortcuts are deleted, the underlying data is unaffected, and shortcuts are automatically deleted when they are no longer valid (for example, the .utm was moved). You can re-import the .utm by either double clicking it from Finder, or using &quot;File -&gt; Import Virtual Machine...&quot; Finally, Apple VMs do not support persistent shortcuts, which means the shortcut is <em>always</em> deleted after UTM quits. This means you must re-import Apple VMs every time UTM is launched.</li>
-</ul>
-<h2>Changes (v3.1.1)</h2>
-<ul>
-<li>Automatically delete broken bookmarks for removable drives and shared directories after showing the error once (#3575)</li>
-<li>Refactored backend QEMU VM manager to support Swift concurrency and also fix some rare race issues</li>
-<li>Added picker for console background and text colour (thanks @ktprograms)</li>
-<li>Added font style (bold/italics) for console font as well as font chooser for macOS (thanks @ktprograms)</li>
-<li>Fixed crash/freeze when using UTM URL actions (#3642)</li>
-<li>(iOS) Wizard: style was incorrect on iOS 14</li>
-<li>(iOS) Keyboard visibility state is now stored globally instead of per-VM</li>
-<li>(iOS) Fixed an issue where the keyboard always pops up when an alert shows</li>
-<li>(iOS) On iOS 13.4, old cursor functionality is restored when it was broken by the iOS 14 cursor implementation</li>
-<li>(iOS) iOS 15 introduced a kernel race that leads to a panic and sometimes a purple screen and device reboot whenever GL is used. This has been fixed by reducing the possibility of the race (while we wait for Apple to fix it in iOS kernel) (#2743)</li>
-<li>(iOS) Better error message when attempting to launch an unsupported architecture in UTM SE (#3635)</li>
-<li>(macOS) Added descriptions to screen resolutions and notch-hiding resolutions (thanks @pointum)</li>
-</ul>
-<h2>Changes (v3.1.0)</h2>
-<ul>
-<li>Improved design of wizard on iOS (thanks @js-john)</li>
-<li>Updated zh-Hans translation (thanks @ty-yqs)</li>
-<li>Refactored backend renderer into <a href="https://github.com/utmapp/CocoaSpice">CocoaSpice</a></li>
-<li>Updated backend code to use Swift 5.5 concurrency features</li>
-<li>In Apple VM configs, do not discard non-persistent settings (shared directories) when canceling out of settings window</li>
-<li>Add option to run VM as a shortcut (see notes above) (#132, #1205)</li>
-<li>Added icon for Pop! OS to picker (thanks @conath)</li>
-<li>Fixed QEMU custom argument parsing when there is quoted space in middle of the argument (#3579)</li>
-<li>Update the VM screenshot on a timer (#3499)</li>
-<li>Added new global setting to disable saving screenshot to disk</li>
-<li>Improved synchronization of state from the VM window and the main window (play button visible when stopped, busy spinner visible when starting, etc)</li>
-<li>(iOS) Fix crash while installing on older versions of jailbroken iOS (#3543)</li>
-<li>(macOS) Fix an issue where Apple VM aux storage was not created when switching from Linux to macOS boot option</li>
-<li>(macOS) Ability to move a .utm VM to external storage</li>
-<li>(macOS) Toolbar option to delete VM should be disabled when VM is running</li>
-<li>(macOS) Support taking screenshots of Apple VMs</li>
-</ul>
-<h2>Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-<h3>Known Issues</h3>
-<ul>
-<li>iOS 14 and below: There is a known issue crashing while running under taurine but not unc0ver. (#3628)</li>
-</ul>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2023-03-21</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2023-04-18</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
