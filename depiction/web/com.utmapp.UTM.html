@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">4.3.3</div>
+                    <div class="text">4.3.4</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,109 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>4.3.4</h4>
+                <div class="md_view"><h2>Highlights</h2>
+<ul>
+<li><strong>QEMU backend updated to v8.0.2</strong></li>
+<li><strong>Rewrite of QEMU support internals.</strong> Much of the code to support QEMU has been refactored into a new project, <a href="https://github.com/utmapp/QEMUKit">QEMUKit</a>, which will make it easier to support QEMU changes as well as support for new platforms. This means that v4.3.1 may contain a lot of UI bugs as testing is needed to make sure the new internals match up with the existing UI. Please help us by reporting any such issue you stumble upon.</li>
+<li><strong>TPM 2.0 and Secure Boot</strong> This is required for Windows 11 updates to 22H2. To enable TPM on an existing virtual machine (only x86_64, i386, and ARM64 architectures are supported), open the VM settings, go to the QEMU page and select &quot;UEFI Boot&quot;, &quot;TPM 2.0 Device&quot;, and &quot;Reset UEFI Variables.&quot; Any new VM created through the wizard will have TPM 2.0 and Secure Boot enabled by default if Windows 10+ support is checked.</li>
+<li><strong>Download Windows installer with a new utility.</strong> We know that creating a Windows installer can be a hassle which is why we are releasing a new free tool called CrystalFetch which can be found on <a href="https://github.com/TuringSoftware/CrystalFetch">GitHub</a> as well as free on the <a href="https://apps.apple.com/app/crystalfetch-iso-downloader/id6454431289">Mac App Store</a>. This companion to UTM will allow you to generate a Windows 11 ISO with a few clicks (no Terminal, Homebrew, or scripts required). Note that just like before, you still need a valid license from Microsoft to use Windows.</li>
+</ul>
+<h2>Notes</h2>
+<p>On i386 and x86_64 machines, HPET is now disabled by default. This improves performance (slightly) on some guests and also addresses boot issues with OpenIndiana. This change means that suspended VM state from previous versions are not compatible, so please shut down those VMs before updating. If you require HPET to be enabled for any reason, go into the VM's settings and under QEMU → QEMU Machine Properties, add the text <code>hpet=on</code>.</p>
+<h2>Changes (v4.3.4)</h2>
+<ul>
+<li>Localization: Updated Japanese (thanks @MMP0)</li>
+<li>Fixed WebDAV shared directory not setup on start (#5506)</li>
+<li>(macOS) Improved debug logging by showing more verbose logging for SPICE. If &quot;Enable Debug Log&quot; is selected, more verbose logging will be activated.</li>
+<li>(macOS) Fixed an issue where the VM freezes or shows &quot;port not connected&quot; when the computer is under memory pressure (#5489)</li>
+<li>(macOS 11) Disabled options in the context menu which had broken UI leading to freezes or crashes (#5147)</li>
+<li>(macOS 12) Wizard: Fixed a crash when selecting a file with VoiceOver (#5250)</li>
+<li>(macOS 12+) Settings: new table view for QEMU custom arguments</li>
+</ul>
+<h2>Changes (v4.3.3)</h2>
+<ul>
+<li>Fixed a crash when selecting a VM (#5481)</li>
+<li>Fixed a crash when starting a VM and an error occurred when creating display/serial devices (#5472)</li>
+<li>Fixed boot issues when trying to load OpenIndiana by disabling HPET timers by default (#2394)</li>
+<li>Fixed an issue where selected removable drive image and shared directory are not syncing correctly</li>
+<li>QEMUKit: Fixed race condition when multiple RPC commands are sent (#5477)</li>
+<li>EDK2: Fixed an issue preventing some versions of Windows 11 from booting (#5495)</li>
+<li>utmctl: Add a more verbose error message when utmctl fails because it is launched from an SSH session or before logging in (#5499)</li>
+<li>Wizard: Fixed selected boot ISO not saving (#5471)</li>
+<li>Wizard: Link to CrystalFetch when Windows is selected</li>
+<li>(macOS) AVF: Automatically un-capture system keys when VM terminates</li>
+</ul>
+<h2>Changes (v4.3.2)</h2>
+<ul>
+<li>The last update introduced two units per bus for IDE devices. However, some machines do not support this configuration, so now two units per bus will only be enabled for supported machines. Other machines will retain pre v4.3.1 behaviour.</li>
+<li>Fixed some state tracking issues leading to various errors when a VM is quickly stopped and started again.</li>
+<li>Changed the style of the icons on various VM operations in the home screen and context menu (iOS) (thanks @jnsdrtlf) (#5441, #4759)</li>
+<li>Fixed an issue where serial device hardware was not saved</li>
+<li>Fixed the error that shows up when trying to rename a VM (#5444)</li>
+<li>Fixed a crash on startup due to mishandling of VM parsing (#5424)</li>
+<li>Fixed debug logging not working due to backend changes in v4.3.1</li>
+<li>Fixed a crash when QEMU tries to output non-printable characters</li>
+<li>Add support for SWTPM for TPM 2.0 emulation</li>
+<li>Add Secure Boot firmware for ARM64. Only the Secure Boot firmwares have TPM 2.0 support built in, so when TPM 2.0 and UEFI are enabled, UTM will automatically select the Secure Boot firmware. By default the UTM platform keys and Microsoft key exchange keys are enrolled. You can manually set up your own keys from the UEFI menu.</li>
+<li>Updated the EDK2 UEFI firmware to the 202305 release</li>
+<li>Debug logs will no longer be deleted when a VM configuration is saved and debug log is not disabled</li>
+<li>Fixed an issue where the mouse cursor stopped working due to backend changes in v4.3.1</li>
+<li>If the Documents directory does not exist in UTM's container, it will now be created automatically. This addresses an error that shows up if the Documents directory does not get created properly by macOS. (#5419)</li>
+<li>Localization: Updated Japanese (thanks @MMP0)</li>
+<li>(iOS) Fixed an issue where TSO setting was not saved</li>
+<li>(macOS) Fixed an issue where every time a VM is started with a terminal window, the width of the window gets a bit larger</li>
+<li>(macOS) Fixed an issue where starting a stopped VM does not change the display scale</li>
+<li>(macOS) AVM: System keys will be captured automatically when entering full screen and released when exiting full screen (#3668)</li>
+<li>(macOS) AVM: Fixed the request stop method in both the GUI and scripting interfaces (#5425)</li>
+</ul>
+<h2>Changes (v4.3.1)</h2>
+<ul>
+<li>Updated QEMU backend to v8.0.2</li>
+<li>Refactored QEMU support to a new project: <a href="https://github.com/utmapp/QEMUKit">QEMUKit</a></li>
+<li>Machines with IDE interface (i44FX/PIIX) will now support two units per bus. Previously, we mapped IDE devices to one unit per bus. This means on some machines, the limit was two devices maximum. Now, we map two units per IDE bus which should increase the limit to four devices. Existing VMs will <em>not</em> get this change automatically in order to maintain compatibility. You can choose to opt-in to this new mapping by pressing the “Update Interface” button on each IDE drive in the VM settings. (#5358)</li>
+<li>Localization: Updated Japanese (thanks @MMP0 and @studio1a9)</li>
+<li>(macOS) Fixed crash when AVM window is closed (#5347)</li>
+<li>(macOS) New option “Automatic” for bridged network connection which will use the bridge the first active connection on the host. Both AVM and QEMU backends are supported. (#5410)</li>
+<li>(macOS) Fixed trackpad setting not saving (#5369)</li>
+</ul>
+<h2>Changes (v4.3.0)</h2>
+<ul>
+<li>Updated QEMU backend to v8.0.0</li>
+<li>Changed audio backend from CoreAudio back to SPICE (as it was before v4.2.x). Clarify that CoreAudio backend does not support microphone (#5253)</li>
+<li>Add support for mouse buttons 4 and 5 (#5295)</li>
+<li>Wizard: Properly display an error message when there is a failure writing to disk (#5271)</li>
+<li>Fixed an issue where ISAPC emulation target cannot be started (#5280)</li>
+<li>Fixed CoreAudio being instantiated even when audio is disabled</li>
+<li>Fixed an issue where legacy VMs with AC97 sound card has an empty name in settings</li>
+<li>Fixed an QEMU issue where the <code>ucomiss</code> instruction causes a crash in some applications (#5294)</li>
+<li>Fixed an issue preventing VMs with commas in their name from starting (note only new VMs will be fixed) (#5332)</li>
+<li>(macOS) AVM: Support canceling macOS installation</li>
+<li>(macOS) utmctl: Added <code>delete</code> command (#5290)</li>
+<li>(macOS) Fixed an issue creating a shortcut from drag &amp; drop as well as double clicking from Finder (#5310, #5311)</li>
+<li>(macOS) Added DHCP start/end settings for vmnet (#5301)</li>
+<li>(macOS) Added automatically syncing of system clock when macOS wakes up from sleep (when QEMU guest agent is installed) (#5252)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h2>Installation</h2>
+<ul>
+<li><a href="https://docs.getutm.app/installation/ios/">iOS</a></li>
+<li><a href="https://docs.getutm.app/installation/macos/">macOS</a></li>
+</ul>
+<p>| File | Description | Installation | JIT | Hypervisor | USB |
+|------|------------|--------------|-----|-----------|-----|
+| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
+| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
+| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
+| UTM.HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | Yes | Yes(1) | Yes |
+| UTM.SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |</p>
+<ol>
+<li>Hypervisor on iOS requires an M1 iPad.</li>
+<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
+</ol>
+</div>
+            </div><div class="changelog_entry">
                 <h4>4.3.3</h4>
                 <div class="md_view"><h2>Highlights</h2>
 <ul>
@@ -3275,74 +3378,9 @@
 <li>iOS 14 and below: There is a known issue crashing while running under taurine but not unc0ver. (#3628)</li>
 </ul>
 </div>
-            </div><div class="changelog_entry">
-                <h4>3.2.2</h4>
-                <div class="md_view"><h2>Installation</h2>
-<p><strong>iOS</strong>: Visit <a href="https://getutm.app/install/">https://getutm.app/install/</a> for the most up to date installation instructions.
-<strong>macOS</strong>: Download &quot;UTM.dmg&quot; below and copy the contents to your <code>/Applications</code> directory.</p>
-<h2>Highlights</h2>
-<ul>
-<li><strong>QEMU 7.0.0</strong>: The backend has been updated to the latest release. Check out https://www.qemu.org/2022/04/19/qemu-7-0-0/ for more details. Additionally, other backend components such as SPICE GTK, libusbredir, and more have also been updated.</li>
-<li><strong>Reclaiming space</strong>: the host will attempt to TRIM any page of all zeros when committed to the QCOW2 disk image. Additionally, a new button in disk settings will allow you to re-convert a disk image to reclaim space (of all-zero pages) as well as compress an existing disk image (macOS 12+ only). Note compression is only done statically which means when the guest modifies a sector, it will be stored uncompressed just like before.</li>
-<li><strong>Disposable mode</strong>: right click/long press on a QEMU VM and select &quot;Run without saving changes&quot; to start VM in &quot;disposable mode.&quot; In this mode, changes will not be saved to disk and will be discarded once the VM is stopped. (thanks @ktprograms)</li>
-</ul>
-<h2>Notes</h2>
-<ul>
-<li>(iOS) <strong>UTM v3.2.x will be the last update to support iOS 11-13.</strong> If you are still running those versions, please make sure you report any issues now so they can be fixed by the final release of v3.2.x. After that, iOS 14+ will be required to run future versions of UTM.</li>
-<li>In v3.2.0, if you added <code>highmem=on</code> to your QEMU Machine Properties as a workaround, please remove it after updating. If you did not use v3.2.0, you can ignore this.</li>
-</ul>
-<h2>Changes (v3.2.2)</h2>
-<ul>
-<li>Add &quot;disposable mode&quot; (see highlights for more information) (thanks @ktprograms)</li>
-<li>Do not enable UEFI for unsupported architectures (#3976)</li>
-<li>Fix broken play button in sidebar (#3980)</li>
-<li>Fix &quot;Error -1 while loading VM state&quot; on resume caused by usbredir (#3979)</li>
-<li>Various UI tweaks and typo fixes (#3984)</li>
-<li>Fixed pausing without saving state</li>
-<li>Fixed showing warning prompt when VM is paused but not saved</li>
-<li>(iOS) Detect if UTM is installed without AltStore and AltJIT will not attempt to be used.</li>
-<li>(iOS) Reduced build size by 10% (thanks @Halo-Michael) (#3934)</li>
-<li>(macOS) Add new preference option to revert Caps Lock behaviour to pre 3.2.0 (#3974)</li>
-</ul>
-<h2>Changes (v3.2.1)</h2>
-<ul>
-<li>Fixed boot of RISC-V virt platform (thanks @wegank)</li>
-<li>Remove <code>highmem=off</code> default property which is no longer needed on macOS 12.4+ and iOS 15.5+ (it will still be used on lower versions) (#3941, #3946)</li>
-<li>Caps lock state will now be synchronized when mouse is captured (note that if mouse is captured before the guest OS has booted up, the state will be out of sync) (#3415)</li>
-<li>Re-introduce option to disable auto-resolution when SPICE tools is installed (#3938)</li>
-<li>When discarding unsaved settings, do not delete any disk image not created by UTM (#3587)</li>
-<li>Fix downloading of UTM zip files when the URL does not end in &quot;.zip&quot; (#3953)</li>
-<li>(macOS) When importing a disk image, do not silently overwrite an existing image of the same name (#3866)</li>
-<li>(macOS) Added option to reclaim unused space from disk image and to compress a disk image (macOS 12+ only)</li>
-<li>(macOS) On the VM list, the start button will now change to a spinner when the VM is starting and will disappear when the VM has started. Also added the ability to start/show a VM by double-clicking on the list item (#3885)</li>
-</ul>
-<h2>Changes (v3.2.0)</h2>
-<ul>
-<li>Checkbox for &quot;Import VHDX Image&quot; in the wizard now works correctly again (#3760)</li>
-<li>Fixed various crashes in SPICE webdavd share has been resolved thanks to updated backend (#3633)</li>
-<li>Removed &quot;cache=writethrough&quot; argument from block devices since it was added to workaround an issue with VHDX images which we now convert to QCOW2</li>
-<li>Added &quot;discard=unmap,detect-zeroes=unmap&quot; argument to block devices to reclaim unused space (#3460)</li>
-<li>When &quot;do not save screenshot to disk&quot; is enabled, any existing screenshot will be deleted the next time the VM is started (#3936)</li>
-<li>Fixed an issue in QEMU additional arguments where it sometimes would not appear after setting it (#3895)</li>
-<li>Fixed RNG device not appearing in console mode even when enabled in the settings (#3790)</li>
-<li>Added support for up to 5 additional mouse buttons (you may need to re-map them in the guest OS as they are automatically set to middle/up/down/side/extra) (#3906)</li>
-<li>(iOS) Fixed an issue in the legacy view where &quot;invalid identifier&quot; error may show up on a newly created VM (#3872)</li>
-<li>(macOS) Fixed crash when changing display settings while the VM window is open (but stopped) (#3925)</li>
-<li>(macOS) Fixed crash when trying to select &quot;Share...&quot; in context menu (#3915)</li>
-<li>(macOS) Prevent allowing rapid clicking of pause/resume which may lead to VM corruption (#3629)</li>
-<li>(macOS) Show progress indicator while VM is saving to prevent user from terminating the app early and cause corruption (#3752)</li>
-<li>(macOS) Block unsupported Apple USB devices from being captured (#3759)</li>
-</ul>
-<h2>Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-<h3>Known Issues</h3>
-<ul>
-<li>iOS 14 and below: There is a known issue crashing while running under taurine but not unc0ver. (#3628)</li>
-</ul>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2023-07-28</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2023-08-02</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
