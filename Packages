@@ -1,16 +1,16 @@
 Package: com.utmapp.UTM
 Architecture: iphoneos-arm
-Version: 4.4.3
+Version: 4.4.4
 Section: Productivity
 Maintainer: osy <dev@getutm.app>
-Installed-Size: 587880
+Installed-Size: 587780
 Depends: firmware (>=14.0), firmware-sbin, net.angelxwind.appsyncunified
 Filename: pkg/UTM.deb
-Size: 120622380
-MD5sum: 636eb444887b389067b9435f70b6fa70
-SHA1: 79a5e34e3a61eb7f05c044a27f8c48211c4bf86e
-SHA256: 63a5bee5b2106b96d1819bd7c41568e280e4f896eef777e96484b112061ce0af
-SHA512: 27d25aa9a321dd22b6a2ce8e905a2ae9b948461ea1d17fe412ab029fb481df58973f949ba435695aec925a9f45fe5e7f681de94c5ec4c014f7a0d7445f480b9c
+Size: 120621442
+MD5sum: e93ba5bf7751034c1be27530f091380d
+SHA1: 8f2f4c4abdb21c04c7106395e327480711fbc40f
+SHA256: 4a2c9872636ad00d80408e15d4a0116e5a974affde40e8781cf421b7beba2450
+SHA512: f6f923d1661784472d3275f00839e127b843147f960f7d1cdf2934c0f60c260b2c1740501dbdff81c79a8e599af5e47343ee1ca747bf402279e305dda732f4e1
 Homepage: https://getutm.app/
 Description: Virtual machines for iOS
 Name: UTM
