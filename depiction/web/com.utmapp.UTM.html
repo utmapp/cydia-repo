@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">4.4.5</div>
+                    <div class="text">4.4.6</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,14 +82,13 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
-                <h4>4.4.5</h4>
-                <div class="md_view"><p>This version brings bug fixes for TrollStore 2 support. The macOS version is unchanged from v4.4.4 and you do not need to update. If you are not using TrollStore on iOS, you do not need to update either.</p>
-<h2>Highlights</h2>
+                <h4>4.4.6</h4>
+                <div class="md_view"><h2>Highlights</h2>
 <ul>
 <li><strong>macOS Sonoma support</strong> New Apple Virtualization features include save/restore VM state and dynamic resolution for macOS Sonoma guests. Note that currently, you must remove the Sound and Entropy device in order to use save/restore VM state.</li>
 <li><strong>Automatically save state when you close a VM</strong> This will only work on VMs that support save states. If your VM does not support it, you will get an error message with an explanation.</li>
 <li>(macOS) <strong>USB commands in utmctl</strong> You can now use <code>utmctl usb</code> commands to connect and disconnect USB devices from a running VM.</li>
-<li>(iOS) <strong>TrollStore 2 support</strong> With the release of <a href="https://github.com/opa334/TrollStore">TrollStore 2</a>, you can now run UTM with JIT acceleration on all versions of iOS that is supported by TrollStore. If you have a M1, M2, or A16 device AND you are on iOS 16.3.1 or lower, then Hypervisor is also supported, bringing virtualization to newer iOS devices. Note that due to <a href="https://twitter.com/utmapp/status/1708907045314035986">Apple's removal of Hypervisor from newer iOS versions</a>, there will likely never be virtualization support on newer versions of iOS. The only way around it would be if either Apple un-deletes the code (unlikely) or a jailbreak powerful enough to load a custom kernel is released (even more unlikely as we have not seen this on any modern iOS device).</li>
+<li>(iOS) <strong>TrollStore support for newer iOS</strong> With the release of <a href="https://github.com/opa334/TrollStore">TrollStore 2</a>, this update brings JIT support for all iOS device that can run TrollStore. If (and only if) you are on at most iOS 16.3.1 AND your device is M1, M2, or A16, then you can also use the virtualization option. No other device or higher iOS version will likely ever be supported due to Apple <a href="http://twitter.com/utmapp/status/1708907045314035986">removing Hypervisor in iOS 16.4</a>. The only way around this is if Apple un-deletes the code (unlikely) or a jailbreak powerful enough to run a custom kernel is released (even more unlikely as this has never been done on a modern iOS device).</li>
 </ul>
 <h2>Notes</h2>
 <ul>
@@ -98,10 +97,11 @@
 <li>Linux guests: Mesa 23.2.1 introduced a bug that will crash UTM with the error <code>GL_ARB_clear_texture</code>. If you experience this bug, temporarily disable GPU acceleration, then downgrade your Mesa package (or update to the next version when it comes out/nightly build), and the switch back to GPU acceleration.</li>
 <li>Windows guests: the guest tools have been updated to fix the double cursor bug as well as some driver signing issues when Secure Boot is enabled. To update the guest tools, make sure you have ejected any mounted ISO and then use the CD icon and select &quot;Install Windows Guest Tools&quot;. This should automatically download and mount the latest tools.</li>
 </ul>
-<h2>Changes (v4.4.5)</h2>
+<h2>Changes (v4.4.6)</h2>
 <ul>
-<li>(iOS) TrollStore: support Hypervisor on iOS 16.3.1 and lower (M1, M2, A16 only) (thanks @xliuxu)</li>
-<li>(iOS) TrollStore: fix JIT enablement (thanks @crstestacc)</li>
+<li>Fixed a &quot;device not found&quot; error when starting a VM with an empty interface (#5845)</li>
+<li>Fixed JIT for TrollStore builds (#5216) (thanks @crstestacc)</li>
+<li>Added support for virtualization on iOS 16.3.1 and lower (M1, M2, A16 only) (thanks @xliuxu)</li>
 </ul>
 <h2>Changes (v4.4.4)</h2>
 <ul>
@@ -3356,7 +3356,7 @@
 </div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2023-12-10</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2023-12-11</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
