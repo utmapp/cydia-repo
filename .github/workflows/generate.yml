@@ -49,7 +49,7 @@ jobs:
           APT::FTPArchive::Release::Label "UTM";
           APT::FTPArchive::Release::Suite "stable";
           APT::FTPArchive::Release::Version "1.0";
-          APT::FTPArchive::Release::Architectures "iphoneos-arm";
+          APT::FTPArchive::Release::Architectures "iphoneos-arm iphoneos-arm64";
           APT::FTPArchive::Release::Codename "ios";
           APT::FTPArchive::Release::Components "main";
           APT::FTPArchive::Release::Description "Virtual machines for iOS";
