@@ -1,7 +1,7 @@
-Architectures: iphoneos-arm
+Architectures: iphoneos-arm iphoneos-arm64
 Codename: ios
 Components: main
-Date: Fri, 24 May 2024 05:04:34 +0000
+Date: Tue, 20 Aug 2024 19:32:34 +0000
 Description: Virtual machines for iOS
 Label: UTM
 Origin: UTM
