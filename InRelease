@@ -4,7 +4,7 @@ Hash: SHA512
 Architectures: iphoneos-arm iphoneos-arm64
 Codename: ios
 Components: main
-Date: Fri, 04 Oct 2024 06:58:42 +0000
+Date: Fri, 22 Nov 2024 20:54:48 +0000
 Description: Virtual machines for iOS
 Label: UTM
 Origin: UTM
@@ -28,18 +28,18 @@ SHA512:
  fe17b52051d2f7b0b2ac4b4740875bf070d2f97aeb1abc69964fd6afd8abc29395c1f1ef92cab309bd89ea45c582ef43bee89055b10be6e2bc17376a9e9c5c05              640 Packages.xz
 -----BEGIN PGP SIGNATURE-----
 
-iQJFBAEBCgAvFiEEYrTQum7xfJnFE+SAu66oPsD5HyYFAmb/kiMRHGN5ZGlhQGdl
-dHV0bS5hcHAACgkQu66oPsD5HyZdMg//cnANijNGuI9x6tgDm+hUHG18mqvvJVUA
-zaDDZTwBlvBf5bpMFkUX+rQQu2ALYKuPbVq+h+Wi7StUX/DNZ+1hLlJiHQdwzD6Q
-cO1GVsoEpUE7+/ltHTIt3JI/vIQoYSGaDzhPaUNhp39wSHY1hHPXmG4g7pX7ra2o
-bpI5V3C1XuDOoMXvVXZ0oqPcjjfDsLymkflfMzhRAVpxYTm3GNA0awD0ci8EMq87
-/siQHVjhFdVKzBn+Esf67ToPc0Enlo7QR+Ckhnf01D+EkxDzdHdBcOlsb4z4io09
-SDH4eZuK4Yzv3RlNocUpFyOlFtVaDp5wvYMeSzcO1ZLEfRFCS+/C2Yl68zwW13oU
-QJ4S1Z6RxWr9cQ9flOuFUTtlxhqh3TwJlbKcEnQivBVAz4EprMCu+yrLWUgqSxCM
-EPP+97fBH8n5PsGdmzBJy6aAvOYCd5vzT9wJhdSkyFjZpw3xpNIkZx3UqCRskS7/
-Y3b4XDl/9i27TZI71PrH+sYCqeiCRVfETJWIcilJSiR/KMf75dDzIwLsmLNGqj7/
-4VajG9aSaJwpl3sllaWGWO84H080t67/GXdqxFMsWe7wWf1KVR8fEi+alRXz5ewS
-LZsREPxf2Dg64RUJgnL2pECAoKTjRVXFNSqwmGymYlUBE9R5uRkamfKvLfaJm5BN
-BTjg1jI/Eoc=
-=R2qp
+iQJFBAEBCgAvFiEEYrTQum7xfJnFE+SAu66oPsD5HyYFAmdA75kRHGN5ZGlhQGdl
+dHV0bS5hcHAACgkQu66oPsD5HyaYKw//USyLrwUAKa9/5p0PsyR05Zt06HgsRogD
+ltowGgigBycfsjT+kNbDV6Jh3C1TxXwtfDz83SzXFkMvJUUJC6G4z8UuWRG2xx7v
+UDNZZ2n9ZK48CtuZyxi0aQ/b+lkGbdEy+3ME6VhS62PJ0uSVgNtSPir7UIljWmK8
++sW/upLiegwFrLd3DLfAnFGzHPzi9dRpHdEarZdH0JKOSKYZLtyU2YA2kXWC/3cw
+sXgiH03Gix0NnYn+zpB7jd9ymddaJRgfKu9qhetscn2JcWB2x++qp9J12A+IQpd2
+wdGAhmms5GcRgLxYb2X8Ud+BP+nqybDO2iMVEzl2T84Cf0KzFPSeMcU3qDGKzTBq
+JCfMikxM6ybsSPuwCgsiKfaL2ufeKgvU9H4SFBSooFCVmmT69QpDGZYpaEoXIoDR
+HnQFShAKY/6pIkxs6h2nGu/l0bERK9phUcjVI/Tc6j09mgj1OWUpxtCcaI1nKkx+
+xntruvVE3SvJ4XzR5ZtnpfaxoC8Ng7IWw4EF+51+n4fQsBFHkjEZ4Yvv5xmGc/is
+/yk81yJhMZsAXOIsYHNdKwrK7STw82jmaluicyrub6sE+6GO4/tlnXHsCZBfe/aA
+CQ7rOsuQsaDK24YbOIzDC5oslaOIiXNZQsIiafd1oh/k78DLQRLnyobxp7dtWiXm
+WqdzZk2PUCs=
+=TckK
 -----END PGP SIGNATURE-----
