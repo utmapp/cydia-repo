@@ -37,7 +37,7 @@ jobs:
         run: python3 index.py
       - name: Generate releases
         run: |
-          mkdir pkg
+          mkdir -p pkg
           wget -O pkg/UTM.deb ${DOWNLOAD_PATH}
           rm -rf ./docs/pkg ./docs/Packages* ./docs/Release
           apt-ftparchive packages pkg > Packages.txt
