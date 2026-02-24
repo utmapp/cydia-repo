@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">5.0.1</div>
+                    <div class="text">5.0.2</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,6 +82,67 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
+                <h4>5.0.2</h4>
+                <div class="md_view"><h2>Highlights</h2>
+<ul>
+<li><strong>Improved graphics acceleration for Linux</strong>: Vulkan 1.3 is now supported on Linux guests with VirtIO Venus drivers in Mesa. OpenGL 4.1 is supported with the new Apple Core OpenGL backend (macOS only).</li>
+</ul>
+<h2>Known Issues</h2>
+<ul>
+<li>(macOS) Apple CoreGL backend does not support Vulkan.</li>
+<li>KosmicKrisp is provided as a WIP but the current upstream build is incomplete so MoltenVK is the recommended driver</li>
+<li>Linux desktop rendering in Vulkan does not work due to lack of support for indirect draws for geometry shaders. Please configure your guest to use the older VirGL Gallium driver.</li>
+</ul>
+<h2>Changes (v5.0.2)</h2>
+<ul>
+<li>Environment variables are now logged when debug log is enabled</li>
+<li>Fixed a regression in GL acceleration where desktop might not render correctly (#7626)</li>
+<li>Added geometry shaders support to MoltenVK to enable DXVK (thanks @Anducalliew433) (#7575)</li>
+<li>(iOS) Fixed an issue where EAGL backend boots into a black screen (#7587)</li>
+<li>(iOS) Fixed a crash on iOS 15 due to incompatible symbols (#7593)</li>
+<li>(iOS) Fixed verbose logging for graphics backend</li>
+<li>(iOS) Fixed a crash when GL is enabled due to missing support for glDrawElementsInstancedBaseVertex (#7596)</li>
+<li>(macOS) Fixed an issue when after resizing a window if the guest outputs a different resolution size, the wrong texture resolution is used leading to misaligned cursor and warped graphics (#5781)</li>
+<li>(macOS) Fixed an issue where the window resizes to 0x0 when native scaling is enabled</li>
+</ul>
+<h2>Changes (v5.0.1)</h2>
+<ul>
+<li>CocoaSpice: Reworked Metal renderer to be faster and have lower latency</li>
+<li>Fixed an issue where a BIOS file with a comma in the filename will fail to load</li>
+<li>Default FPS will now be the maximum refresh rate of the display on macOS and iPadOS (iPhone with ProMotion will still have 60Hz as the default rate but can be overridden to 120Hz through settings)</li>
+<li>(macOS) Fixed issue causing <code>HV_UNSUPPORTED</code> on startup with Vulkan enabled (#7579)</li>
+<li>(iOS) Fixed resolution issue on external displays (#6040)</li>
+<li>(iOS) Pinch to zoom will turn off automatically updating zoom from the guest (until reset with the resize button)</li>
+<li>(iOS) Fixed external display menu not updating</li>
+<li>(iOS) Fixed incorrect scale on external displays and connecting an external display will now automatically scale to fit</li>
+<li>(iOS) Fixed an issue where powering off the VM will show the home screen but not terminate UTM in the background</li>
+</ul>
+<h2>Changes (v5.0.0)</h2>
+<ul>
+<li>Add Venus support for Vulkan (#4551)</li>
+<li>Add Apple Core OpenGL support for OpenGL 4.1 (#4285) (thanks @startergo)</li>
+</ul>
+<h2>Issues</h2>
+<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
+<h2>Installation</h2>
+<ul>
+<li><a href="https://docs.getutm.app/installation/ios/">iOS</a></li>
+<li><a href="https://docs.getutm.app/installation/macos/">macOS</a></li>
+</ul>
+<p>| File | Description | Installation | JIT | Hypervisor | USB |
+|------|------------|--------------|-----|-----------|-----|
+| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
+| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
+| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
+| UTM-HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | Yes | Yes(1) | Yes |
+| UTM-SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |
+| UTM-Remote.ipa | Remote client | Any | No | No | No |</p>
+<ol>
+<li>Hypervisor on iOS requires an M1 iPad or newer.</li>
+<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
+</ol>
+</div>
+            </div><div class="changelog_entry">
                 <h4>5.0.1</h4>
                 <div class="md_view"><h2>Highlights</h2>
 <ul>
@@ -2688,62 +2749,9 @@
 <li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
 </ol>
 </div>
-            </div><div class="changelog_entry">
-                <h4>4.3.1</h4>
-                <div class="md_view"><h2>Highlights</h2>
-<ul>
-<li><strong>QEMU backend updated to v8.0.2</strong></li>
-<li><strong>Rewrite of QEMU support internals.</strong> Much of the code to support QEMU has been refactored into a new project, <a href="https://github.com/utmapp/QEMUKit">QEMUKit</a>, which will make it easier to support QEMU changes as well as support for new platforms. This means that v4.3.1 may contain a lot of UI bugs as testing is needed to make sure the new internals match up with the existing UI. Please help us by reporting any such issue you stumble upon.</li>
-</ul>
-<h2>Changes (v4.3.1)</h2>
-<ul>
-<li>Updated QEMU backend to v8.0.2</li>
-<li>Refactored QEMU support to a new project: <a href="https://github.com/utmapp/QEMUKit">QEMUKit</a></li>
-<li>Machines with IDE interface (i44FX/PIIX) will now support two units per bus. Previously, we mapped IDE devices to one unit per bus. This means on some machines, the limit was two devices maximum. Now, we map two units per IDE bus which should increase the limit to four devices. Existing VMs will <em>not</em> get this change automatically in order to maintain compatibility. You can choose to opt-in to this new mapping by pressing the “Update Interface” button on each IDE drive in the VM settings. (#5358)</li>
-<li>Localization: Updated Japanese (thanks @MMP0 and @studio1a9)</li>
-<li>(macOS) Fixed crash when AVM window is closed (#5347)</li>
-<li>(macOS) New option “Automatic” for bridged network connection which will use the bridge the first active connection on the host. Both AVM and QEMU backends are supported. (#5410)</li>
-<li>(macOS) Fixed trackpad setting not saving (#5369)</li>
-</ul>
-<h2>Changes (v4.3.0)</h2>
-<ul>
-<li>Updated QEMU backend to v8.0.0</li>
-<li>Changed audio backend from CoreAudio back to SPICE (as it was before v4.2.x). Clarify that CoreAudio backend does not support microphone (#5253)</li>
-<li>Add support for mouse buttons 4 and 5 (#5295)</li>
-<li>Wizard: Properly display an error message when there is a failure writing to disk (#5271)</li>
-<li>Fixed an issue where ISAPC emulation target cannot be started (#5280)</li>
-<li>Fixed CoreAudio being instantiated even when audio is disabled</li>
-<li>Fixed an issue where legacy VMs with AC97 sound card has an empty name in settings</li>
-<li>Fixed an QEMU issue where the <code>ucomiss</code> instruction causes a crash in some applications (#5294)</li>
-<li>Fixed an issue preventing VMs with commas in their name from starting (note only new VMs will be fixed) (#5332)</li>
-<li>(macOS) AVM: Support canceling macOS installation</li>
-<li>(macOS) utmctl: Added <code>delete</code> command (#5290)</li>
-<li>(macOS) Fixed an issue creating a shortcut from drag &amp; drop as well as double clicking from Finder (#5310, #5311)</li>
-<li>(macOS) Added DHCP start/end settings for vmnet (#5301)</li>
-<li>(macOS) Added automatically syncing of system clock when macOS wakes up from sleep (when QEMU guest agent is installed) (#5252)</li>
-</ul>
-<h2>Issues</h2>
-<p>Please check the full list on <a href="https://github.com/utmapp/UTM/issues">Github</a> and help report any bug you find that is not listed.</p>
-<h2>Installation</h2>
-<ul>
-<li><a href="https://docs.getutm.app/installation/ios/">iOS</a></li>
-<li><a href="https://docs.getutm.app/installation/macos/">macOS</a></li>
-</ul>
-<p>| File | Description | Installation | JIT | Hypervisor | USB |
-|------|------------|--------------|-----|-----------|-----|
-| UTM.deb | Jailbroken iOS version | Open in Cydia, dpkg, or Sileo | Yes | Yes(1) | Yes |
-| UTM.dmg | macOS version | Mounting and copying UTM.app to /Applications | Yes | Yes | Yes |
-| UTM.ipa | Non-jailbroken iOS version (sideloading) | AltStore, etc (see guide) | Yes(2) | No | No |
-| UTM.HV.ipa | Non-jailbroken iOS version (TrollStore) | TrollStore | Yes | Yes(1) | Yes |
-| UTM.SE.ipa | Non-jailbroken iOS version (sideloading) | AltStore, enterprise signing, etc | No | No | No |</p>
-<ol>
-<li>Hypervisor on iOS requires an M1 iPad.</li>
-<li>Enabling JIT may require a separate JIT enabler such as <a href="https://github.com/osy/Jitterbug">Jitterbug</a> or Jitstreamer.</li>
-</ol>
-</div>
             </div>
         </div>
-        <div class="caption center footer">Silica 1.2.2 – Updated 2026-01-19</div>
+        <div class="caption center footer">Silica 1.2.2 – Updated 2026-02-24</div>
     </div>
 </body>
 <script>compatible("11.0","","iOS 11.0");externalize()</script>
