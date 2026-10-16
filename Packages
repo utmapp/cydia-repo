@@ -1,16 +1,16 @@
 Package: com.utmapp.UTM
 Architecture: all
-Version: 4.7.5
+Version: 5.0.7
 Section: Productivity
 Maintainer: osy <dev@getutm.app>
-Installed-Size: 753416
-Depends: firmware (>=14.0), net.angelxwind.appsyncunified
+Installed-Size: 804064
+Depends: firmware (>=15.0), net.angelxwind.appsyncunified
 Filename: pkg/UTM.deb
-Size: 128648546
-MD5sum: ef590c8f46a43a21e593735f59a395da
-SHA1: f40b41093d2ccbb45826966b69f24e287efae94a
-SHA256: 1ad80ea5a85651936f67757e173cf752dc21101a2275f01f441158da90d3ca9f
-SHA512: 2e1d279f70d5a784fd61940d8557f393acddb47a7fb0cfcdc42019b22211edc871f0fd5d07d406d551073c34f943af102617bcb710331868f7ad4d7f850adcd0
+Size: 149012000
+MD5sum: 7cff6cb218cccb652da10ec88004f75d
+SHA1: e9400a1a47bdd121a859c9c00c696137330da098
+SHA256: 110ee31f5bb4490c60f8e9041e3c68585bb6833e9aef9d59c61a4289b2300d18
+SHA512: 834118172950c83df3bf8214ebbb9c52b0ccb826a3137fdb52182abbda8cdea64df12b8cb3258f62e1c6533fcab1c972c22ceebf639d303df55b912ed58cc500
 Homepage: https://getutm.app/
 Description: Virtual machines for iOS
 Name: UTM
@@ -19,7 +19,7 @@ Depiction: https://cydia.getutm.app/depiction/web/com.utmapp.UTM.html
 Icon: https://cydia.getutm.app/assets/com.utmapp.UTM/icon.png
 Moderndepiction: https://cydia.getutm.app/depiction/native/com.utmapp.UTM.json
 Sileodepiction: https://cydia.getutm.app/depiction/native/com.utmapp.UTM.json
-Tags: compatible_min::ios14.0
+Tags: compatible_min::ios15.0
 
 Package: ai.akemi.appsyncunified
 Architecture: iphoneos-arm
