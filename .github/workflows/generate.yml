@@ -35,6 +35,10 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: Generate website
         run: python3 index.py
+      - name: Install apt-utils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apt-utils
       - name: Generate releases
         run: |
           mkdir -p pkg
