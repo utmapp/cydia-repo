@@ -1,25 +1,25 @@
 Architectures: iphoneos-arm iphoneos-arm64
 Codename: ios
 Components: main
-Date: Wed, 18 Nov 2026 05:24:25 +0000
+Date: Wed, 18 Nov 2026 10:13:32 +0000
 Description: Virtual machines for iOS
 Label: UTM
 Origin: UTM
 Suite: stable
 Version: 1.0
 MD5Sum:
- 68e7887d9ee2d76f9dad25afe4f6d4cc             4375 Packages
- ba92429448e478664509a6c9439d4ca6             1701 Packages.bz2
- 015c156cfe84e2065dd6d9f4161f313e             1480 Packages.xz
+ 00af18f95c75ee58c6f264df4f5812d2             4375 Packages
+ 9bd639f498c267ea26a82dbd1dcb7896             1704 Packages.bz2
+ cee656aa87c840ce1b46b0a3635b93c4             1484 Packages.xz
 SHA1:
- bc9fbe61455501eb03b067c7b6617c93ff2b0c59             4375 Packages
- cdf530f0e026176513e8f2025005d9f5fe2d0805             1701 Packages.bz2
- df1bc1dd460f4368bc3d608d15d289f0cfa997b6             1480 Packages.xz
+ c791eeeb8da25485d8b726ff50548cc0477e474f             4375 Packages
+ 251c1263a6ce9623c75042bbb97a31ae7453727c             1704 Packages.bz2
+ ed214ab6d5e324c01ee4cd519359664d1928a290             1484 Packages.xz
 SHA256:
- 537e37acca7e41162e240eac06f935680f1299f9c7737b3b8c3f5b0e01a52923             4375 Packages
- 52de238ba6a588b8f1266114866219fd65a13ddcaaa75b417b436f2afe66ee0d             1701 Packages.bz2
- 5cc855f359c5bdaab0aa8682062b5ae72218444938b4e4a7211fe98e34307beb             1480 Packages.xz
+ 280ab2a44fb9f2da71b0288dda2afb9739d0d70bd3c0e80b014c2b7e921392f1             4375 Packages
+ e005528127cf943f5302bad3660181ba9d8df464f01014dc76f8011d0f0bc462             1704 Packages.bz2
+ 532372225b8dfa8e0c035d2b0e3eb5ed4570fefddb6f7ab338daa01bbd80cbb9             1484 Packages.xz
 SHA512:
- f5d068e74ce0849217c7c9bfa7469491aaf3d7dbb23874f3b6f7c01bd8489dc36285b7c583443a8ebf506a800bc461e7afda56aabb5eb85d343fa2ee2422704f             4375 Packages
- be7acac6f65eca0d700493fd41420957e88cc8b8eeb8d742ce37c2eb79024da89c68943f0ece6978c7f73164f3759321284d40181d6a0e8971164988eee8f385             1701 Packages.bz2
- cc68d391f185000627d6d8919f15c5bc783f990dd182c6e43f22d4adff6108e8765ceea80cc86f0472721f414458d39c2aa97775d03c0a4ca70206ab26715ee6             1480 Packages.xz
+ 153c6f8d88bee6e9af66d0ff78fd6e4a9577dff93753fd813ae577a88730187b3d19cd1a460c7f7fd33df9113c49dea4e380e3a40b896c65c54d9936a226700f             4375 Packages
+ fd87ee37bbd102283e351146d3eaed174ae0a64b60a60caec5741cf59e7e852e72dfbdb8edc54b5813648512d5d64adf5ce49c4aa164664b0f040822703c452f             1704 Packages.bz2
+ c5c958d62bdabdd6a834e6e7d87a97b6f3a37662935825dfc191fa4d203cc95a343d54e06d3d11c9270fa59c4013afab350906831dabe5d14cfec0dd6b8ffae8             1484 Packages.xz

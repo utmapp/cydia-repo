@@ -62,7 +62,7 @@
                 </div>
                 <div class="cell">
                     <div class="title">Version</div>
-                    <div class="text">5.0.9-1</div>
+                    <div class="text">5.0.9-2</div>
                     <br><br>
                 </div>
                 <div class="cell">
@@ -82,7 +82,7 @@
         </div>
         <div class="changelog">
             <div class="changelog_entry">
-                <h4>5.0.9-1</h4>
+                <h4>5.0.9-2</h4>
                 <div class="md_view"><h2>Highlights</h2>
 <ul>
 <li>(macOS) <strong>DirectX graphics support for Windows</strong>: Modern accelerated graphics for Windows 11 is now available on UTM for the first time. The driver is still experimental and games compatibility is currently limited.</li>
@@ -107,7 +107,7 @@
 </ul>
 <h2>Changes (v5.0.9)</h2>
 <ul>
-<li>(macOS 14) Display: Fixed QEMU VM displays looking blurry with Retina mode on, a regression in v5.0.9 (#8191) (added 2026-11-17)</li>
+<li>(macOS 14) Display: Reverted the fix for VM windows being limited to 60 fps on ProMotion displays, because it could crash a VM at startup (#8204) and blurred Retina mode (#8191). VM windows still run at 120 Hz on a ProMotion display, unless a slower external display is the main display (added 2026-11-18)</li>
 <li>Fixed Windows games hanging at startup while compiling shaders, in-game videos stalling after the first frame, and a failed 3D command resetting the guest's display (#7984)</li>
 <li>Fixed X11 apps under Xwayland not displaying with Vulkan on Linux</li>
 <li>Updated the virglrenderer, MoltenVK and DXMT graphics backends</li>
@@ -158,7 +158,7 @@
 <li>(macOS) Fixed Windows 3D acceleration on Intel Macs by no longer selecting D3DMetal there (#8040) (thanks @nightness)</li>
 <li>(macOS) Updated the D3DMetal graphics backend with fixes for corrupted geometry and GPU hangs in games</li>
 <li>(macOS 12) Fixed the Virtual Machine menu having no title in the menu bar (#8117)</li>
-<li>(macOS 14) Display: Fixed VM windows being limited to 60 fps on ProMotion displays when connected to an external display (thanks @dragoshont)</li>
+<li>(macOS 14) ~~Display: Fixed VM windows being limited to 60 fps on ProMotion displays when connected to an external display (thanks @dragoshont)~~</li>
 <li>(macOS) Display: Holding a key now repeats it in guests that use a PS/2 keyboard, such as DOS and Windows 98 (#7766)</li>
 <li>(macOS) Display: Fixed clicks from automation, accessibility tools and touch displays landing at the previous pointer position</li>
 <li>(macOS) Toolbar: The USB, drives, shared folder, windows and keyboard shortcut menus now open under their button instead of at the pointer</li>
